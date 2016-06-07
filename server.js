@@ -10,7 +10,9 @@ var rootPath = path.normalize(__dirname + '/../');
 app.use(express.static(rootPath + 'cvApp/app-client'));
 
 //get user model
-var User = require('./app/models/user.model')
+var User = require('./app/models/user.model');
+//get resume model
+var Resume = require('./app/models/cv.model');
     //db connection
 mongoose.connect('mongodb://localhost/users');
 //config
@@ -118,6 +120,89 @@ router.route('/users/:user_id')
             });
         });
     });
+
+
+
+    /*****************************************************
+     * START OF RESUMES API
+     *****************************************************/
+
+    /*******************************
+     * Server restful api
+     * route: api/resumes
+     * GET all resumes
+     * Post new resume
+     *******************************/
+
+    //init object model for Resume (**some problems with model Schema  for post new resume)
+    var Resume = require('./models/Resume');
+
+    router.route('/resumes')
+        .post(function (req, res) {
+            var newCV = new Resume(req.body);
+            newCV.save(function (err) {
+                if (err)
+                    res.send(err);
+                res.json({
+                    message: 'Resume saved!'
+                });
+            });
+        })
+
+        .get(function (req, res) {
+            Resume.find(function (err, data) {
+                if (err)
+                    res.send(err);
+                res.json(data);
+            });
+        });
+
+    /*******************************
+     * Server restful api find
+     * Resumes with id
+     * route: api/resumes:id
+     * GET  resumes with spec ID
+     * PUT  resume with spec ID
+     * DELETE resume with spec ID
+     *******************************/
+    router.route('/resumes/:id')
+        .get(function (req, res) {
+            Resume.findById(
+                req.params.id,
+                function (err, data) {
+                    if (err)
+                        res.send(err);
+
+                    res.json(data);
+                });
+        })
+
+        .put(function (req, res) {
+            Resume.findById(req.params.id, function (err, resume) {
+                if (err)
+                    res.send(err);
+                resume.body = req.body;
+
+                resume.save(function (err) {
+                    if (err)
+                        res.send(err);
+                    res.json({
+                        message: 'User updated'
+                    });
+                });
+            });
+        })
+        .delete(function (req, res) {
+            Resume.findById(req.params.id , function (err, data) {
+                if (err) { es.send('Error' + err);}
+                data.remove();
+                res.send({message:"Resume deleted"});
+            });
+        })
+    /*****************************************************
+     * END OF RESUMES API
+     *****************************************************/
+
 
 
 
