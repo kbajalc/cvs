@@ -1,0 +1,158 @@
+
+
+body, #mainWrapper {
+	height: 70%;
+	background-color:rgb(245, 245, 245);
+
+}
+
+body, .form-control{
+	font-size:12px!important;
+}
+
+
+.floatRight{
+	float:right;
+	margin-right: 18px;
+}
+
+.has-error{
+	color:red;
+}
+
+.formcontainer{
+	background-color: #DAE8E8;
+	padding: 20px;
+}
+
+.tablecontainer{
+	padding-left: 20px;
+}
+
+.generic-container {
+  width:80%;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #EAE7E7;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 0 30px black;
+}
+
+.custom-width {
+    width: 80px !important;
+}
+
+/*login forma*/
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-default {
+
+    width: 100%;
+    background-color:#262626;
+ }
+
+body {
+  background: #999;
+  font-family: "Open Sans Condensed", sans-serif;
+}
+.navbar-brand {
+
+  font-size: 30px;
+  font-family: sans-serif;
+  font-weight: bolder;
+  padding-top: 25px;
+}
+
+
+#bg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: url("http://fullhdpictures.com/wp-content/uploads/2016/03/Blur-Wallpapers.jpg") no-repeat center center fixed;
+  background-size: cover;
+  -webkit-filter: blur(5px);
+}
+
+
+
+#pswResetLink{
+     font-family: "Open Sans Condensed", sans-serif;
+     color: whitesmoke;
+     margin-right:200px;
+     font-size: 12px;
+}
+
+.navbarLogin input{
+     margin-top: 15px;
+     margin-right: 20px;
+     height: 30px;
+     font: bold .875em/1.25em "Open Sans Condensed", sans-serif;
+     letter-spacing: .075em;
+     padding: 8px 20px 8px 10px;
+
+}
+
+.navbarLogin button {
+     margin-top: 15px;
+     font: bold .875em/1.45em "Open Sans Condensed", sans-serif;
+     letter-spacing: .080em;
+     margin-right: 20px;
+}
+.signUpForm{
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+  background: rgba(130,130,130,.2);
+  padding: 20px 22px;
+  border: 1px solid;
+  border-top-color: rgba(255,255,255,.4);
+  border-left-color: rgba(255,255,255,.4);
+  border-bottom-color: rgba(60,60,60,.4);
+  border-right-color: rgba(60,60,60,.4);
+}
+
+.signUpForm > input{
+  width: 250px;
+  border: 1px solid;
+  border-bottom-color: rgba(255,255,255,.5);
+  border-right-color: rgba(60,60,60,.35);
+  border-top-color: rgba(60,60,60,.35);
+  border-left-color: rgba(80,80,80,.45);
+  background-color: rgba(0,0,0,.2);
+  background-repeat: no-repeat;
+  padding: 8px 20px 8px 10px;
+  font: bold .875em/1.25em "Open Sans Condensed", sans-serif;
+  letter-spacing: .075em;
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0,0,0,.1);
+  margin-bottom: 19px;
+
+}
+
+.signUp{
+  width:255px;
+  margin-bottom: 0;
+  margin-top: 30px;
+  letter-spacing: .05em;
+  text-shadow: 0 1px 0 #133d3e;
+  text-transform: uppercase;
+  border-top-color: #9fb5b5;
+  border-left-color: #608586;
+  border-bottom-color: #1b4849;
+  border-right-color: #1e4d4e;
+  cursor: pointer;
+}
+
+a {
+	color: white;
+}
