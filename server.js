@@ -14,7 +14,7 @@ var User = require('./app/models/user.model');
 //get resume model
 var Resume = require('./app/models/cv.model');
     //db connection
-mongoose.connect('mongodb://localhost/testBD');
+mongoose.connect('mongodb://localhost/cvs');
 //config
 
 app.use(bodyParser.urlencoded({

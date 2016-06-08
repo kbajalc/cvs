@@ -1,7 +1,9 @@
 <link rel="stylesheet" href="/css/editor.css">
-<main class="container-fluid main">
+<div id='editorTemplate'>
+<main class="main">
+    <div class='row'>
         <!-- left side -->
-        <section class="col-md-4 leftside">
+        <section class="col-md-4 col-lg-4 col-sm-12 leftside">
             <h2></h2>
             <!-- About controller -->
             <div ng-controller="AboutController as about">
@@ -108,9 +110,8 @@
         <section class="col-lg-8 col-md-8 col-sm-12">
             <h2></h2>
             <!--Work expirience info section -->
-            <section class="row workExprience" ng-controller="WorkExperienceController as experience" >
+            <section class="workExprience" ng-controller="WorkExperienceController as experience" >
                 <!-- tittle row -->
-
                 <div class="col-lg-10 col-md-10 col-sm-10">
                     <h4>EXPIRIENCE</h4>
                 </div>
@@ -461,4 +462,6 @@
             <!--Languages skills info section end -->
             <!--right side info section end -->
         </section>
+       </div>
     </main>
+    </div>

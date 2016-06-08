@@ -1,28 +1,29 @@
-*, *:before, *:after {
+ /*
+ #loginTemplate *, *:before, *:after {
   box-sizing: border-box;
 }
 
-html {
+ #loginTemplate html {
   overflow-y: scroll;
 }
 
-body {
+ #loginTemplate .loginTemplate {
   background: #9ad3de;
   font-family: 'Titillium Web', sans-serif;
   padding-top:30px;
 }
 
-a {
+ #loginTemplate a {
   text-decoration: none;
   color: #00DFFC;
   -webkit-transition: .5s ease;
   transition: .5s ease;
 }
-a:hover {
+ #loginTemplate a:hover {
   color: #005F6B;
 }
 
-.form {
+  #loginTemplate .form {
   background: #343838;
   padding: 40px;
   max-width: 600px;
@@ -31,17 +32,17 @@ a:hover {
   box-shadow: 0 4px 10px 4px #005F6B;
 }
 
-.tab-group {
+ #loginTemplate .tab-group {
   list-style: none;
   padding: 0;
   margin: 0 0 40px 0;
 }
-.tab-group:after {
+ #loginTemplate .tab-group:after {
   content: "";
   display: table;
   clear: both;
 }
-.tab-group li a {
+ #loginTemplate .tab-group li a {
   display: block;
   text-decoration: none;
   padding: 15px;
@@ -55,27 +56,27 @@ a:hover {
   -webkit-transition: .5s ease;
   transition: .5s ease;
 }
-.tab-group li a:hover {
+ #loginTemplate .tab-group li a:hover {
   background: #00B4CC;
   color: #ffffff;
 }
-.tab-group .active a {
+ #loginTemplate .tab-group .active a {
   background: #008C9E;
   color: #ffffff;
 }
 
-.tab-content > div:last-child {
+ #loginTemplate .tab-content > div:last-child {
   display: none;
 }
 
-h1 {
+ #loginTemplate h1 {
   text-align: center;
   color: #ffffff;
   font-weight: 300;
   margin: 0 0 40px;
 }
 
-label {
+ #loginTemplate label {
   position: absolute;
   -webkit-transform: translateY(6px);
           transform: translateY(6px);
@@ -87,26 +88,26 @@ label {
   pointer-events: none;
   font-size: 22px;
 }
-label .req {
+ #loginTemplate label .req {
   margin: 2px;
   color: #1ab188;
 }
 
-label.active {
+ #loginTemplate label.active {
   -webkit-transform: translateY(50px);
           transform: translateY(50px);
   left: 2px;
   font-size: 14px;
 }
-label.active .req {
+ #loginTemplate label.active .req {
   opacity: 0;
 }
 
-label.highlight {
+ #loginTemplate label.highlight {
   color: #ffffff;
 }
 
-input, textarea {
+ #loginTemplate input, textarea {
   font-size: 22px;
   display: block;
   width: 100%;
@@ -120,36 +121,36 @@ input, textarea {
   -webkit-transition: border-color .25s ease, box-shadow .25s ease;
   transition: border-color .25s ease, box-shadow .25s ease;
 }
-input:focus, textarea:focus {
+ #loginTemplate input:focus, textarea:focus {
   outline: 0;
   border-color: #00B4CC;
 }
 
-textarea {
+ #loginTemplate textarea {
   border: 2px solid #a0b3b0;
   resize: vertical;
 }
 
-.field-wrap {
+ #loginTemplate .field-wrap {
   position: relative;
   margin-bottom: 40px;
 }
 
-.top-row:after {
+ #loginTemplate .top-row:after {
   content: "";
   display: table;
   clear: both;
 }
-.top-row > div {
+ #loginTemplate .top-row > div {
   float: left;
   width: 48%;
   margin-right: 4%;
 }
-.top-row > div:last-child {
+ #loginTemplate .top-row > div:last-child {
   margin: 0;
 }
 
-.button {
+ #loginTemplate .button {
   border: 0;
   outline: none;
   border-radius: 0;
@@ -164,16 +165,19 @@ textarea {
   transition: all 0.5s ease;
   -webkit-appearance: none;
 }
-.button:hover, .button:focus {
+ #loginTemplate .button:hover, .button:focus {
   background: #005F6B;
 }
 
-.button-block {
+ #loginTemplate .button-block {
   display: block;
   width: 100%;
 }
 
-.forgot {
+ #loginTemplate .forgot {
   margin-top: -20px;
   text-align: right;
 }
+
+
+*/
