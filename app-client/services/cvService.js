@@ -104,15 +104,11 @@ cvApp.factory('CvServices', function($http){
         }
 
     };
-  
+   
   
     //array od site vraboteni sv
     var cvArray = [];
-    cvArray.push(cvTemplate);
-    cvArray.push(cvTemplate);
-    cvArray.push(cvTemplate);
-    cvArray.push(cvTemplate);
-    cvArray.push(cvTemplate);
+
     return {
         
             //function for dashboard

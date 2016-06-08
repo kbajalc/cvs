@@ -1,3 +1,4 @@
+
 <div class="vd_content-wrapper" style="min-height: 1059px;" id="dashboardTemplate">
   <div class="vd_container" style="min-height: 1059px;">
     <div class="vd_content clearfix">
@@ -23,10 +24,9 @@
                     </div>
 
                     <div class="col-md-6">
-                      Email:
-                    </div>
-                    <div class="col-md-6">
+
                         {{dash.user.contacts.email}}
+
                     </div>
 
                   </div>
@@ -58,11 +58,11 @@
                         <div class="col-md-4">
                             <div class="w3-card-4">
                                 <header class="w3-container w3-light-grey">
-                                    <h3>{{cvs.basics.firstname}}</h3>
+                                    <h3>{{cvs.basics.firstName}}</h3>
                                 </header>
                             <div class="w3-container">
                                 <img src="img/avatarMan.png" alt="Avatar" class="w3-left w3-circle img-response" id="slika"/>
-                                <p>President/CEO at Mighty Schools...</p>
+                                <p>{{cvs.basics.jobTitle}}</p>
                             </div>
                             <button class="w3-btn-block w3-teal">View</button>
                             </div>
