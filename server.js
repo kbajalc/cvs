@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var path = require('path');
 var rootPath = path.normalize(__dirname + '/../');
 
-app.use(express.static(rootPath + 'CvApp/app-client'));
+app.use(express.static(rootPath + 'cvs/app-client'));
 
 //get user model
 var User = require('./app/models/user.model');
@@ -38,7 +38,7 @@ var router = express.Router();
 // });
 
 app.get('*', function(req,res){
-  res.sendfile(rootPath +'CvApp/app-client/index.html');
+  res.sendfile(rootPath +'cvs/app-client/index.html');
   //__dirname : It will resolve to your project folder.
 });
 // router.get('/', function(req, res) {

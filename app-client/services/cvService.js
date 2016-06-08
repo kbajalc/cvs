@@ -104,10 +104,108 @@ cvApp.factory('CvServices', function($http){
         }
 
     };
+    
+        var cvTemplate1 = {
+        basics : {
+            firstName: "Blazenka1",
+            lastName: "Parmakova1",
+            jobTitle: "Developer1",
+            picture: "img",
+            summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, porro. Ea iste delectus cumque provident sunt minus tenetur, soluta at vero? Ab alias voluptatum natus voluptatibus eaque cumque quos numquama"
+        },
+        contacts:{
+            email : "parmakova@yahoo.com1",
+            phone: "072555555",
+            city: 'Skopje',
+            country: "Macedonia",
+            website: "itgma.com",
+            social:[
+                {
+                    facebook : "facebook.com",
+                    twitter: "twitter.com"
+                }
+            ]
+        },
+        profSkills: [{
+            name: "Angular",
+            level: "25"
+        }],
+        work: [
+            {
+                company: "iTgma",
+                position: "Developer",
+                website: "itgma.com",
+                startDate: "01.01.2015",
+                endDate: "12.12.2015",
+                summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quibusdam, vitae mollitia. Expedita deleniti minima, possimus doloremque ex rerum modi maxime consequuntur mollitia, voluptatibus voluptatum quisquam quos, nesciunt excepturi pariatur.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia enim quisquam, consectetur ut explicabo eos delectus harum alias nesciunt deserunt quis? Ea libero quibusdam adipisci nemo placeat, quod, obcaecati perspiciatis? www.itgma.com"
+            },
+            {
+                company: "iTgma1",
+                position: "Developer1",
+                website: "itgma.com",
+                startDate: "01.01.2015",
+                endDate: "12.12.2015",
+                summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quibusdam, vitae mollitia. Expedita deleniti minima, possimus doloremque ex rerum modi maxime consequuntur mollitia, voluptatibus voluptatum quisquam quos, nesciunt excepturi pariatur.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia enim quisquam, consectetur ut explicabo eos delectus harum alias nesciunt deserunt quis? Ea libero quibusdam adipisci nemo placeat, quod, obcaecati perspiciatis? www.itgma.com"
+            }
+            ],
+        education: [
+            {
+                institution: "Finki1",
+                area: "Programming1",
+                studyType: "bachelor1",
+                startDate: "01.01.2015",
+                endDate: "12.12.2015",
+                summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quibusdam, vitae mollitia. Expedita deleniti minima, possimus doloremque ex rerum modi maxime consequuntur mollitia, voluptatibus voluptatum quisquam quos, nesciunt excepturi pariatur.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia enim quisquam, consectetur ut explicabo eos delectus harum alias nesciunt deserunt quis? Ea libero quibusdam adipisci nemo placeat, quod, obcaecati perspiciatis?"
+            }
+        ],
+        skills: [
+           {
+                name: "CREATIVE",
+                level: "65"
+           },
+                      {
+                name: "PATIENT",
+                level: "25"
+           },
+                      {
+                name: "TEAM WORK",
+                level: "80"
+           },
+                      {
+                name: "FLEXIBLE",
+                level: "80"
+           },
+                      {
+                name: "ORGANIZED",
+                level: "40"
+           }           
+        ],
+        languages: [
+            {
+                name: "ENGLISH",
+                level: "95"
+            },
+            {
+                name: "GERMAN",
+                level: "9"
+            },
+                        {
+                name: "SERBIAN",
+                level: "66"
+            }
+         ],
+        createDate: {
+            type: Date,
+            default: Date.now
+        }
+
+    };
    
   
     //array od site vraboteni sv
     var cvArray = [];
+    cvArray.push(cvTemplate);
+    cvArray.push(cvTemplate1);
 
     return {
         
