@@ -7,14 +7,14 @@ var mongoose = require('mongoose');
 var path = require('path');
 var rootPath = path.normalize(__dirname + '/../');
 
-app.use(express.static(rootPath + 'cvApp/app-client'));
+app.use(express.static(rootPath + 'cvs/app-client'));
 
 //get user model
 var User = require('./app/models/user.model');
 //get resume model
 var Resume = require('./app/models/cv.model');
     //db connection
-mongoose.connect('mongodb://localhost/users');
+mongoose.connect('mongodb://localhost/testBD');
 //config
 
 app.use(bodyParser.urlencoded({
@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 
 
 //port
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 3000;
 
 //routes
 var router = express.Router();
@@ -38,7 +38,7 @@ var router = express.Router();
 // });
 
 app.get('*', function(req,res){
-  res.sendfile(rootPath +'cvApp/app-client/index.html');
+  res.sendfile(rootPath +'cvs/app-client/index.html');
   //__dirname : It will resolve to your project folder.
 });
 // router.get('/', function(req, res) {
@@ -135,11 +135,16 @@ router.route('/users/:user_id')
      *******************************/
 
     //init object model for Resume (**some problems with model Schema  for post new resume)
-    var Resume = require('./models/Resume');
+    //var Resume = require('./models/Resume');
 
     router.route('/resumes')
         .post(function (req, res) {
             var newCV = new Resume(req.body);
+            // newCV.name = req.body.name;
+            // newCV.jobTittle = req.body.jobTittle;
+            console.log(req.body);
+            console.log( req.body);
+            console.log(newCV);
             newCV.save(function (err) {
                 if (err)
                     res.send(err);
