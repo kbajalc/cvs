@@ -1,4 +1,7 @@
 /*Nav on idex css   */
+body {
+  background-color: #9AD3DE;
+}
 .loginTemplate { padding-top:30px;
       background-color: #c0dfd9;
 }
@@ -13,12 +16,13 @@
 
 
 /*************editor.template ***************/
-  
- 
+
+
 #editorTemplate .main {
-    width: 75%;
-    font-family: 'Open Sans', sans-serif;
+
+      font-family: 'Open Sans', sans-serif;
       padding: 0;
+      height: 100%;
 }
 
 #editorTemplate .about {
@@ -41,11 +45,13 @@ h4 {
 #editorTemplate .basicContact i {
     font-size: 1.5em;
     margin: 10px;
+    margin-left: -39px;
 }
 
 #editorTemplate .social i {
     font-size: 1.5em;
     margin: 10px;
+    margin-left: -39px;
 }
 
 
@@ -54,7 +60,7 @@ h4 {
 #editorTemplate  .leftside {
     color: whitesmoke;
     background-color: #005580;
-    height: 2000px;
+    height: 100%;
     padding-right: 5%;
 }
 
@@ -88,7 +94,6 @@ h4 {
     float:right;
 }
 /*right aside*/
-
 
 
 
@@ -271,4 +276,27 @@ h4 {
  #loginTemplate .forgot {
   margin-top: -20px;
   text-align: right;
+}
+
+/************ Dashbouard template ************/
+
+
+.basic-info-btn {
+  margin-bottom: 6px;
+}
+#basic-info-font {
+  font-size: 20px;
+  font-family: cursive;
+
+}
+
+#dashboard-back {
+  background-color: #d8eef3;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+#basic-info {
+  margin-top: 39px;
+  padding-top: 21px;
 }
