@@ -1,10 +1,15 @@
 /*Nav on idex css   */
-.loginTemplate { padding-top:30px;
-      background-color: #c0dfd9;
+.loginTemplate { 
+    padding-top:30px;
+    background-color: #c0dfd9; 
 }
 
  #nav-color{
-  background-color: rgba(19, 35, 47, 0.9);;
+  background-color: rgba(19, 35, 47, 0.9) !important;
+}
+
+#nav-color .container {
+   color: #5c85d6 !important;
 }
 
 #main-body {
@@ -271,4 +276,48 @@ h4 {
  #loginTemplate .forgot {
   margin-top: -20px;
   text-align: right;
+}
+
+
+/*********** dashboard-css *************/
+#dashboardTemplate body { padding-top:30px;
+      background-color: #9ad3de;
+}
+
+#dashboardTemplate #nav-color{
+  background-color: #343838;
+}
+
+
+
+
+#dashboardTemplate hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid black;
+    margin: 1em 0;
+    padding: 0;
+}
+
+
+#dashboardTemplate #slika {
+  margin-left: -13px;
+  margin-top: 8px;
+  padding-bottom: 11px;
+}
+
+#dashboardTemplate #basic-info {
+  margin-top: 39px;
+  padding-top: 21px;
+}
+
+#dashboardTemplate #basic-info-font {
+  font-size: 20px;
+  font-family: cursive;
+
+}
+
+#dashboardTemplate .basic-info-btn {
+  margin-bottom: 6px;
 }

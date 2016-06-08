@@ -12,7 +12,6 @@ cvApp.controller('LanguageController',['CvServices', function(CvServices) {
     vm.addLanguage = function () {
         
          var inserted=  {
-                id: vm.languages.length + 1,
                 name: vm.textName,
                 level: vm.numLevel
             }

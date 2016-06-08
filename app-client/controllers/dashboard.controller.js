@@ -1,7 +1,11 @@
 'use strict';
 
-cvApp.controller('DashController', function($scope) {
+cvApp.controller('DashController',[ "CvServices", function(CvServices) {
+    var vm= this;
+    vm.user = CvServices.getCv();
+    vm.allCvs= CvServices.getAllCvs();
+        console.log(vm.allCvs)
+}]);
+        
 
-	$scope.tagline = 'DASHBOARD under construction....!';
 
-});

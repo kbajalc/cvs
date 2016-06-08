@@ -16,7 +16,6 @@ cvApp.controller('PersonalSkillsController', ['CvServices',function(CvServices) 
     vm.addPerSkill = function () {
         
         var inserted ={
-            id: vm.perSkills.length + 1,
             name: vm.textName,
             level: vm.numLevel
         }

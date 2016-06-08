@@ -1,6 +1,11 @@
-'use strict';
-cvApp.factory('Dash', ['$http', function($http) {
+// 'use strict';
+// cvApp.factory('Dash', ['$http', function($http) {
 
-return 1;
 
-}]);
+    
+    
+
+//     return{
+//         getCv: getCv
+//     }
+// }]);

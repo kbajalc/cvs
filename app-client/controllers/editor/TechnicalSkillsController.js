@@ -9,13 +9,11 @@ cvApp.controller('TechnicalSkillsController',['CvServices', function(CvServices)
     
     vm.addSkill = function () {        
          var inserted= {
-                id: vm.techSkills.length + 1,
                 name: vm.textName,
                 level: vm.numLevel
             }
         vm.techSkills.push(inserted);
-        CvServices.addNewTechnicalSkill('userEmail', inserted);
-        
+        CvServices.addNewTechnicalSkill('userEmail', inserted);        
         vm.textName = '';
         vm.numLevel = '';
     };
