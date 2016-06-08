@@ -14,7 +14,7 @@ var User = require('./app/models/user.model');
 //get resume model
 var Resume = require('./app/models/cv.model');
     //db connection
-mongoose.connect('mongodb://localhost/cvs');
+mongoose.connect('mongodb://localhost/testBD');
 //config
 
 app.use(bodyParser.urlencoded({
@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 
 
 //port
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 8080;
 
 //routes
 var router = express.Router();
@@ -36,11 +36,11 @@ var router = express.Router();
 //     console.log('request');
 //     next();
 // });
-
-app.get('*', function(req,res){
-  res.sendfile(rootPath +'cvs/app-client/index.html');
-  //__dirname : It will resolve to your project folder.
-});
+//
+// app.get('*', function(req,res){
+//   res.sendfile(rootPath +'cvs/app-client/index.html');
+//   //__dirname : It will resolve to your project folder.
+// });
 // router.get('/', function(req, res) {
 //   res.sendFile('app-client/index.html');
 //     // res.json({
