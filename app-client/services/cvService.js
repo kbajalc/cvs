@@ -70,7 +70,7 @@ cvApp.factory('CvServices', ['$http', '$q', function($http, $q) {
         },
         //function for about section
         getBasicItems: function(userEmail) {
-           // return cvTemplate.basics;
+           return cvForUserId.basics;
         },
         displayCvForUser: function(userEmail) {
             //  $location.path( "/editor" );
