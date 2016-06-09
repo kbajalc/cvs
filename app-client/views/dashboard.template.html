@@ -34,7 +34,7 @@
                          <a href="#" class="btn btn-warning">Edit profile</a>
                       </div>
                       <div ng-hide='user' class="col-md-12 col-md-offset-8 basic-info-btn" >
-                         <a href="#" class="btn btn-danger">Create new CV</a>
+                         <a href="/addResume" class="btn btn-danger">Create new CV</a>
                       </div>
                       <div ng-show='user' class="col-md-12 col-md-offset-8" >
                          <a href="#" class="btn btn-primary" ng-click='displayCvForUser()'>Edit my CV</a>
@@ -58,7 +58,7 @@
                                 </header>
                             <div class="w3-container">
                                 <img src="img/avatarMan.png" alt="Avatar" class="w3-left w3-circle img-response" id="slika"/>
-                                <p>{{cvs.basics.jobTittle}}</p>                                
+                                <p>{{cvs.basics.jobTittle}}</p>
                                 <p>{{cvs.contacts.email}}</p>
                             </div>
                             <a href='/editor'>

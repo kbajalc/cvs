@@ -17,13 +17,18 @@ var cvApp = angular.module('cvApp', ['ngRoute', 'ngResource', 'xeditable'])
             templateUrl: '/views/dashboard.template.html',
             controller: 'DashController',
             controllerAs: 'dash'
-            //resolve 
+            //resolve
         });
         //CV EDITOR
         $routeProvider.when('/editor', {
             templateUrl: '/views/editor.template.html'
-        })
+        });
+        $routeProvider.when('/addResume', {
+            templateUrl: '/views/addResume.template.html',
+            controller: 'DashController',
+            controllerAs: "dash"
 
+        });
         $routeProvider.otherwise({
             redirectTo: '/'
 

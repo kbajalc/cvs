@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var path = require('path');
 var rootPath = path.normalize(__dirname + '/../');
 
-app.use(express.static(rootPath + 'cvs/app-client'));
+app.use(express.static(rootPath + 'cvApp/app-client'));
 
 //get user model
 var User = require('./app/models/user.model');
