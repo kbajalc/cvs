@@ -1,199 +1,89 @@
 //factory to get all resumes from db
-cvApp.factory('CvServices', ['$http', function($http) {
+cvApp.factory('CvServices', ['$http', '$q', function($http, $q) {
     var vm = this;
-    $http.get('api/resumes').
-    success(function(data, status, headers, config) {
-        vm.resumes = data;
-        console.log(data);
-    }).
-    error(function(data, status, headers, config) {
-        console.log("error");
-    });
+    // var resumes = {};
+    var ress='';
+    var cvForUserId;
 
+        var all;
 
-    //array for work experience
-    var cvTemplate = {
-        basics: {
-            firstName: "Blazenka",
-            lastName: "Parmakova",
-            jobTitle: "Developer",
-            picture: "img",
-            summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, porro. Ea iste delectus cumque provident sunt minus tenetur, soluta at vero? Ab alias voluptatum natus voluptatibus eaque cumque quos numquama"
-        },
-        contacts: {
-            email: "parmakova@yahoo.com",
-            phone: "072555555",
-            city: 'Skopje',
-            country: "Macedonia",
-            website: "itgma.com",
-            social: [{
-                facebook: "facebook.com",
-                twitter: "twitter.com"
-            }]
-        },
-        profSkills: [{
-            name: "Angular",
-            level: "25"
-        }],
-        work: [{
-            company: "iTgma",
-            position: "Developer",
-            website: "itgma.com",
-            startDate: "01.01.2015",
-            endDate: "12.12.2015",
-            summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quibusdam, vitae mollitia. Expedita deleniti minima, possimus doloremque ex rerum modi maxime consequuntur mollitia, voluptatibus voluptatum quisquam quos, nesciunt excepturi pariatur.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia enim quisquam, consectetur ut explicabo eos delectus harum alias nesciunt deserunt quis? Ea libero quibusdam adipisci nemo placeat, quod, obcaecati perspiciatis? www.itgma.com"
-        }, {
-            company: "iTgma1",
-            position: "Developer1",
-            website: "itgma.com",
-            startDate: "01.01.2015",
-            endDate: "12.12.2015",
-            summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quibusdam, vitae mollitia. Expedita deleniti minima, possimus doloremque ex rerum modi maxime consequuntur mollitia, voluptatibus voluptatum quisquam quos, nesciunt excepturi pariatur.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia enim quisquam, consectetur ut explicabo eos delectus harum alias nesciunt deserunt quis? Ea libero quibusdam adipisci nemo placeat, quod, obcaecati perspiciatis? www.itgma.com"
-        }],
-        education: [{
-            institution: "Finki1",
-            area: "Programming1",
-            studyType: "bachelor1",
-            startDate: "01.01.2015",
-            endDate: "12.12.2015",
-            summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quibusdam, vitae mollitia. Expedita deleniti minima, possimus doloremque ex rerum modi maxime consequuntur mollitia, voluptatibus voluptatum quisquam quos, nesciunt excepturi pariatur.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia enim quisquam, consectetur ut explicabo eos delectus harum alias nesciunt deserunt quis? Ea libero quibusdam adipisci nemo placeat, quod, obcaecati perspiciatis?"
-        }],
-        skills: [{
-            name: "CREATIVE",
-            level: "65"
-        }, {
-            name: "PATIENT",
-            level: "25"
-        }, {
-            name: "TEAM WORK",
-            level: "80"
-        }, {
-            name: "FLEXIBLE",
-            level: "80"
-        }, {
-            name: "ORGANIZED",
-            level: "40"
-        }],
-        languages: [{
-            name: "ENGLISH",
-            level: "95"
-        }, {
-            name: "GERMAN",
-            level: "9"
-        }, {
-            name: "SERBIAN",
-            level: "66"
-        }],
-        createDate: {
-            type: Date,
-            default: Date.now
-        }
-
+    var getAllResumes = function() {
+        var deferred = $q.defer();
+        $http.get('api/resumes').
+            success(function(data, status, headers, config) {
+                return deferred.resolve(data);
+        })
+        .error(function(data, status, headers, config) {
+            deferred.reject('Error occured while retrieving CVs');
+            console.log("error");
+         });
+        return deferred.promise;
+    }
+    
+      var getResumesForUser =  function(id) {
+        var deferred = $q.defer();
+        $http.get('api/resumes/'+id).
+            success(function(data, status, headers, config) {
+               // console.log(data)
+                return deferred.resolve(data);
+        })
+        .error(function(data, status, headers, config) {
+            deferred.reject('Error occured while retrieving CVs');
+            console.log("error");
+         });
+        return deferred.promise;
+    }
+    
+    
+    function getAllResumesWithoutQ (){
+        return $http.get('api/resumes')
+            .then(function (res) {
+                ress = res.data;
+                return res.data;
+            });
     };
-
-    var cvTemplate1 = {
-        basics: {
-            firstName: "Blazenka1",
-            lastName: "Parmakova1",
-            jobTitle: "Developer1",
-            picture: "img",
-            summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, porro. Ea iste delectus cumque provident sunt minus tenetur, soluta at vero? Ab alias voluptatum natus voluptatibus eaque cumque quos numquama"
-        },
-        contacts: {
-            email: "parmakova@yahoo.com1",
-            phone: "072555555",
-            city: 'Skopje',
-            country: "Macedonia",
-            website: "itgma.com",
-            social: [{
-                facebook: "facebook.com",
-                twitter: "twitter.com"
-            }]
-        },
-        profSkills: [{
-            name: "Angular",
-            level: "25"
-        }],
-        work: [{
-            company: "iTgma",
-            position: "Developer",
-            website: "itgma.com",
-            startDate: "01.01.2015",
-            endDate: "12.12.2015",
-            summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quibusdam, vitae mollitia. Expedita deleniti minima, possimus doloremque ex rerum modi maxime consequuntur mollitia, voluptatibus voluptatum quisquam quos, nesciunt excepturi pariatur.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia enim quisquam, consectetur ut explicabo eos delectus harum alias nesciunt deserunt quis? Ea libero quibusdam adipisci nemo placeat, quod, obcaecati perspiciatis? www.itgma.com"
-        }, {
-            company: "iTgma1",
-            position: "Developer1",
-            website: "itgma.com",
-            startDate: "01.01.2015",
-            endDate: "12.12.2015",
-            summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quibusdam, vitae mollitia. Expedita deleniti minima, possimus doloremque ex rerum modi maxime consequuntur mollitia, voluptatibus voluptatum quisquam quos, nesciunt excepturi pariatur.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia enim quisquam, consectetur ut explicabo eos delectus harum alias nesciunt deserunt quis? Ea libero quibusdam adipisci nemo placeat, quod, obcaecati perspiciatis? www.itgma.com"
-        }],
-        education: [{
-            institution: "Finki1",
-            area: "Programming1",
-            studyType: "bachelor1",
-            startDate: "01.01.2015",
-            endDate: "12.12.2015",
-            summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quibusdam, vitae mollitia. Expedita deleniti minima, possimus doloremque ex rerum modi maxime consequuntur mollitia, voluptatibus voluptatum quisquam quos, nesciunt excepturi pariatur.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia enim quisquam, consectetur ut explicabo eos delectus harum alias nesciunt deserunt quis? Ea libero quibusdam adipisci nemo placeat, quod, obcaecati perspiciatis?"
-        }],
-        skills: [{
-            name: "CREATIVE",
-            level: "65"
-        }, {
-            name: "PATIENT",
-            level: "25"
-        }, {
-            name: "TEAM WORK",
-            level: "80"
-        }, {
-            name: "FLEXIBLE",
-            level: "80"
-        }, {
-            name: "ORGANIZED",
-            level: "40"
-        }],
-        languages: [{
-            name: "ENGLISH",
-            level: "95"
-        }, {
-            name: "GERMAN",
-            level: "9"
-        }, {
-            name: "SERBIAN",
-            level: "66"
-        }],
-        createDate: {
-            type: Date,
-            default: Date.now
-        }
-
-    };
-
-
-    //array od site vraboteni sv
-    var cvArray = [];
-    cvArray.push(cvTemplate);
-    cvArray.push(cvTemplate1);
+     
+    // function init(){
+    //     getAllExperience();
+    //     getAllEducation();
+    //     getAllPersonalSkill();
+    //     getAllTechnicalSkill();
+    //     getAllLanguages();     
+        
+    // }
+   
     return {
+         getResumesForUserById: function(id){
+            getResumesForUser(id).then(function(data){
+                cvForUserId =  data;
+            });
+        //  init();
+         },
         //function for dashboard
         getCv: function() {
-            return cvTemplate;
+            return getAllResumes().then(function(data){
+                return data[0];
+            });
         },
         getAllCvs: function() {
-            return vm.resumes;
+            return  getAllResumes();
         },
         //function for about section
         getBasicItems: function(userEmail) {
-            return cvTemplate.basics;
+           // return cvTemplate.basics;
         },
+        displayCvForUser: function(userEmail) {
+            //  $location.path( "/editor" );
+           // return vm.resumes[0];
+        },
+        
+        
         //function for contact section
 
 
         //function fo experience
         getAllExperience: function(userEmail) {
-            //treba da se zeme od baza experience za najaven user - userEmail
-            return cvTemplate.work;
+         return cvForUserId.work;
         },
         addNewExperience: function(userEmail, experience) {
             //zapisi vo baza experience izgraden spored daden json od kero, ne znam kako
@@ -208,7 +98,7 @@ cvApp.factory('CvServices', ['$http', function($http) {
 
         //function for education
         getAllEducation: function(userEmail) {
-            return cvTemplate.education;
+             return cvForUserId.education;
         },
         addNewEducation: function(userEmail, education) {
             //zapisi vo baza education izgraden spored daden json od kero, ne znam kako
@@ -222,7 +112,7 @@ cvApp.factory('CvServices', ['$http', function($http) {
 
         //function for personal skill section
         getAllPersonalSkill: function(userEmail) {
-            return cvTemplate.skills;
+            return cvForUserId.skills;
         },
         addNewPersonallSkill: function(userEmail, item) {
             //zapisi vo baza new personal skill izgraden spored daden json od kero, ne znam kako
@@ -236,7 +126,7 @@ cvApp.factory('CvServices', ['$http', function($http) {
 
         //function for technicall skill section
         getAllTechnicalSkill: function(userEmail) {
-            return cvTemplate.profSkills;
+             return cvForUserId.profSkills;
         },
         addNewTechnicalSkill: function(userEmail, item) {
             //zapisi vo baza new Technical skill izgraden spored daden json od kero, ne znam kako
@@ -250,7 +140,7 @@ cvApp.factory('CvServices', ['$http', function($http) {
 
         //function for technicall skill section
         getAllLanguages: function(userEmail) {
-            return cvTemplate.languages;
+             return cvForUserId.languages;
         },
         addNewLanguage: function(userEmail, item) {
             //zapisi vo baza new Technical skill izgraden spored daden json od kero, ne znam kako

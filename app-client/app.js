@@ -16,7 +16,8 @@ var cvApp = angular.module('cvApp', ['ngRoute', 'ngResource', 'xeditable'])
         $routeProvider.when('/dashboard', {
             templateUrl: '/views/dashboard.template.html',
             controller: 'DashController',
-            controllerAs: "dash"
+            controllerAs: 'dash'
+            //resolve 
         });
         //CV EDITOR
         $routeProvider.when('/editor', {

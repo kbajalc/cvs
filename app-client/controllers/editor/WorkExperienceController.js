@@ -10,7 +10,6 @@
 
 cvApp.controller('WorkExperienceController', ['CvServices', function(CvServices) {
    var vm = this;
-   console.log('rabotam');
     vm.items= CvServices.getAllExperience('userEmail');
     vm.addExperience = function(user){
         var  inserted = {

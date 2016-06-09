@@ -21,7 +21,7 @@ var ResumeSchema = new mongoose.Schema({
     },
     profSkills: [{
         name: String,
-        level: String
+        level: Number
     }],
     work: [{
         company: String,
@@ -41,11 +41,11 @@ var ResumeSchema = new mongoose.Schema({
     }],
     skills: [{
         name: String,
-        level: String
+        level: Number
     }],
     languages: [{
         name: String,
-        level: String
+        level: Number
     }],
     createDate: {
         type: Date,
