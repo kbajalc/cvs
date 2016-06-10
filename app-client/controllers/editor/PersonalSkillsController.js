@@ -1,7 +1,7 @@
 cvApp.controller('PersonalSkillsController', ['CvServices',function(CvServices) {
  var vm=this;
+ vm.showEditable = CvServices.getValueForEditable();
  vm.perSkills = CvServices.getAllPersonalSkill("userEmail");
-    
   // remove user
   vm.removePerSkill = function(index) {
       vm.perSkills.splice(index, 1);
@@ -10,6 +10,7 @@ cvApp.controller('PersonalSkillsController', ['CvServices',function(CvServices) 
 
     vm.editPersonallSkill= function(item) {
         CvServices.editPersonallSkill('userEmail', item);
+        console.log(item)
     };
   
     

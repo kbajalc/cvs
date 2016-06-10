@@ -9,8 +9,8 @@
  */
 cvApp.controller('EducationController', ['CvServices',function (CvServices) {
     var vm=this;
+    vm.showEditable = CvServices.getValueForEditable();
     vm.items  = CvServices.getAllEducation('userEmail');
-
     vm.addEducation = function(user){
         var  inserted = {
             'institution': user.institution,

@@ -9,7 +9,8 @@
  */
 
 cvApp.controller('WorkExperienceController', ['CvServices', function(CvServices) {
-   var vm = this;
+    var vm = this;
+    vm.showEditable = CvServices.getValueForEditable();
     vm.items= CvServices.getAllExperience('userEmail');
     vm.addExperience = function(user){
         var  inserted = {

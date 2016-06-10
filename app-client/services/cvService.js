@@ -4,8 +4,8 @@ cvApp.factory('CvServices', ['$http', '$q',"$location", function($http, $q, $loc
     // var resumes = {};
     var ress='';
     var cvForUserId;
-
-        var all;
+    var showEditable;
+    var all;
 
     var getAllResumes = function() {
         var deferred = $q.defer();
@@ -43,11 +43,11 @@ cvApp.factory('CvServices', ['$http', '$q',"$location", function($http, $q, $loc
     };
    
     return {
-         getResumesForUserById: function(id){
+         getResumesForUserById: function(id, val){
+           showEditable = val;
             var deferred = $q.defer();
             $http.get('api/resumes/'+id).
                 success(function(data, status, headers, config) {
-                    //console.log(data)
                     return deferred.resolve(data), $location.path('/editor');
             })
             .error(function(data, status, headers, config) {
@@ -57,6 +57,9 @@ cvApp.factory('CvServices', ['$http', '$q',"$location", function($http, $q, $loc
             return deferred.promise.then(function(data){
                     cvForUserId =  data;
                 });
+         },
+         getValueForEditable : function(){
+             return showEditable 
          },
          
         //function for dashboard
@@ -78,7 +81,9 @@ cvApp.factory('CvServices', ['$http', '$q',"$location", function($http, $q, $loc
         },        
         
         //function for contact section
-        
+        getAllContacts: function() {
+          return cvForUserId.contacts;  
+        },
         //function fo experience
         getAllExperience: function(userEmail) {
          return cvForUserId.work;

@@ -1,5 +1,6 @@
 cvApp.controller('TechnicalSkillsController',['CvServices', function(CvServices) {
  var vm=this;
+ vm.showEditable = CvServices.getValueForEditable();
  vm.techSkills =CvServices.getAllTechnicalSkill('userEmail');
   // remove user
   vm.removeSkill = function(index) {

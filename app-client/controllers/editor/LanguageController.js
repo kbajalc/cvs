@@ -1,7 +1,7 @@
 cvApp.controller('LanguageController',['CvServices', function(CvServices) {
     var vm=this;
+    vm.showEditable = CvServices.getValueForEditable();
     vm.languages = CvServices.getAllLanguages('userEmail'); 
-
 
   // remove user
   vm.removeLang = function(index) {
