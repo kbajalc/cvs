@@ -20,18 +20,18 @@ cvApp.factory('CvServices', ['$http', '$q',"$location", function($http, $q, $loc
         return deferred.promise;
     }
     
-      var getResumesForUser =  function(id) {
-        var deferred = $q.defer();
-        $http.get('api/resumes/'+id).
-            success(function(data, status, headers, config) {
-                return deferred.resolve(data);
-        })
-        .error(function(data, status, headers, config) {
-            deferred.reject('Error occured while retrieving CVs');
-            console.log("error");
-         });
-        return deferred.promise;
-    }
+    //   var getResumesForUser =  function(id) {
+    //     var deferred = $q.defer();
+    //     $http.get('api/resumes/'+id).
+    //         success(function(data, status, headers, config) {
+    //             return deferred.resolve(data);
+    //     })
+    //     .error(function(data, status, headers, config) {
+    //         deferred.reject('Error occured while retrieving CVs');
+    //         console.log("error");
+    //      });
+    //     return deferred.promise;
+    // }
     
     
     function getAllResumesWithoutQ (){
@@ -75,12 +75,10 @@ cvApp.factory('CvServices', ['$http', '$q',"$location", function($http, $q, $loc
         displayCvForUser: function(userEmail) {
             //  $location.path( "/editor" );
            // return vm.resumes[0];
-        },
-        
+        },        
         
         //function for contact section
-
-
+        
         //function fo experience
         getAllExperience: function(userEmail) {
          return cvForUserId.work;

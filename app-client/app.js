@@ -17,7 +17,6 @@ var cvApp = angular.module('cvApp', ['ngRoute', 'ngResource', 'xeditable'])
             templateUrl: '/views/dashboard.template.html',
             controller: 'DashController',
             controllerAs: 'dash'
-            //resolve
         });
         //CV EDITOR
         $routeProvider.when('/editor', {
@@ -31,7 +30,6 @@ var cvApp = angular.module('cvApp', ['ngRoute', 'ngResource', 'xeditable'])
         });
         $routeProvider.otherwise({
             redirectTo: '/'
-
         });
 
         $locationProvider.html5Mode(true);

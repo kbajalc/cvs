@@ -13,7 +13,7 @@ app.use(express.static(rootPath + 'cvs/app-client'));
 var User = require('./app/models/user.model');
 //get resume model
 var Resume = require('./app/models/cv.model');
-    //db connection
+//db connection
 mongoose.connect('mongodb://localhost/testBD');
 //config
 
@@ -208,6 +208,8 @@ router.route('/users/:user_id')
      * END OF RESUMES API
      *****************************************************/
 
+
+   
 
 
 
