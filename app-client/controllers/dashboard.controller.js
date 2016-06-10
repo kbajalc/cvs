@@ -11,9 +11,11 @@ cvApp.controller('DashController',[ "CvServices","my_DashService", '$http', "$wi
        vm.allCvs = data;
     });
 
-    vm.displayCvForSpecificUser = function(cv){
-        console.log(cv._id)
-        CvServices.getResumesForUserById(cv._id);
+    vm.displayCvForSpecificUser = function(cv){     
+        CvServices.getResumesForUserById(cv._id, false);	
+    }
+    vm.editProfile = function(id){
+        CvServices.getResumesForUserById(id, true);
 
     }
 

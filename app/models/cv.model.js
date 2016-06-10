@@ -6,7 +6,7 @@ var ResumeSchema = new mongoose.Schema({
     basics: {
         firstName: String,
         lastName: String,
-        jobTittle: String,
+        jobTitle: String,
         picture: String,
         summary: String
     },

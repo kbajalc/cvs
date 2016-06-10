@@ -17,8 +17,8 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 col-lg-12">
-                            <h4 style='color:white;border-bottom: none;' ng-if='about.showEditable' editable-text="about.user.firstName" ng-model='about.user.name' class='text-center'>{{about.user.firstName}}</h4>
-                            <h4 style='color:white;border-bottom: none;' editable-text="about.user.lastName" ng-model='about.user.name' class='text-center'>{{about.user.lastname}}</h4>
+                            <h4 style='color:white;border-bottom: none;' editable-text="about.user.firstName" ng-model='about.user.name' class='text-center'>{{about.user.firstName}}</h4>
+                            <h4 style='color:white;border-bottom: none;' editable-text="about.user.lastName" ng-model='about.user.name' class='text-center'>{{about.user.lastName}}</h4>
                     </div>
                 </div>
                 <div class="row">
@@ -56,8 +56,8 @@
                 <div class="col-md-10" style="margin-top: 8px;">
                     <h4> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> CONTACT</h4>
                 </div>
-                <div class="col-md-2">
-                    <button type="button" class="btn btn-info add btn-sm" ng-click="showDiv=true"> + </button>
+                <div class="col-md-2" ng-show='about.showEditable'>
+                    <button type="button" class="btn btn-info add btn-sm" ng-click="showDiv=true" > + </button>
                 </div>
                 <form class="col-md-12" ng-submit="about.addContact()" style="margin:30px" ng-show="showDiv">
                    <select style="color:black" name="selected" id="selected" ng-model="selected">
@@ -110,10 +110,11 @@
                           </button>
                           <hr>
                         </form>
-                        <hr/>
+                    
                     </div>
+                       
             </section>
-            
+             <hr/>
             <!--Contact info section end-->
             
             <!-- About controller end -->
