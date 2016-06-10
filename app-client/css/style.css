@@ -1,8 +1,8 @@
 /*Nav on idex css   */
 
-.loginTemplate { 
+.loginTemplate {
     padding-top:30px;
-    background-color: #c0dfd9; 
+    background-color: #c0dfd9;
 }
 body {
   background-color: #9AD3DE;
@@ -299,19 +299,6 @@ h4 {
   background-color: #343838;
 }
 
-
-
-
-#dashboardTemplate hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid black;
-    margin: 1em 0;
-    padding: 0;
-}
-
-
 #dashboardTemplate #slika {
   margin-left: -13px;
   margin-top: 8px;
@@ -355,4 +342,3 @@ h4 {
   margin-top: 39px;
   padding-top: 21px;
 }
-
