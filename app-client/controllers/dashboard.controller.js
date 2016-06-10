@@ -1,6 +1,6 @@
 'use strict';
 
-cvApp.controller('DashController',[ "CvServices", '$http', "$window", function(CvServices, $http, $window) {
+cvApp.controller('DashController',[ "CvServices","my_DashService", '$http', "$window", function(CvServices,my_DashService, $http, $window) {
    var vm= this;
 
     vm.user = CvServices.getCv().then(function (data) {
@@ -16,13 +16,7 @@ cvApp.controller('DashController',[ "CvServices", '$http', "$window", function(C
         CvServices.getResumesForUserById(cv._id);
         // $window.location.href = '/editor';
     }
-}]);
 
-
-//korekcija
-
-cvApp.controller('DashController', ["my_DashService", function(my_DashService) {
-    var vm = this;
     vm.resumes;
     vm.createResume;
     vm.updateResume;
@@ -41,13 +35,7 @@ cvApp.controller('DashController', ["my_DashService", function(my_DashService) {
 
   //INSERT NEW  resume
    vm.insertResume = function () {
-       //Fake customer data
-       var newResume = {
-           ID: 1,
-           firstName: 'JoJo',
-           lastName: 'Pikidily',
-           jobTittle: 'Developer'
-       };
+     var newResume;
        my_DashService.insertResume(newResume)
            .then(function (response) {
                vm.resumes.push(newResume);
