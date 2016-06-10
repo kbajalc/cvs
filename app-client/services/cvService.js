@@ -1,5 +1,5 @@
 //factory to get all resumes from db
-cvApp.factory('CvServices', ['$http', '$q', function($http, $q) {
+cvApp.factory('CvServices', ['$http', '$q',"$location", function($http, $q, $location) {
     var vm = this;
     // var resumes = {};
     var ress='';
@@ -24,7 +24,6 @@ cvApp.factory('CvServices', ['$http', '$q', function($http, $q) {
         var deferred = $q.defer();
         $http.get('api/resumes/'+id).
             success(function(data, status, headers, config) {
-               // console.log(data)
                 return deferred.resolve(data);
         })
         .error(function(data, status, headers, config) {
@@ -42,23 +41,24 @@ cvApp.factory('CvServices', ['$http', '$q', function($http, $q) {
                 return res.data;
             });
     };
-     
-    // function init(){
-    //     getAllExperience();
-    //     getAllEducation();
-    //     getAllPersonalSkill();
-    //     getAllTechnicalSkill();
-    //     getAllLanguages();     
-        
-    // }
    
     return {
          getResumesForUserById: function(id){
-            getResumesForUser(id).then(function(data){
-                cvForUserId =  data;
+            var deferred = $q.defer();
+            $http.get('api/resumes/'+id).
+                success(function(data, status, headers, config) {
+                    //console.log(data)
+                    return deferred.resolve(data), $location.path('/editor');
+            })
+            .error(function(data, status, headers, config) {
+                deferred.reject('Error occured while retrieving CVs');
+                console.log("error");
             });
-        //  init();
+            return deferred.promise.then(function(data){
+                    cvForUserId =  data;
+                });
          },
+         
         //function for dashboard
         getCv: function() {
             return getAllResumes().then(function(data){

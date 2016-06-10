@@ -1,6 +1,6 @@
 'use strict';
 
-cvApp.controller('DashController',[ "CvServices","my_DashService", '$http', "$window", function(CvServices,my_DashService, $http, $window) {
+cvApp.controller('DashController',[ "CvServices","my_DashService", '$http', "$window",  function(CvServices,my_DashService, $http, $window) {
    var vm= this;
 
     vm.user = CvServices.getCv().then(function (data) {
@@ -14,7 +14,7 @@ cvApp.controller('DashController',[ "CvServices","my_DashService", '$http', "$wi
     vm.displayCvForSpecificUser = function(cv){
         console.log(cv._id)
         CvServices.getResumesForUserById(cv._id);
-        // $window.location.href = '/editor';
+       
     }
 
     vm.resumes;
