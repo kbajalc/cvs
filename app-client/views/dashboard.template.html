@@ -13,33 +13,33 @@
                                     <b>FIRST NAME:</b>
                                 </div>
                                 <div class="col-md-12">
-                                    @FirstName
+                                     {{dash.user.basics.firstName}}
                                 </div>
                                 <div class="col-md-12">
                                     <b>LAST NAME:</b>
                                 </div>
                                 <div class="col-md-12">
-                                    @TestLastName
+                                    {{dash.user.basics.lastname}}
                                 </div>
                                 <div class="col-md-12">
                                     <b>EMAIL:</b>
                                 </div>
                                 <div class="col-md-12">
-                                    www.test@gmail.com
+                                   {{dash.user.contacts.email}}
                                 </div>
                             </div>
                             <div class="col-md-6 ">
                                 <div class="col-md-12 col-md-offset-5 basic-info-btn">
                                     <a href="#" class="btn btn-info  addEditPDFbtn">Edit profile</a>
                                 </div>
-                                <div ng-hide='user' class="col-md-12 col-md-offset-5 basic-info-btn">
+                                <div  class="col-md-12 col-md-offset-5 basic-info-btn">
                                     <a href="/addResume " class="btn btn-info addEditPDFbtn">Create new CV</a>
                                 </div>
-                                <div ng-hide='user' class="col-md-12 col-md-offset-5 basic-info-btn">
+                                <div  class="col-md-12 col-md-offset-5 basic-info-btn">
                                     <a href="#" class="btn btn-info addEditPDFbtn">Export PDF</a>
                                 </div>
-                                <div ng-show='user' class="col-md-12 col-md-offset-4">
-                                    <a href="#" class="btn btn-primary" ng-click='displayCvForUser()'>Edit my CV</a>
+                                <div  class="col-md-12 col-md-offset-4">
+                                    <a href="#" class="btn btn-primary" ng-click='dash.displayCvForUser(dash.user)'>Edit my CV</a>
                                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                 </div>
                             </div>

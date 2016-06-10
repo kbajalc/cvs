@@ -74,10 +74,6 @@ cvApp.factory('CvServices', ['$http', '$q',"$location", function($http, $q, $loc
         //function for about section
         getBasicItems: function(userEmail) {
            return cvForUserId.basics;
-        },
-        displayCvForUser: function(userEmail) {
-            //  $location.path( "/editor" );
-           // return vm.resumes[0];
         },        
         
         //function for contact section

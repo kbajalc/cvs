@@ -18,6 +18,10 @@ cvApp.controller('DashController',[ "CvServices","my_DashService", '$http', "$wi
         CvServices.getResumesForUserById(id, true);
 
     }
+    
+    vm.displayCvForUser = function(cv){
+        CvServices.getResumesForUserById(cv._id)
+    }
 
     vm.resumes;
     vm.createResume;
