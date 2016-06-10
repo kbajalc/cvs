@@ -17,13 +17,13 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 col-lg-12">
-                            <h4 style='color:white;border-bottom: none;' editable-text="about.user.firstName" ng-model='about.user.name' class='text-center'>{{about.user.firstName}}</h4>
-                            <h4 style='color:white;border-bottom: none;' editable-text="about.user.lastName" ng-model='about.user.name' class='text-center'>{{about.user.lastName}}</h4>
+                            <h4 style='color:white;border-bottom: none;' editable-text="about.user.firstName" ng-model='about.user.name' class='text-center'>{{about.user.firstName || 'empty'}}</h4>
+                            <h4 style='color:white;border-bottom: none;' editable-text="about.user.lastName" ng-model='about.user.name' class='text-center'>{{about.user.lastName || 'empty'}}</h4>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 col-lg-12" id="jobTittle">
-                        <h4 style='color:white;border-bottom: none;' editable-text="about.user.jobTittle" ng-model='about.user.jobTittle' class='text-center' >{{about.user.jobTittle}}</h4>
+                        <h4 style='color:white;border-bottom: none;' editable-text="about.user.jobTittle" ng-model='about.user.jobTittle' class='text-center' >{{about.user.jobTittle || 'empty'}}</h4>
                     </div>
                 </div>
             </section>
@@ -32,7 +32,7 @@
             <section class="row summary" style="text-align: left;">
                 <div class='col-lg-12 col-sm-12'>
                 <h4><span class="glyphicon glyphicon-file" aria-hidden="true"></span> ABOUT</h4>
-                     <span class='about' style='color:white;border-bottom: none;' ng-click="rowformSummary.$show()" editable-textarea="about.user.summary" e-rows="7" e-cols="40" ng-model='about.user.summary' class='text-center' e-form="rowformSummary"><small>{{about.user.summary}}</small></span>
+                     <span class='about' style='color:white;border-bottom: none;' ng-click="rowformSummary.$show()" editable-textarea="about.user.summary" e-rows="7" e-cols="40" ng-model='about.user.summary' class='text-center' e-form="rowformSummary"><small>{{about.user.summary || 'empty'}}</small></span>
                     <form editable-form name="rowformSummary" ng-show="rowformSummary.$visible" class="form-buttons form-inline col-md-12" shown="inserted == about.user" >
                             <hr>
                           <button type="submit" ng-disabled="rowformSummary.$waiting" ng-click='' class="btn btn-primary">
@@ -240,25 +240,25 @@
                     <div class="col-lg-10 col-md-10 col-sm-10">
                         <div class="container">
                             <div class='row'>
-                                <div class="col-lg-3 col-md-3 col-sm-3" >
-                                      <h4 style='margin-left:0px' editable-text='item.company' e-form="rowform">{{item.company}}</h4>
+                                <div ng-hide="item.company == ''" class="col-lg-3 col-md-3 col-sm-3" >
+                                      <h4 style='margin-left:0px' editable-text='item.company' e-form="rowform">{{item.company || 'empty'}}</h4>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-7">
-                                    <h4 class='dispaly:inline'><span editable-date='item.startDate'  e-form="rowform" >{{item.startDate |  date:'dd-MM-yyyy'}}</span>
-                                    - <span editable-date='item.endDate'  e-form="rowform" >{{item.endDate |  date:'dd-MM-yyyy'}}</span></h4>
+                                    <h4 class='dispaly:inline'><span editable-date='item.startDate'  e-form="rowform" ng-hide="item.startDate == ''">{{item.startDate || 'empty' |  date:'dd-MM-yyyy'}}</span>
+                                    - <span editable-date='item.endDate'  e-form="rowform" ng-hide="item.endDate == ''">{{item.endDate || 'empty' |  date:'dd-MM-yyyy'}}</span></h4>
                                 </div>
                             </div>
                         </div>
                         <div class="container">
                           <div class='row'>
-                            <div class="col-lg-7 col-md-7 col-sm-10">
-                               <b>Position: <span editable-text="item.position" e-form="rowform"> {{item.position}}</span></b>
+                            <div class="col-lg-7 col-md-7 col-sm-10" ng-hide="item.position == ''">
+                               <b>Position: <span editable-text="item.position" e-form="rowform"> {{item.position || 'empty'}}</span></b>
                             </div>
-                            <div class='col-lg-7 col-md-7 col-sm-12'>
-                                    <span editable-textarea="item.summary" e-rows="7" e-cols="80" e-form="rowform"><b>Summary</b>: {{item.summary}}</span>
+                            <div class='col-lg-7 col-md-7 col-sm-12' ng-hide="item.summary == ''">
+                                    <span editable-textarea="item.summary" e-rows="7" e-cols="80" e-form="rowform"><b>Summary</b>: {{item.summary || 'empty'}}</span>
                             </div>
                             <div class='col-lg-7 col-md-7 col-sm-10'>
-                                <span editable-text="item.website" e-form="rowform"><a ng-href='{{item.website}}'>{{item.website}}</a></span>
+                                <span editable-text="item.website" e-form="rowform"  ng-hide="item.website == ''"><a ng-href='{{item.website}}'>{{item.website || 'empty'}}</a></span>
                             </div>
                            </div>
                          </div>
@@ -360,26 +360,26 @@
                     <div class="col-lg-10 col-md-10 col-sm-10">
                         <div class="container">
                         <div class="row">
-                            <div  class="col-lg-3 col-md-3 col-sm-3">
-                                <h4 style="margin-left:0px;"  editable-text='item.institution' e-form="rowform">{{item.institution}}</h4>
+                            <div  class="col-lg-3 col-md-3 col-sm-3"  ng-hide="item.institution == ''">
+                                <h4 style="margin-left:0px;"  editable-text='item.institution' e-form="rowform">{{item.institution || 'empty'}}</h4>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-7">
-                                <h4 class='dispaly:inline'><span editable-date='item.startDate'  e-form="rowform" >{{item.startDate |  date:'dd-MM-yyyy'}}</span>
-                                - <span editable-date='item.endDate'  e-form="rowform" >{{item.endDate |  date:'dd-MM-yyyy'}}</span></h4>
+                                <h4 class='dispaly:inline'><span editable-date='item.startDate'  e-form="rowform"  ng-hide="item.startDate == ''">{{item.startDate || 'empty' |  date:'dd-MM-yyyy'}}</span>
+                                - <span editable-date='item.endDate'  e-form="rowform"  ng-hide="item.endDate == ''">{{item.endDate || 'empty' |  date:'dd-MM-yyyy'}}</span></h4>
                             </div>
                         </div>
                         </div>
                         <div class="container">
                           <div class='row'>
-                            <div class="col-lg-7 col-md-7 col-sm-10">
-                               <b>Position: <span editable-text="item.area" e-form="rowform"> {{item.area}}</span></b>
+                            <div class="col-lg-7 col-md-7 col-sm-10"  ng-hide="item.area == ''">
+                               <b>Position: <span editable-text="item.area" e-form="rowform"> {{item.area || 'empty'}}</span></b>
                             </div>
-                            <div class='col-lg-7 col-md-7 col-sm-12'>
-                                    <span editable-textarea="item.summary" e-rows="7" e-cols="100" e-form="rowform">
-                                    <b>Summary</b>: {{item.summary}}</span>
+                            <div class='col-lg-7 col-md-7 col-sm-12'  ng-hide="item.summary == ''">
+                                <span editable-textarea="item.summary" e-rows="7" e-cols="100" e-form="rowform">
+                                <b>Summary</b>: {{item.summary || 'empty'}}</span>
                             </div>
                             <div class='col-lg-7 col-md-7 col-sm-10'>
-                                <b><span editable-text="item.studyType" e-form="rowform">Study type: {{item.studyType}}</span></b>
+                                <b><span editable-text="item.studyType" e-form="rowform"  ng-hide="item.studyType == ''">Study type: {{item.studyType || 'empty'}}</span></b>
                             </div>
                            </div>
                          </div>
@@ -408,10 +408,6 @@
                         </div>
                         </div>
                 </div>
-
-
-
-
                 <!-- education/description row -->
             </section>
             <hr/>
