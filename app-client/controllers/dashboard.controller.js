@@ -2,7 +2,7 @@
 
 cvApp.controller('DashController',[ "CvServices","my_DashService", '$http', "$window",  function(CvServices,my_DashService, $http, $window) {
    var vm= this;
-
+   vm.showEditable = CvServices.getValueForEditable();
     vm.user = CvServices.getCv().then(function (data) {
        vm.user = data;
     });
@@ -11,17 +11,14 @@ cvApp.controller('DashController',[ "CvServices","my_DashService", '$http', "$wi
        vm.allCvs = data;
     });
 
-    vm.displayCvForSpecificUser = function(cv){     
-        CvServices.getResumesForUserById(cv._id, false);	
+    vm.displayCvForSpecificUser = function(cv, value){     
+        CvServices.getResumesForUserById(cv._id, value);	
     }
     vm.editProfile = function(id){
         CvServices.getResumesForUserById(id, true);
 
     }
-    
-    vm.displayCvForUser = function(cv){
-        CvServices.getResumesForUserById(cv._id)
-    }
+
 
     vm.resumes;
     vm.createResume;

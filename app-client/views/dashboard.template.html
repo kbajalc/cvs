@@ -30,17 +30,13 @@
                             </div>
                             <div class="col-md-6 ">
                                 <div class="col-md-12 col-md-offset-5 basic-info-btn">
-                                    <a href="#" class="btn btn-info  addEditPDFbtn">Edit profile</a>
+                                    <a href="#" class="btn btn-info  addEditPDFbtn" ng-click='dash.displayCvForSpecificUser(dash.user, true)'>Edit my CV</a>
                                 </div>
                                 <div  class="col-md-12 col-md-offset-5 basic-info-btn">
                                     <a href="/addResume " class="btn btn-info addEditPDFbtn">Create new CV</a>
                                 </div>
                                 <div  class="col-md-12 col-md-offset-5 basic-info-btn">
                                     <a href="#" class="btn btn-info addEditPDFbtn">Export PDF</a>
-                                </div>
-                                <div  class="col-md-12 col-md-offset-4">
-                                    <a href="#" class="btn btn-primary" ng-click='dash.displayCvForUser(dash.user)'>Edit my CV</a>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +75,7 @@
                             <p>{{cvs.basics.jobTitle}}</p>
                             <p>{{cvs.contacts.email}}</p>
                         </div>
-                        <button class="w3-btn-block w3-teal" ng-click='dash.displayCvForSpecificUser(cvs)'>View</button>
+                        <button class="w3-btn-block w3-teal" ng-click='dash.displayCvForSpecificUser(cvs, false)'>View</button>
                     </div>
                 </div>
             </div>

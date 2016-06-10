@@ -43,8 +43,8 @@ cvApp.factory('CvServices', ['$http', '$q',"$location", function($http, $q, $loc
     };
    
     return {
-         getResumesForUserById: function(id, val){
-           showEditable = val;
+         getResumesForUserById: function(id, value){
+           showEditable = value;
             var deferred = $q.defer();
             $http.get('api/resumes/'+id).
                 success(function(data, status, headers, config) {
@@ -55,7 +55,7 @@ cvApp.factory('CvServices', ['$http', '$q',"$location", function($http, $q, $loc
                 console.log("error");
             });
             return deferred.promise.then(function(data){
-                    cvForUserId =  data;
+                    cvForUserId =  data;                    
                 });
          },
          getValueForEditable : function(){
