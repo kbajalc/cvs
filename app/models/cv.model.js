@@ -4,9 +4,10 @@ var mongoose = require('mongoose');
 var ResumeSchema = new mongoose.Schema({
 
     basics: {
-        name: String,
+        firstName: String,
+        lastName: String,
         jobTittle: String,
-        picture:String,
+        picture: String,
         summary: String
     },
     contacts: {
@@ -52,7 +53,7 @@ var ResumeSchema = new mongoose.Schema({
         default: Date.now
     }
 
-    });
+});
 
 
 var Resume = mongoose.model('Resume', ResumeSchema);

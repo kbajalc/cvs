@@ -14,7 +14,7 @@ cvApp.controller('DashController',[ "CvServices","my_DashService", '$http', "$wi
     vm.displayCvForSpecificUser = function(cv){
         console.log(cv._id)
         CvServices.getResumesForUserById(cv._id);
-       
+
     }
 
     vm.resumes;
@@ -34,72 +34,66 @@ cvApp.controller('DashController',[ "CvServices","my_DashService", '$http', "$wi
     }
 
   //INSERT NEW  resume
-   vm.insertResume = function () {
-     var newResume;
-       my_DashService.insertResume(newResume)
-           .then(function (response) {
-               vm.resumes.push(newResume);
-               console.log('Resume saved');
-           }, function(error) {
-              console.log('Unable to insert customer: '+ error.message);
-           });
+  vm.insertResume = function () {
+    var newResume = {
+        basics: {
+            firstName: vm.basics.firstName,
+            lastName: vm.basics.lastName,
+            jobTittle: vm.basics.jobTittle,
+            picture: '',
+            summary: vm.basics.summary
+        },
+        contacts: {
+            email: vm.contacts.email,
+            phone: vm.contacts.phone,
+            city: vm.contacts.city,
+            country: vm.contacts.country,
+            website: vm.contacts.website,
+            social: [{
+                network: vm.contacts.social.network
+            }]
+        },
+        profSkills: [{
+            name: vm.profSkills.name,
+            level: vm.profSkills.level
+        }],
+        work: [{
+            company: vm.work.company,
+            position: vm.work.position,
+            website: vm.work.website,
+            startDate: vm.work.startDate,
+            endDate: vm.work.endDate,
+            summary: vm.work.summary
+        }],
+        education: [{
+            institution: vm.education.institution,
+            area: vm.education.area,
+            studyType: vm.education.studyType,
+            startDate: vm.education.startDate,
+            endDate: vm.education.endDate,
+            summary: vm.education.summary
+        }],
+        skills: [{
+            name: vm.skills.name,
+            level: vm.skills.level
+        }],
+        languages: [{
+            name: vm.languages.name,
+            level: vm.languages.level
+        }],
+        createDate: {
+            type: Date,
+            default: Date.now
+        }
     };
-
-          //model schema
-        //
-        // var newResume = {
-        //     basics: {
-        //         firstName: '',
-        //         lastName: '',
-        //         jobTittle:'',
-        //         picture: '',
-        //         summary: ''
-        //     },
-        //     contacts: {
-        //         email: '',
-        //         phone: '',
-        //         city: '',
-        //         country: '',
-        //         website: '',
-        //         social: [{
-        //             network: ''
-        //         }]
-        //     },
-        //     profSkills: [{
-        //         name: '',
-        //         level: ''
-        //     }],
-        //     work: [{
-        //         company: '',
-        //         position: '',
-        //         website: '',
-        //         startDate: '',
-        //         endDate: '',
-        //         summary: ''
-        //     }],
-        //     education: [{
-        //         institution: '',
-        //         area: '',
-        //         studyType: '',
-        //         startDate: '',
-        //         endDate: '',
-        //         summary: ''
-        //     }],
-        //     skills: [{
-        //         name: '',
-        //         level: ''
-        //     }],
-        //     languages: [{
-        //         name: '',
-        //         level: ''
-        //     }],
-        //     createDate: {
-        //         type: Date,
-        //         default: Date.now
-        //     }
-        // };
-        //
-
+      my_DashService.insertResume(newResume)
+          .then(function (response) {
+              vm.resumes.push(newResume);
+              console.log('Resume saved');
+          }, function(error) {
+             console.log('Unable to insert customer: '+ error.message);
+          });
+   };
     //DELETE resume
     vm.deleteResume = function(id) {
         my_DashService.deleteResume(id)
