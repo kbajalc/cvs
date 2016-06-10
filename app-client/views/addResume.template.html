@@ -1,21 +1,61 @@
 <section ng-controller="DashController as dash" >
 <form ng-submit = "dash.insertResume()">
   <div class="form-group">
-    <label for="exampleInputEmail1">Name</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" ng-model="dash.basics.firstName" placeholder="text">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">text</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" ng-model="dash.basics.lastName" placeholder="text1">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">text</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" ng-model="dash.basics.summary" placeholder="summary">
+    <label>Basics</label>
+    <input type="text" name="dash.basics.firstName" class="form-control" ng-model="dash.basics.firstName" ng-init="dash.basics.firstName=''"  placeholder="first name">
+    <input type="text" name="dash.basics.lastName" class="form-control" ng-model="dash.basics.lastName" ng-init="dash.basics.lastName=''" placeholder="last name">
+    <input type="text" name="dash.basics.jobTittle" class="form-control" ng-model="dash.basics.jobTittle" ng-init="dash.basics.jobTittle=''" placeholder="job Title">
+    <input type="text" name="dash.basics.picture" class="form-control"  ng-model="dash.basics.picture" ng-init="dash.basics.picture=''" placeholder="Picture">
+    <input type="text" name="dash.basics.summary" class="form-control" ng-model="dash.basics.summary" ng-init="dash.basics.summary=''" placeholder="summary">
   </div>
 
   <div class="form-group">
-    <label for="exampleInputPassword1">text</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" ng-model="jobTittle" placeholder="summary">
+    <label>Contacts</label>
+    <input type="email" name="dash.contacts.email" class="form-control" ng-model="dash.contacts.email" ng-init="dash.contacts.email=''" placeholder="Email">
+    <input type="text" name="dash.contacts.phone" class="form-control" ng-model="dash.contacts.phone" ng-init="dash.contacts.phone=''" placeholder="Phone">
+    <input type="text" name="dash.contacts.city" class="form-control" ng-model="dash.contacts.city" ng-init="dash.contacts.city=''" placeholder="City">
+    <input type="text" name="dash.contacts.country" class="form-control" ng-model="dash.contacts.country" ng-init="dash.contacts.country=''" placeholder="Country">
+    <input type="text" name="dash.contacts.website" class="form-control" ng-model="dash.contacts.website" ng-init="dash.contacts.website=''" placeholder="website">
+    <input type="text" name="dash.contacts.social.network" class="form-control" ng-model="dash.contacts.social.network" ng-init="dash.contacts.social.network=''" placeholder="social network">
+  </div>
+
+  <div class="form-group">
+    <label>Professional Skills</label>
+    <input type="text" name="dash.profSkills.name" class="form-control" ng-model="dash.profSkills.name" ng-init="dash.profSkills.name=''" placeholder="Name">
+    <input type="text" name="dash.profSkills.level" class="form-control" ng-model="dash.profSkills.level" ng-init="dash.profSkills.level=''" placeholder="Level">
+  </div>
+
+  <div class="form-group">
+    <label>Work Expirience</label>
+    <input type="text" name="dash.work.company" class="form-control" ng-model="dash.work.company" ng-init="dash.work.company=''" placeholder="Company">
+    <input type="text" name="dash.work.position" class="form-control" ng-model="dash.work.position" ng-init="dash.work.position=''" placeholder="Position">
+    <input type="text" name="dash.work.website" class="form-control" ng-model="dash.work.website" ng-init="dash.work.website=''" placeholder="Web site">
+    <input type="date" class="form-control" id="exampleInputPassword1" ng-model="dash.work.startDate" placeholder="Start Date">
+    <input type="date" class="form-control" id="exampleInputPassword1" ng-model="dash.work.endDate" placeholder="End Date">
+    <input type="text" name="dash.work.summary" class="form-control" ng-model="dash.work.summary" ng-init="dash.work.summary=''" placeholder="Summary">
+  </div>
+
+
+  <div class="form-group">
+    <label>Education</label>
+    <input type="text" name="dash.education.institution" class="form-control"  ng-model="dash.education.institution" ng-init="dash.education.institution=''" placeholder="Institution">
+    <input type="text" name="dash.education.area" class="form-control"  ng-model="dash.education.area" ng-init="dash.education.area=''" placeholder="Area">
+    <input type="text" name="dash.education.studyType" class="form-control"  ng-model="dash.education.studyType" ng-init="dash.education.studyType=''"  placeholder="Study Type">
+    <input type="date" class="form-control" ng-model="dash.education.startDate" placeholder="Start Date">
+    <input type="date" class="form-control"  ng-model="dash.education.endDate" placeholder="End Date">
+    <input type="text" name="dash.education.summary" class="form-control" ng-model="dash.education.summary" ng-init="dash.education.summary=''" placeholder="Summary">
+  </div>
+
+  <div class="form-group">
+    <label>Technical Skills</label>
+    <input type="text" name="dash.skills.name" class="form-control" ng-model="dash.skills.name" ng-init="dash.skills.name=''" placeholder="Name">
+    <input type="text" name="dash.skills.level" class="form-control" ng-model="dash.skills.level" ng-init="dash.skills.level=''" placeholder="Level">
+  </div>
+
+  <div class="form-group">
+    <label>Languages</label>
+    <input type="text" name="dash.languages.name" class="form-control" ng-model="dash.languages.name" ng-init="dash.languages.name=''" placeholder="Language">
+    <input type="text" name="dash.languages.level" class="form-control" ng-model="dash.languages.level" ng-init="dash.languages.level=''" placeholder="Level">
   </div>
 
     <button type="submit" class="btn btn-info">Submit</button>
