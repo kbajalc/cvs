@@ -1,7 +1,8 @@
 //Schema for resumes
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var ResumeSchema = new mongoose.Schema({
+var ResumeSchema = new Schema({
 
     basics: {
         firstName: String,
@@ -51,8 +52,11 @@ var ResumeSchema = new mongoose.Schema({
     createDate: {
         type: Date,
         default: Date.now
+    },
+    created_by: {
+        type: Schema.ObjectId,
+        ref: 'User'
     }
-
 });
 
 

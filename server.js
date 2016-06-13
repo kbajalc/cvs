@@ -13,7 +13,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var path = require('path');
 var rootPath = path.normalize(__dirname + '/../');
 
-app.use(express.static(rootPath + 'cv/app-client'));
+app.use(express.static(rootPath + 'cvs/app-client'));
 //passport routes
 var authenticate = require('./app/routes/routes.js')(passport);
 //get user model

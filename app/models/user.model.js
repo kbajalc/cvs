@@ -1,8 +1,8 @@
-var mongoose = require( 'mongoose' );
+var mongoose = require('mongoose');
 var crypto = require('crypto');
+var Schema = mongoose.Schema;
 
-
-var userSchema = new mongoose.Schema({
+var userSchema = new Schema({
     name: String,
     lastname: String,
     username: String,

@@ -1,108 +1,108 @@
 <!doctype html>
-<html lang="en" ng-app="cvApp" >
+<html lang="en" ng-app="cvApp">
 
 <head>
-	<meta charset="UTF-8">
-	<base href="/">
+    <meta charset="UTF-8">
+    <base href="/">
 
-	<title>ITgma CV Library</title>
+    <title>ITgma CV Library</title>
 
-	<!-- CSS -->
-	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-	<!-- Latest compiled and minified CSS -->
-
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <!-- CSS -->
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-	<!-- editor -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!-- editor -->
 
 
 
 
-	<!-- <script src="/js/bootstrap-editable.min.js">
+    <!-- <script src="/js/bootstrap-editable.min.js">
 	</script> -->
-	<!-- <link rel="stylesheet" href="/css/bootstrap-editable.css"> -->
-	<!-- <script src="/js/bootstrap.min.js"></script> -->
-	<!-- <script src="/js/jquery.min.js"></script> -->
-	<!-- <link rel="stylesheet" href="/css/xeditable.js"> -->
+    <!-- <link rel="stylesheet" href="/css/bootstrap-editable.css"> -->
+    <!-- <script src="/js/bootstrap.min.js"></script> -->
+    <!-- <script src="/js/jquery.min.js"></script> -->
+    <!-- <link rel="stylesheet" href="/css/xeditable.js"> -->
 
 
 
-	<link rel="stylesheet" href="/css/xeditable.min.css">
-<!--
+    <link rel="stylesheet" href="/css/xeditable.min.css">
+    <!--
 	<link rel="stylesheet" href="/css/login.css">
 	<link rel="stylesheet" href="/css/normalize.css"> -->
-	<link  rel="stylesheet" href="/css/style.css">
-	<!-- <link rel="stylesheet" href="/css/editor.css"> -->
-	<!-- custom styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- <link rel="stylesheet" href="/css/editor.css"> -->
+    <!-- custom styles -->
 
-	<!-- JS -->
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/jquery.min.js"></script>
-	<script src="/js/login.js"></script>
-	<script src="/js/angular/angular.js">
-	</script>
-	<script src="/js/angular/angular-route.js">
-	</script>
-	<script src="/js/angular/angular-resource.js"></script>
+    <!-- JS -->
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="/js/angular/angular.js">
+    </script>
+    <script src="/js/angular/angular-route.js">
+    </script>
+    <script src="/js/angular/angular-resource.js"></script>
 
-	</script>
-	<script src="/js/xeditable.min.js"></script>
-	<script src="app.js"></script>
+    </script>
+    <script src="/js/xeditable.min.js"></script>
+    <script src="app.js"></script>
 
-	<script src="/controllers/main.controller.js"></script>
+    <script src="/controllers/main.controller.js"></script>
 
-	<script src="/controllers/login.controller.js"></script>
-	<script src="/services/login.service.js"></script>
+    <script src="/controllers/login.controller.js"></script>
+    <script src="/services/login.service.js"></script>
 
-	<script src="/controllers/dashboard.controller.js"></script>
-	<script src="/services/dashboard.service.js"></script>
+    <script src="/controllers/dashboard.controller.js"></script>
+    <script src="/services/dashboard.service.js"></script>
 
-	<script type="text/javascript" src="/controllers/editor.controller.js"></script>
-	<script src="/controllers/auth.controller.js"></script>
-	<script src="/services/cvService.js"></script>
-	<script src="/services/user.service.js"></script>
-	<script src="/controllers/user.controller.js"></script>
-	<script src="/controllers/editor/AboutController.js"></script>
-	<script src="/controllers/editor/EducationController.js"></script>
-	<script src="/controllers/editor/LanguageController.js"></script>
-	<script src="/controllers/editor/PersonalSkillsController.js"></script>
-	<script src="/controllers/editor/TechnicalSkillsController.js"></script>
-	<script src="/controllers/editor/WorkExperienceController.js"></script>
+    <script type="text/javascript" src="/controllers/editor.controller.js"></script>
+    <script src="/controllers/auth.controller.js"></script>
+    <script src="/services/cvService.js"></script>
+    <script src="/services/user.service.js"></script>
+    <script src="/controllers/user.controller.js"></script>
+    <script src="/controllers/editor/AboutController.js"></script>
+    <script src="/controllers/editor/EducationController.js"></script>
+    <script src="/controllers/editor/LanguageController.js"></script>
+    <script src="/controllers/editor/PersonalSkillsController.js"></script>
+    <script src="/controllers/editor/TechnicalSkillsController.js"></script>
+    <script src="/controllers/editor/WorkExperienceController.js"></script>
 
 
 </head>
 
 <body id="main-body" ng-cloak>
-	<div class="container">
+    <div class="container">
 
-		<!-- HEADER -->
-		<nav class="navbar navbar-fixed-top" id="nav-color">
-			<div class="container">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="#">ITgma</a>
-				</div>
-				<ul class="nav navbar-nav" ng-controller="authController">
+        <!-- HEADER -->
+        <nav class="navbar navbar-fixed-top" id="nav-color">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">ITgma</a>
+                </div>
+                <ul class="nav navbar-nav" ng-controller="authController">
 
-					<li ng-show="authenticated"><a href="/dashboard">Dashboard</a></li>
-					<li ng-show="authenticated"><a href="/editor">Edit CV</a></li>
-					<li ng-show="authenticated"><a href="#">Export PDF</a></li>
-					<!-- <p class="navbar-right navbar-text" ng-hide="authenticated"><a href="/">Login</a> or <a href="/">Register</a></p> -->
-					<p class="navbar-right navbar-text" ng-show="authenticated"><a href="#" ng-click="signout()">Logout</a></p>
-					<p class="navbar-right navbar-text" ng-show="authenticated">Signed in as {{currentUser}}</p>
-				</ul>
-			</div>
-		</nav>
+                    <li ng-show="authenticated"><a href="/dashboard">Dashboard</a></li>
+                    <li ng-show="authenticated"><a href="/editor">Edit CV</a></li>
+                    <!-- <li ng-show="authenticated"><a href="#">Export PDF</a></li>-->
+                    <!-- <p class="navbar-right navbar-text" ng-hide="authenticated"><a href="/">Login</a> or <a href="/">Register</a></p> -->
+                    <p class="navbar-right navbar-text" ng-show="authenticated"><a href="#" ng-click="signout()" id="logOut">Logout</a></p>
+                    <p class="navbar-right navbar-text" ng-show="authenticated" id="signOut"> Signed in as <span id="currentUser">{{currentUser}}</span></p>
+                </ul>
+            </div>
+        </nav>
 
-		<!-- ANGULAR DYNAMIC CONTENT -->
-		<div ng-view></div>
+        <!-- ANGULAR DYNAMIC CONTENT -->
+        <div ng-view></div>
 
-	</div>
+    </div>
 
 
 </body>

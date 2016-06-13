@@ -4,7 +4,7 @@
             <div class="vd_content-section clearfix">
                 <div class="row">
                     <div class="col-md-3">
-                        <img src="img/big.jpg" class="img-responsive" />
+                        <img src="img/big.jpg" class="img-responsive" id="imgDashboard" />
                     </div>
                     <div class="col-md-9" id="basic-info">
                         <div class="col-md-12">
@@ -13,7 +13,7 @@
                                     <b>FIRST NAME:</b>
                                 </div>
                                 <div class="col-md-12">
-                                     {{dash.user.basics.firstName}}
+                                    {{dash.user.basics.firstName}}
                                 </div>
                                 <div class="col-md-12">
                                     <b>LAST NAME:</b>
@@ -25,17 +25,17 @@
                                     <b>EMAIL:</b>
                                 </div>
                                 <div class="col-md-12">
-                                   {{dash.user.contacts.email}}
+                                    {{dash.user.contacts.email}}
                                 </div>
                             </div>
                             <div class="col-md-6 ">
                                 <div class="col-md-12 col-md-offset-5 basic-info-btn">
                                     <a href="#" class="btn btn-info  addEditPDFbtn" ng-click='dash.displayCvForSpecificUser(dash.user, true)'>Edit my CV</a>
                                 </div>
-                                <div  class="col-md-12 col-md-offset-5 basic-info-btn">
+                                <div class="col-md-12 col-md-offset-5 basic-info-btn">
                                     <a href="/addResume " class="btn btn-info addEditPDFbtn">Create new CV</a>
                                 </div>
-                                <div  class="col-md-12 col-md-offset-5 basic-info-btn">
+                                <div class="col-md-12 col-md-offset-5 basic-info-btn">
                                     <a href="#" class="btn btn-info addEditPDFbtn">Export PDF</a>
                                 </div>
                             </div>
@@ -44,38 +44,41 @@
                 </div>
             </div>
 </section>
+<!-- SEARCH for employees -->
 <section>
-  <nav class="navbar navbar-inverse" id="searchEmployee">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">EMPLOYEES</a>
-      </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <form class="navbar-form navbar-right" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-          </div>
-          <button type="submit" class="btn btn-default">FIND</button>
-        </form>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
+    <nav class="navbar navbar-default" id="searchEmployee">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#" id="nav-emp">EMPLOEES</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <form class="navbar-form navbar-right" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search" ng-model="searchEmployee">
+                    </div>
+                </form>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
 </section>
-<section id="employeesSection">
+<!-- SEARCH for employees end -->
+<section id="employeesSection" class="scrollable">
     <div class="row">
         <div class="col-md-12">
-            <div ng-repeat="cvs in dash.allCvs">
-                <div class="col-md-4">
-                    <div class="w3-card-4">
-                        <header class="w3-container w3-light-grey">
-                            <h3>{{cvs.basics.firstName}}</h3>
+            <div ng-repeat="cvs in dash.allCvs | orderBy :'basics.firstName' | filter:searchEmployee">
+                <div class="col-md-4" style="padding-top:20px;">
+                    <div class=" w3-card-4 ">
+                        <header class="w3-container w3-light-grey ">
+                            <h3>{{cvs.basics.firstName | uppercase }}</h3>
                         </header>
-                        <div class="w3-container">
-                            <img src="img/avatarMan.png" alt="Avatar" class="w3-left w3-circle img-response" id="slika" />
+                        <div class="w3-container ">
+                            <img src="img/avatarMan.png " alt="Avatar " class="w3-left w3-circle img-response " id="slika " />
                             <p>{{cvs.basics.jobTitle}}</p>
                             <p>{{cvs.contacts.email}}</p>
                         </div>
-                        <button class="w3-btn-block w3-teal" ng-click='dash.displayCvForSpecificUser(cvs, false)'>View</button>
+                        <button class="w3-btn-block w3-teal " ng-click='dash.displayCvForSpecificUser(cvs, false)'>View</button>
                     </div>
                 </div>
             </div>
