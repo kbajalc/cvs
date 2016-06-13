@@ -1,0 +1,74 @@
+ /*   
+.main {
+    width: 75%;
+    font-family: 'Open Sans', sans-serif;
+      padding: 0;
+}
+
+.about {
+    padding-left: 5%;
+}
+
+h3,
+h4 {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+
+
+
+ul>li {
+    list-style-type: none;
+}
+
+.basicContact i {
+    font-size: 1.5em;
+    margin: 10px;
+}
+
+.social i {
+    font-size: 1.5em;
+    margin: 10px;
+}
+
+
+
+.leftside {
+    color: whitesmoke;
+    background-color: #005580;
+    height: 2000px;
+}
+
+.progress {
+    border: 1px solid rgba(255, 255, 200, 0.3);
+    border-radius: 15px;
+    height: 15px;
+    background-color: transparent;
+}
+
+.barWhite {
+    background-color: white;
+}
+
+.barBlue {
+    background-color: #005580;
+    border: 1px solid rgba(255, 255, 200, 0.3);
+}
+
+.add {
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.bar-sections {
+    margin: 10%;
+}
+
+.form-buttons.form-inline{
+    float:right;
+}
+right aside
+
+*/

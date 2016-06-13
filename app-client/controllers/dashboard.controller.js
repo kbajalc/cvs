@@ -5,14 +5,15 @@ cvApp.controller('DashController',[ "CvServices","my_DashService", '$http', "$wi
    vm.showEditable = CvServices.getValueForEditable();
     vm.user = CvServices.getCv().then(function (data) {
        vm.user = data;
+       console.log(data);
     });
 
     CvServices.getAllCvs().then(function (data) {
        vm.allCvs = data;
     });
 
-    vm.displayCvForSpecificUser = function(cv, value){     
-        CvServices.getResumesForUserById(cv._id, value);	
+    vm.displayCvForSpecificUser = function(cv, value){
+        CvServices.getResumesForUserById(cv._id, value);
     }
     vm.editProfile = function(id){
         CvServices.getResumesForUserById(id, true);

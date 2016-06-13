@@ -63,7 +63,8 @@
 	<script src="/controllers/dashboard.controller.js"></script>
 	<script src="/services/dashboard.service.js"></script>
 
-	<script src="/controllers/editor.controller.js"></script>
+	<script type="text/javascript" src="/controllers/editor.controller.js"></script>
+	<script src="/controllers/auth.controller.js"></script>
 	<script src="/services/cvService.js"></script>
 	<script src="/services/user.service.js"></script>
 	<script src="/controllers/user.controller.js"></script>
@@ -84,13 +85,16 @@
 		<nav class="navbar navbar-fixed-top" id="nav-color">
 			<div class="container">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="home.html">ITgma</a>
+					<a class="navbar-brand" href="#">ITgma</a>
 				</div>
-				<ul class="nav navbar-nav">
+				<ul class="nav navbar-nav" ng-controller="authController">
 
-					<li><a href="/dashboard">Dashboard</a></li>
-					<li><a href="/editor">Edit CV</a></li>
-					<li><a href="#">Export PDF</a></li>
+					<li ng-show="authenticated"><a href="/dashboard">Dashboard</a></li>
+					<li ng-show="authenticated"><a href="/editor">Edit CV</a></li>
+					<li ng-show="authenticated"><a href="#">Export PDF</a></li>
+					<!-- <p class="navbar-right navbar-text" ng-hide="authenticated"><a href="/">Login</a> or <a href="/">Register</a></p> -->
+					<p class="navbar-right navbar-text" ng-show="authenticated"><a href="#" ng-click="signout()">Logout</a></p>
+					<p class="navbar-right navbar-text" ng-show="authenticated">Signed in as {{currentUser}}</p>
 				</ul>
 			</div>
 		</nav>

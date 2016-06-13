@@ -1,0 +1,125 @@
+<section ng-controller="DashController as dash">
+    <form ng-submit="dash.insertResume()">
+        <div class="row">
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="font-size: 21px;color: darkblue; font-family: cursive;">Basics</label>
+                            <input type="text" name="dash.basics.firstName" class="form-control" ng-model="dash.basics.firstName" ng-init="dash.basics.firstName=''" placeholder="First name">
+                            <br>
+                            <input type="text" name="dash.basics.lastName" class="form-control" ng-model="dash.basics.lastName" ng-init="dash.basics.lastName=''" placeholder="Last name">
+                            <br>
+                            <input type="text" name="dash.basics.jobTittle" class="form-control" ng-model="dash.basics.jobTittle" ng-init="dash.basics.jobTittle=''" placeholder="Job Title">
+                            <br>
+                            <input type="file" name="dash.basics.picture" class="form-control" ng-model="dash.basics.picture" ng-init="dash.basics.picture=''" placeholder="Picture">
+                            <br>
+                            <input type="text" name="dash.basics.summary" class="form-control" ng-model="dash.basics.summary" ng-init="dash.basics.summary=''" placeholder="Summary">
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="font-size: 21px;color: darkblue; font-family: cursive;">Contacts</label>
+                            <input type="email" name="dash.contacts.email" class="form-control" ng-model="dash.contacts.email" ng-init="dash.contacts.email=''" placeholder="Email">
+                            <br>
+                            <input type="text" name="dash.contacts.phone" class="form-control" ng-model="dash.contacts.phone" ng-init="dash.contacts.phone=''" placeholder="Phone">
+                            <br>
+                            <input type="text" name="dash.contacts.city" class="form-control" ng-model="dash.contacts.city" ng-init="dash.contacts.city=''" placeholder="City">
+                            <br>
+                            <input type="text" name="dash.contacts.country" class="form-control" ng-model="dash.contacts.country" ng-init="dash.contacts.country=''" placeholder="Country">
+                            <br>
+                            <input type="text" name="dash.contacts.website" class="form-control" ng-model="dash.contacts.website" ng-init="dash.contacts.website=''" placeholder="Website">
+                            <br>
+                            <input type="text" name="dash.contacts.social.network" class="form-control" ng-model="dash.contacts.social.network" ng-init="dash.contacts.social.network=''" placeholder="Social Network">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="font-size: 21px;color: darkblue; font-family: cursive;">Professional Skills</label>
+                            <input type="text" name="dash.profSkills.name" class="form-control" ng-model="dash.profSkills.name" ng-init="dash.profSkills.name=''" placeholder="Name">
+                            <br>
+                            <input type="number" name="dash.profSkills.level" class="form-control" ng-model="dash.profSkills.level" ng-init="dash.profSkills.level='0'" placeholder="Level">
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="font-size: 21px;color: darkblue; font-family: cursive;">Work Expirience</label>
+                            <input type="text" name="dash.work.company" class="form-control" ng-model="dash.work.company" ng-init="dash.work.company=''" placeholder="Company">
+                            <br>
+                            <input type="text" name="dash.work.position" class="form-control" ng-model="dash.work.position" ng-init="dash.work.position=''" placeholder="Position">
+                            <br>
+                            <input type="text" name="dash.work.website" class="form-control" ng-model="dash.work.website" ng-init="dash.work.website=''" placeholder="Web site">
+                            <br>
+                            <input type="date" class="form-control" id="exampleInputPassword1" ng-model="dash.work.startDate" placeholder="Start Date">
+                            <br>
+                            <input type="date" class="form-control" id="exampleInputPassword1" ng-model="dash.work.endDate" placeholder="End Date">
+                            <br>
+                            <input type="text" name="dash.work.summary" class="form-control" ng-model="dash.work.summary" ng-init="dash.work.summary=''" placeholder="Summary">
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="font-size: 21px;color: darkblue; font-family: cursive;">Education</label>
+                            <input type="text" name="dash.education.institution" class="form-control" ng-model="dash.education.institution" ng-init="dash.education.institution=''" placeholder="Institution">
+                            <br>
+                            <input type="text" name="dash.education.area" class="form-control" ng-model="dash.education.area" ng-init="dash.education.area=''" placeholder="Area">
+                            <br>
+                            <input type="text" name="dash.education.studyType" class="form-control" ng-model="dash.education.studyType" ng-init="dash.education.studyType=''" placeholder="Study Type">
+                            <br>
+                            <input type="date" class="form-control" ng-model="dash.education.startDate" placeholder="Start Date">
+                            <br>
+                            <input type="date" class="form-control" ng-model="dash.education.endDate" placeholder="End Date">
+                            <br>
+                            <input type="text" name="dash.education.summary" class="form-control" ng-model="dash.education.summary" ng-init="dash.education.summary=''" placeholder="Summary">
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="font-size: 21px;color: darkblue; font-family: cursive;">Technical Skills</label>
+                            <input type="text" name="dash.skills.name" class="form-control" ng-model="dash.skills.name" ng-init="dash.skills.name=''" placeholder="Name">
+                            <br>
+                            <input type="number" name="dash.skills.level" class="form-control" ng-model="dash.skills.level" ng-init="dash.skills.level=''" placeholder="Level">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="font-size: 21px;color: darkblue; font-family: cursive;">Languages</label>
+                            <input type="text" name="dash.languages.name" class="form-control" ng-model="dash.languages.name" ng-init="dash.languages.name=''" placeholder="Language">
+                            <br>
+                            <input type="number" name="dash.languages.level" class="form-control" ng-model="dash.languages.level" ng-init="dash.languages.level=''" placeholder="Level">
+                        </div>
+
+                        <button type="submit" class="btn btn-success">Create</button>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+    </form>
+    <section>

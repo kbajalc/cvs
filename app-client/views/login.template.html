@@ -1,6 +1,6 @@
 <div id="bg"></div>
 
-<section ng-controller="user-Ctrl as ctrl" id='loginTemplate'>
+<section id='loginTemplate'>
 
 	<div class="col-md-12">
 		<div class="form">
@@ -14,32 +14,32 @@
 				<div id="signup">
 					<h1>Sign Up</h1>
 
-					<form ng-submit="ctrl.submit()" name="myForm">
+					<form ng-submit="register()" name="myForm">
 						<!-- method="post" -->
 
 						<div class="top-row">
-							<div class="field-wrap">
+							<!-- <div class="field-wrap">
 
-								<input type="text" ng-model="ctrl.user.name" id="uname" placeholder="User name*" required autocomplete="off" />
+								<input type="text" ng-model="user.name" id="uname" placeholder="User name*" required autocomplete="off" />
 							</div>
 
 							<div class="field-wrap">
 
-								<input type="text" ng-model="ctrl.user.lastname" id="lname" placeholder="Last name*" required autocomplete="off" />
-							</div>
+								<input type="text" ng-model="user.lastname" id="lname" placeholder="Last name*" required autocomplete="off" />
+							</div> -->
 						</div>
 
 						<div class="field-wrap">
 
-							<input type="email" ng-model="ctrl.user.email" id="email" placeholder="Email Address*" required autocomplete="off" />
+							<input type="email" ng-model="user.username" id="email" placeholder="Email Address*" required autocomplete="off" />
 						</div>
 
 						<div class="field-wrap">
 
-							<input type="password" ng-model="ctrl.user.password" id="password" placeholder="Password*" required autocomplete="off" />
+							<input type="password" ng-model="user.password" id="password" placeholder="Password*" required autocomplete="off" />
 						</div>
 
-						<button type="submit" ng-click="ctrl.submit()" class="button button-block">Get Started</button>
+						<button type="submit" class="button button-block">Get Started</button>
 
 					</form>
 
@@ -48,21 +48,21 @@
 				<div id="login">
 					<h1>Welcome Back!</h1>
 
-					<form action="/" method="post">
+					<form ng-submit="login()">
 
 						<div class="field-wrap">
 
-							<input type="email" placeholder="Email Address*" required autocomplete="off" />
+							<input type="email" ng-model="user.username" placeholder="Email Address*" required autocomplete="off" />
 						</div>
 
 						<div class="field-wrap">
 
-							<input type="password" required placeholder="Password*" autocomplete="off" />
+							<input type="password" ng-model="user.password" required placeholder="Password*" autocomplete="off" />
 						</div>
 
 						<p class="forgot"><a href="#">Forgot Password?</a></p>
 
-						<button class="button button-block">Log In</button>
+						<button type="submit" class="button button-block">Log In</button>
 
 					</form>
 

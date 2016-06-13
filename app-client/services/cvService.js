@@ -9,7 +9,7 @@ cvApp.factory('CvServices', ['$http', '$q',"$location", function($http, $q, $loc
 
     var getAllResumes = function() {
         var deferred = $q.defer();
-        $http.get('api/resumes').
+        $http.get('auth/resumes').
             success(function(data, status, headers, config) {
                 return deferred.resolve(data);
         })
@@ -19,10 +19,10 @@ cvApp.factory('CvServices', ['$http', '$q',"$location", function($http, $q, $loc
          });
         return deferred.promise;
     }
-    
+
     //   var getResumesForUser =  function(id) {
     //     var deferred = $q.defer();
-    //     $http.get('api/resumes/'+id).
+    //     $http.get('auth/resumes/'+id).
     //         success(function(data, status, headers, config) {
     //             return deferred.resolve(data);
     //     })
@@ -32,21 +32,21 @@ cvApp.factory('CvServices', ['$http', '$q',"$location", function($http, $q, $loc
     //      });
     //     return deferred.promise;
     // }
-    
-    
+
+
     function getAllResumesWithoutQ (){
-        return $http.get('api/resumes')
+        return $http.get('auth/resumes')
             .then(function (res) {
                 ress = res.data;
                 return res.data;
             });
     };
-   
+
     return {
          getResumesForUserById: function(id, value){
            showEditable = value;
             var deferred = $q.defer();
-            $http.get('api/resumes/'+id).
+            $http.get('auth/resumes/'+id).
                 success(function(data, status, headers, config) {
                     return deferred.resolve(data), $location.path('/editor');
             })
@@ -55,15 +55,16 @@ cvApp.factory('CvServices', ['$http', '$q',"$location", function($http, $q, $loc
                 console.log("error");
             });
             return deferred.promise.then(function(data){
-                    cvForUserId =  data;                    
+                    cvForUserId =  data;
                 });
          },
          getValueForEditable : function(){
-             return showEditable 
+             return showEditable
          },
-         
+
         //function for dashboard
         getCv: function() {
+          console.log('ulagam');
             return getAllResumes().then(function(data){
                 return data[0];
             });
@@ -74,11 +75,11 @@ cvApp.factory('CvServices', ['$http', '$q',"$location", function($http, $q, $loc
         //function for about section
         getBasicItems: function(userEmail) {
            return cvForUserId.basics;
-        },        
-        
+        },
+
         //function for contact section
         getAllContacts: function() {
-          return cvForUserId.contacts;  
+          return cvForUserId.contacts;
         },
         //function fo experience
         getAllExperience: function(userEmail) {

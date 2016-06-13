@@ -2,7 +2,7 @@
 //factorie for all resumes
 cvApp.factory('my_DashService', ['$http', function($http) {
 
-        var urlBase = '/api/resumes';
+        var urlBase = '/auth/resumes';
         var dataFactory = {};
        //getall resumes
         dataFactory.getResumes = function () {
