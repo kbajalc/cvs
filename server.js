@@ -47,7 +47,7 @@ var router = express.Router();
 
 //register and send index.html
 app.get('/', function(req, res) {
-    res.sendfile(rootPath + 'cv/app-client/index.html');
+    res.sendfile(rootPath + 'cvs/app-client/index.html');
 
 });
 
