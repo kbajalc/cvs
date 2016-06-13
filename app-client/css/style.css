@@ -319,6 +319,12 @@ h4 {
 #dashboardTemplate .basic-info-btn {
   margin-bottom: 6px;
 }
+#nav-emp {
+    margin-left: 450px;
+    font-size: 22px;
+    color: black;
+    font-family: cursive;
+}
 
 /************ Dashbouard template ************/
 

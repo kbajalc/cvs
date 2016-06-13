@@ -87,14 +87,17 @@
 				<div class="navbar-header">
 					<a class="navbar-brand" href="#">ITgma</a>
 				</div>
-				<ul class="nav navbar-nav" ng-controller="authController">
+				<ul class="nav navbar-nav " ng-controller="authController">
 
 					<li ng-show="authenticated"><a href="/dashboard">Dashboard</a></li>
 					<li ng-show="authenticated"><a href="/editor">Edit CV</a></li>
 					<li ng-show="authenticated"><a href="#">Export PDF</a></li>
+				</ul>
+				
+				<ul class="nav navbar-nav navbar-right" ng-controller="authController">
 					<!-- <p class="navbar-right navbar-text" ng-hide="authenticated"><a href="/">Login</a> or <a href="/">Register</a></p> -->
-					<p class="navbar-right navbar-text" ng-show="authenticated"><a href="#" ng-click="signout()">Logout</a></p>
-					<p class="navbar-right navbar-text" ng-show="authenticated">Signed in as {{currentUser}}</p>
+					<p class="navbar-right navbar-text " ng-show="authenticated"><a href="#" ng-click="signout()">Logout</a></p>
+					<p class="navbar-right navbar-text " ng-show="authenticated">Signed in as {{currentUser}}</p>
 				</ul>
 			</div>
 		</nav>
