@@ -1,6 +1,6 @@
 'use strict';
 
-cvApp.controller('DashController', ["CvServices", "my_DashService", '$http', "$window", function(CvServices, my_DashService, $http, $window) {
+cvApp.controller('DashController', ["CvServices", "my_DashService", '$http', "$window", "$location", function(CvServices, my_DashService, $http, $window, $location) {
     var vm = this;
     vm.showEditable = CvServices.getValueForEditable();
     vm.user = CvServices.getCv().then(function(data) {
@@ -93,7 +93,11 @@ cvApp.controller('DashController', ["CvServices", "my_DashService", '$http', "$w
         my_DashService.insertResume(newResume)
             .then(function(response) {
                 vm.resumes.push(newResume);
+                alert('New resume saved');
+                //reset the form
+                document.forms['newCvForm'].reset();
                 console.log('Resume saved');
+                $location.path('/editor');
             }, function(error) {
                 console.log('Unable to insert customer: ' + error.message);
             });
@@ -127,9 +131,5 @@ cvApp.controller('DashController', ["CvServices", "my_DashService", '$http', "$w
                     break;
                 }
             } //end find the current cv
-
         } //end of update resume
-
-
-
 }]);

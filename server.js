@@ -46,10 +46,10 @@ var router = express.Router();
 
 
 //register and send index.html
-app.get('/', function(req, res) {
-    res.sendfile(rootPath + 'cvs/app-client/index.html');
-
-});
+// app.get('/*', function(req, res) {
+//     res.sendfile(rootPath + 'cvs/app-client/index.html');
+//
+// });
 
 /////// START passport routes
 function isAuthenticated(req, res, next) {
@@ -280,7 +280,9 @@ initPassport(passport);
 //register routes
 //prefixed with auth
 app.use('/auth', router);
-
+app.get('/*', function(req, res) {
+    res.sendfile(rootPath + 'cvs/app-client/index.html');
+});
 //start server
 app.listen(port);
 console.log('Server on port: ' + port);

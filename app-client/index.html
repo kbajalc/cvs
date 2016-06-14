@@ -18,32 +18,74 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
     <!-- editor -->
-
-
-
-
     <!-- <script src="/js/bootstrap-editable.min.js">
 	</script> -->
     <!-- <link rel="stylesheet" href="/css/bootstrap-editable.css"> -->
     <!-- <script src="/js/bootstrap.min.js"></script> -->
     <!-- <script src="/js/jquery.min.js"></script> -->
     <!-- <link rel="stylesheet" href="/css/xeditable.js"> -->
-
-
-
-    <link rel="stylesheet" href="/css/xeditable.min.css">
     <!--
-	<link rel="stylesheet" href="/css/login.css">
-	<link rel="stylesheet" href="/css/normalize.css"> -->
-    <link rel="stylesheet" href="/css/style.css">
+	   <link rel="stylesheet" href="/css/login.css">
+	    <link rel="stylesheet" href="/css/normalize.css"> -->
     <!-- <link rel="stylesheet" href="/css/editor.css"> -->
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/xeditable.min.css">
     <!-- custom styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/jquery-ui.min.css">
+
+
+
+
+</head>
+
+<body id="main-body" ng-cloak>
+    <div class="container">
+        <!-- HEADER -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="nav-color">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">ITgma</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse" ng-controller="authController">
+                    <ul class="nav navbar-nav">
+                        <li ng-show="authenticated">
+                            <a href="/dashboard" id="currentUser">Dashboard</a>
+                        </li>
+                        <li ng-show="authenticated">
+                            <a href="#" id="currentUser">Export PDF</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li ng-show="authenticated">
+                            <a href="#">Signed in as:</a>
+                        </li>
+                        <li ng-show="authenticated">
+                            <a href="#">{{currentUser}}</a>
+                        </li>
+                        <li ng-show="authenticated">
+                            <a href="#" ng-click="signout()" id="currentUser">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+        <!-- ANGULAR DYNAMIC CONTENT -->
+        <div ng-view></div>
+
+    </div>
 
     <!-- JS -->
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jquery.min.js"></script>
     <script src="/js/login.js"></script>
     <script src="/js/angular/angular.js">
     </script>
@@ -74,35 +116,8 @@
     <script src="/controllers/editor/PersonalSkillsController.js"></script>
     <script src="/controllers/editor/TechnicalSkillsController.js"></script>
     <script src="/controllers/editor/WorkExperienceController.js"></script>
-
-
-</head>
-
-<body id="main-body" ng-cloak>
-    <div class="container">
-        <!-- HEADER -->
-        <nav class="navbar navbar-fixed-top" id="nav-color">
-            <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="/">ITgma</a>
-                </div>
-                <ul class="nav navbar-nav" ng-controller="authController">
-
-                    <li ng-show="authenticated"><a href="/dashboard">Dashboard</a></li>
-                    <li ng-show="authenticated"><a href="/editor">Edit CV</a></li>
-                    <!-- <li ng-show="authenticated"><a href="#">Export PDF</a></li>-->
-                    <!-- <p class="navbar-right navbar-text" ng-hide="authenticated"><a href="/">Login</a> or <a href="/">Register</a></p> -->
-                    <p class="navbar-right navbar-text" ng-show="authenticated"><a href="#" ng-click="signout()" id="logOut">Logout</a></p>
-                    <p class="navbar-right navbar-text" ng-show="authenticated" id="signOut"> Signed in as <span id="currentUser">{{currentUser}}</span></p>
-                </ul>
-            </div>
-        </nav>
-        <!-- ANGULAR DYNAMIC CONTENT -->
-        <div ng-view></div>
-
-    </div>
-
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 </body>
 
 </html>

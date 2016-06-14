@@ -68,7 +68,7 @@
     <br>
 
     <!-- SEARCH for employees end -->
-    <section id="employeesSection" class="scrollable">
+    <section id="employeesSection">
         <div class="row">
             <div class="col-md-12">
                 <div ng-repeat="cvs in dash.allCvs | filter:searchEmployee | orderBy:'basics.firstName'">
@@ -77,12 +77,13 @@
                             <header class="w3-container w3-light-grey">
                                 <h3>{{cvs.basics.firstName}}</h3>
                             </header>
-                            <div class="w3-container ">
-                                <img src="img/avatarMan.png " alt="Avatar " class="w3-left w3-circle img-response " id="slika " />
-                                <p>{{cvs.basics.jobTitle}}</p>
-                                <p>{{cvs.contacts.email}}</p>
+                            <div class="w3-container">
+                                <img src="img/avatar.png " alt="Avatar " class="w3-left img-response" id="cvListImg" />
+                                <h4>{{cvs.basics.jobTitle}}</h4>
+                                <br/>
+                                <h5>{{cvs.contacts.email}}</h5>
                             </div>
-                            <button class="w3-btn-block w3-teal " ng-click='dash.displayCvForSpecificUser(cvs, false)'>View</button>
+                            <button class="w3-btn-block w3-teal " ng-click='dash.displayCvForSpecificUser(cvs, false)'>View CV</button>
                         </div>
                     </div>
                 </div>
@@ -90,5 +91,4 @@
         </div>
         </div>
         </div>
-
     </section>
