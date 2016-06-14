@@ -1,138 +1,138 @@
 <link rel="stylesheet" href="/css/editor.css">
 <div id='editorTemplate'>
-<main class="main">
-    <div class='row' style="background-color: #005580;">
-        <!-- left side -->
-        <section class="col-md-4 col-lg-4 col-sm-12 leftside">
-            <h2></h2>
-            <!-- About controller -->
-            <div ng-controller="AboutController as about">
-            <!--Basis info section -->
+    <main class="main">
+        <div class='row' style="background-color: #005580;">
+            <!-- left side -->
+            <section class="col-md-4 col-lg-4 col-sm-12 leftside">
+                <h2></h2>
+                <!-- About controller -->
+                <div ng-controller="AboutController as about">
+                    <!--Basis info section -->
 
-            <section class="row basicsInfo">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3">
-                        <img src="http://philosophy.ucr.edu/wp-content/uploads/2014/10/no-profile-img.gif" alt="profileImg" class="img-circle img-responsive" id="img">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 col-lg-12">
-                            <h4 style='color:white;border-bottom: none;' editable-text="about.user.firstName" ng-model='about.user.name' class='text-center'>{{about.user.firstName || 'empty'}}</h4>
-                            <h4 style='color:white;border-bottom: none;' editable-text="about.user.lastName" ng-model='about.user.name' class='text-center'>{{about.user.lastName || 'empty'}}</h4>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 col-lg-12" id="jobTittle">
-                        <h4 style='color:white;border-bottom: none;' editable-text="about.user.jobTittle" ng-model='about.user.jobTittle' class='text-center' >{{about.user.jobTittle || 'empty'}}</h4>
-                    </div>
-                </div>
-            </section>
-            <!--Basis info section end -->
-            <!--Summary info section -->
-            <section class="row summary" style="text-align: left;">
-                <div class='col-lg-12 col-sm-12'>
-                <h4><span class="glyphicon glyphicon-file" aria-hidden="true"></span> ABOUT</h4>
-                     <span class='about' style='color:white;border-bottom: none;' ng-click="rowformSummary.$show()" editable-textarea="about.user.summary" e-rows="7" e-cols="40" ng-model='about.user.summary' class='text-center' e-form="rowformSummary"><small>{{about.user.summary || 'empty'}}</small></span>
-                    <form editable-form name="rowformSummary" ng-show="rowformSummary.$visible" class="form-buttons form-inline col-md-12" shown="inserted == about.user" >
-                            <hr>
-                          <button type="submit" ng-disabled="rowformSummary.$waiting" ng-click='' class="btn btn-primary">
+                    <section class="row basicsInfo">
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3">
+                                <img src="http://philosophy.ucr.edu/wp-content/uploads/2014/10/no-profile-img.gif" alt="profileImg" class="img-circle img-responsive" id="img">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12">
+                                <h4 style='color:white;border-bottom: none;' editable-text="<about class=" use "></about>r.firstName" ng-model='about.user.name' class='text-center'>{{about.user.firstName || 'empty'}}</h4>
+                                <h4 style='color:white;border-bottom: none;' editable-text="about.user.lastName" ng-model='about.user.name' class='text-center'>{{about.user.lastName || 'empty'}}</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12" id="jobTittle">
+                                <h4 style='color:white;border-bottom: none;' editable-text="about.user.jobTittle" ng-model='about.user.jobTittle' class='text-center'>{{about.user.jobTittle || 'empty'}}</h4>
+                            </div>
+                        </div>
+                    </section>
+                    <!--Basis info section end -->
+                    <!--Summary info section -->
+                    <section class="row summary" style="text-align: left;">
+                        <div class='col-lg-12 col-sm-12'>
+                            <h4><span class="glyphicon glyphicon-file" aria-hidden="true"></span> ABOUT</h4>
+                            <span class='about' style='color:white;border-bottom: none;' ng-click="rowformSummary.$show()" editable-textarea="about.user.summary" e-rows="7" e-cols="40" ng-model='about.user.summary' class='text-center' e-form="rowformSummary"><small>{{about.user.summary || 'empty'}}</small></span>
+                            <form editable-form name="rowformSummary" ng-show="rowformSummary.$visible" class="form-buttons form-inline col-md-12" shown="inserted == about.user">
+                                <hr>
+                                <button type="submit" ng-disabled="rowformSummary.$waiting" ng-click='' class="btn btn-primary">
                             Save
                           </button>
-                          <button type="button" ng-disabled="rowformSummary.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                                <button type="button" ng-disabled="rowformSummary.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
                             Cancel
                           </button>
-                          <button type="button" ng-disabled="rowformSummary.$waiting" ng-click="" class="btn btn-danger">
+                                <button type="button" ng-disabled="rowformSummary.$waiting" ng-click="" class="btn btn-danger">
                             Delete
                           </button>
-                          <hr>
-                    </form>
-                    <hr/>
-                </div>
-            </section>
-            <!--Basis info section -->
+                                <hr>
+                            </form>
+                            <hr/>
+                        </div>
+                    </section>
+                    <!--Basis info section -->
 
-            <!--Contact info section -->
-            <section class="row skills" >
-                <div class="col-md-10" style="margin-top: 8px;">
-                    <h4> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> CONTACT</h4>
-                </div>
-                <div class="col-md-2" ng-show='about.showEditable'>
-                    <button type="button" class="btn btn-info add btn-sm" ng-click="showDiv=true" > + </button>
-                </div>
-                <form class="col-md-12" ng-submit="about.addContact()" style="margin:30px" ng-show="showDiv">
-                   <select style="color:black" name="selected" id="selected" ng-model="selected">
+                    <!--Contact info section -->
+                    <section class="row skills">
+                        <div class="col-md-10" style="margin-top: 8px;">
+                            <h4> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> CONTACT</h4>
+                        </div>
+                        <div class="col-md-2" ng-show='about.showEditable'>
+                            <button type="button" class="btn btn-info add btn-sm" ng-click="showDiv=true"> + </button>
+                        </div>
+                        <form class="col-md-12" ng-submit="about.addContact()" style="margin:30px" ng-show="showDiv">
+                            <select style="color:black" name="selected" id="selected" ng-model="selected">
                        <option value="{{about.contacts.email || 'Enter Email' }}">Email</option>
                        <option value="{{about.contacts.phone || 'Enter Phone' }}">Phone</option>
                        <option value="{{about.contacts.city || 'Enter City' }}">City</option>
                        <option value="{{about.contacts.country || 'Enter Country' }}">Country</option>
                        <option value="{{about.contacts.website || 'Enter Website' }}">Website</option>
                    </select>
-                    <input type="text" class="form-control" ng-model="personalSkills.textInput" placeholder="{{selected}}"><br>
-                    
-                    <input type="submit" class="btn btn-primary" value="Add"  ng-click="showDiv=false">
-                    <input type="button" class="btn btn-default" value="Cancel"  ng-click="showDiv=false">
-                </form>
-                    <div class="bar-sections">
-                        <div class="col-md-10">
-                            <div ng-hide="about.contacts.email == null" ng-click="rowform.$show()" editable-text="about.contacts.email" e-name="email" e-form="rowform" e-required>
-                              {{ about.contacts.email}}
-                            </div>
-                            <div ng-hide="about.contacts.phone == null" ng-click="rowform.$show()" editable-text="about.contacts.phone" e-name="phone" e-form="rowform" e-required>
-                              {{ about.contacts.phone}}
-                            </div>
-                            <div ng-hide="about.contacts.city == null" ng-click="rowform.$show()" editable-text="about.contacts.city" e-name="city" e-form="rowform" e-required>
-                              {{ about.contacts.city}}
-                            </div>
-                            <div ng-hide="about.contacts.country == null" ng-click="rowform.$show()" editable-text="about.contacts.country" e-name="country" e-form="rowform" e-required>
-                              {{ about.contacts.country}}
-                            </div>
-                            <div ng-hide="about.contacts.website == null" ng-click="rowform.$show()" editable-text="about.contacts.website" e-name="website" e-form="rowform" e-required>
-                              <a href="#">{{ about.contacts.website}}</a>
-                            </div>
-                            <div ng-repeat="s in about.contacts.social" >                               
-                            <div ng-hide="s.network == null" ng-click="rowform.$show()" editable-text="social" e-name="facebook" e-form="rowform" e-required style='color:white'>
-                              {{s.network}}
-                            </div>
+                            <input type="text" class="form-control" ng-model="personalSkills.textInput" placeholder="{{selected}}"><br>
+
+                            <input type="submit" class="btn btn-primary" value="Add" ng-click="showDiv=false">
+                            <input type="button" class="btn btn-default" value="Cancel" ng-click="showDiv=false">
+                        </form>
+                        <div class="bar-sections">
+                            <div class="col-md-10">
+                                <div ng-hide="about.contacts.email == null" ng-click="rowform.$show()" editable-text="about.contacts.email" e-name="email" e-form="rowform" e-required>
+                                    {{ about.contacts.email}}
+                                </div>
+                                <div ng-hide="about.contacts.phone == null" ng-click="rowform.$show()" editable-text="about.contacts.phone" e-name="phone" e-form="rowform" e-required>
+                                    {{ about.contacts.phone}}
+                                </div>
+                                <div ng-hide="about.contacts.city == null" ng-click="rowform.$show()" editable-text="about.contacts.city" e-name="city" e-form="rowform" e-required>
+                                    {{ about.contacts.city}}
+                                </div>
+                                <div ng-hide="about.contacts.country == null" ng-click="rowform.$show()" editable-text="about.contacts.country" e-name="country" e-form="rowform" e-required>
+                                    {{ about.contacts.country}}
+                                </div>
+                                <div ng-hide="about.contacts.website == null" ng-click="rowform.$show()" editable-text="about.contacts.website" e-name="website" e-form="rowform" e-required>
+                                    <a href="#">{{ about.contacts.website}}</a>
+                                </div>
+                                <div ng-repeat="s in about.contacts.social">
+                                    <div ng-hide="s.network == null" ng-click="rowform.$show()" editable-text="social" e-name="facebook" e-form="rowform" e-required style='color:white'>
+                                        {{s.network}}
+                                    </div>
+                                </div>
+
                             </div>
 
-                        </div>
-                        
-                        <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline col-md-12" shown="inserted == about.contacts" >
-                            <hr>
-                          <button type="submit" ng-disabled="rowform.$waiting" ng-click='personalSkills.editPersonallSkill(x)' class="btn btn-primary">
+                            <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline col-md-12" shown="inserted == about.contacts">
+                                <hr>
+                                <button type="submit" ng-disabled="rowform.$waiting" ng-click='personalSkills.editPersonallSkill(x)' class="btn btn-primary">
                             Save
                           </button>
-                          <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                                <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
                             Cancel
                           </button>
-                          <button type="button" ng-disabled="rowform.$waiting" ng-click="about.removeContacts($index)" class="btn btn-danger">
+                                <button type="button" ng-disabled="rowform.$waiting" ng-click="about.removeContacts($index)" class="btn btn-danger">
                             Delete
                           </button>
-                          <hr>
-                        </form>
-                    
+                                <hr>
+                            </form>
+
+                        </div>
+
+                    </section>
+                    <hr/>
+                    <!--Contact info section end-->
+
+                    <!-- About controller end -->
+                </div>
+                <!--Profesional skills info section -->
+                <section class="row skills" ng-controller='PersonalSkillsController as personalSkills'>
+                    <div class="col-md-10" style="margin-top: 8px;">
+                        <h4> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> PERSONAL SKILLS</h4>
                     </div>
-                       
-            </section>
-             <hr/>
-            <!--Contact info section end-->
-            
-            <!-- About controller end -->
-            </div>
-            <!--Profesional skills info section -->
-            <section class="row skills" ng-controller='PersonalSkillsController as personalSkills'>
-                <div class="col-md-10" style="margin-top: 8px;">
-                    <h4> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> PERSONAL SKILLS</h4>
-                </div>
-                <div class="col-md-2">
-                    <button type="button" class="btn btn-info add btn-sm" ng-click="showDiv=true" ng-show='personalSkills.showEditable'> + </button>
-                </div>
-                <form class="col-md-12" ng-submit="personalSkills.addPerSkill()" style="margin:30px" ng-show="showDiv">
-                    <input type="text" class="form-control" ng-model="personalSkills.textName" placeholder="Language"><br>
-                    <input type="number" class="form-control" ng-model="personalSkills.numLevel" placeholder="Knowledge percentage"><br>
-                    <input type="submit" class="btn btn-primary" value="Add"  ng-click="showDiv=false">
-                    <input type="button" class="btn btn-default" value="Cancel"  ng-click="showDiv=false">
-                </form>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-info add btn-sm" ng-click="showDiv=true" ng-show='personalSkills.showEditable'> + </button>
+                    </div>
+                    <form class="col-md-12" ng-submit="personalSkills.addPerSkill()" style="margin:30px" ng-show="showDiv">
+                        <input type="text" class="form-control" ng-model="personalSkills.textName" placeholder="Language"><br>
+                        <input type="number" class="form-control" ng-model="personalSkills.numLevel" placeholder="Knowledge percentage"><br>
+                        <input type="submit" class="btn btn-primary" value="Add" ng-click="showDiv=false">
+                        <input type="button" class="btn btn-default" value="Cancel" ng-click="showDiv=false">
+                    </form>
                     <div class="bar-sections" ng-repeat="x in personalSkills.perSkills">
                         <div class="col-md-6">
                             <span ng-click="rowform.$show()" editable-text="x.name" e-name="name" e-form="rowform" e-required>
@@ -147,378 +147,378 @@
                                 </div>
                             </div>
                         </div>
-                        <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline col-md-12" shown="inserted == x" >
+                        <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline col-md-12" shown="inserted == x">
                             <hr>
-                          <button type="submit" ng-disabled="rowform.$waiting" ng-click='personalSkills.editPersonallSkill(x)' class="btn btn-primary">
+                            <button type="submit" ng-disabled="rowform.$waiting" ng-click='personalSkills.editPersonallSkill(x)' class="btn btn-primary">
                             Save
                           </button>
-                          <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                            <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
                             Cancel
                           </button>
-                          <button type="button" ng-disabled="rowform.$waiting" ng-click="personalSkills.removePerSkill($index)" class="btn btn-danger">
+                            <button type="button" ng-disabled="rowform.$waiting" ng-click="personalSkills.removePerSkill($index)" class="btn btn-danger">
                             Delete
                           </button>
-                          <hr>
+                            <hr>
                         </form>
                     </div>
+                </section>
+                <!--Skills section  end-->
             </section>
             <!--Skills section  end-->
-        </section>
-            <!--Skills section  end-->
-        </section>
-        <!--Left side info section end-->
-
-        <!--right side -->
-        <section class="col-lg-8 col-md-8 col-sm-12 rightside" style="background-color:white;   height: 100%">
-            <h2></h2>
-            <!--Work expirience info section -->
-            <section class="workExprience" ng-controller="WorkExperienceController as experience" >
-                <!-- tittle row -->
-                <div class="col-lg-10 col-md-10 col-sm-10 pull-left">
-                    <h4>WORK EXPIRIENCE</h4>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 pull-right" ng-show='experience.showEditable'>
-                    <button type="button"  ng-click='showDiv=true' class="btn btn-info add  "> + </button>
-                </div>
-
-                <!-- new experience -->
-                <form ng-submit="" editable-form  style="margin:30px" ng-show="showDiv"  validate>
-                    <hr />
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3">
-                            <p>Enter your company name:</p>
-                       </div>
-                       <div class='col-lg-5 col-md-5'>
-                            <input type='text' id='companyName' ng-model='experience.user.company' placeholder="Eneter company name" />
-                        </div>
-                    </div>
-                    <div class='row'>
-                        <div class='col-lg-3 col-md-3'>
-                            <p>Enter date from - to</p>
-                        </div>
-                        <div class="col-lg-3 col-md-3">
-                                <input type='date' ng-model='experience.user.dateFrom' />
-                        </div>
-                         <div class="col-lg-3 col-md-3">
-                                <input type='date' ng-model='experience.user.dateTo' />
-                         </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-lg-3 col-md-3">
-                            <p>Enter your position</p>
-                        </div>
-                        <div class='col-lg-5 col-md-5'>
-                            <input type='text' placeholder="Eneter position" ng-model='experience.user.position' />
-                        </div>
-                     </div>
-                     <div class='row'>
-                         <div class='col-lg-3 col-md-3'>
-                             <p>Enter summary</p>
-                         </div>
-                         <div class='col-lg-5 col-md-5'>
-                            <input type='text' placeholder="Eneter summary" ng-model='experience.user.summary' />
-                         </div>
-                     </div>
-                     <div class='row'>
-                         <div class='col-lg-3 col-md-3'>
-                             <p>Enter comapany website</p>
-                         </div>
-                         <div class='col-lg-5 col-md-5'>
-                            <input type='text' placeholder="Web site" ng-model='experience.user.website' />
-                        </div>
-                     </div>
-                    <div class='row'>
-                        <div class='col-lg-3 col-md-3'>
-                            <input type="submit" class="btn-primary btn-sm" value="Add" ng-click="experience.addExperience(experience.user); showDiv=false">
-                            <input type="button" ng-disabled="rowform.$waiting" ng-click="showDiv=false" class="btn btn-default btn-sm" value='Cancel' />
-                        </div>
-                    </div>
-                </form>
-                <hr />
-                <!-- company/description row -->
-                <div class="row" style='padding-top:50px' ng-repeat="item in experience.items">
-                    <div class="col-lg-10 col-md-10 col-sm-10">
-                        <div class="container">
-                            <div class='row'>
-                                <div ng-hide="item.company == ''" class="col-lg-3 col-md-3 col-sm-3" >
-                                      <h4 style='margin-left:0px' editable-text='item.company' e-form="rowform">{{item.company || 'empty'}}</h4>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-7" ng-hide="item.startDate == '' && item.endDate == ''">
-                                    <h4 class='dispaly:inline'><span editable-date='item.startDate'  e-form="rowform" ng-hide="item.startDate == ''">{{item.startDate || 'empty' |  date:'dd-MM-yyyy'}}</span>
-                                    - <span editable-date='item.endDate'  e-form="rowform" ng-hide="item.endDate == ''">{{item.endDate || 'empty' |  date:'dd-MM-yyyy'}}</span></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                          <div class='row'>
-                            <div class="col-lg-7 col-md-7 col-sm-10" ng-hide="item.position == ''">
-                               <b>Position: <span editable-text="item.position" e-form="rowform"> {{item.position || 'empty'}}</span></b>
-                            </div>
-                            <div class='col-lg-7 col-md-7 col-sm-12' ng-hide="item.summary == ''">
-                                    <span editable-textarea="item.summary" e-rows="7" e-cols="80" e-form="rowform"><b>Summary</b>: {{item.summary || 'empty'}}</span>
-                            </div>
-                            <div class='col-lg-7 col-md-7 col-sm-10'>
-                                <span editable-text="item.website" e-form="rowform"  ng-hide="item.website == ''"><a ng-href='{{item.website}}'>{{item.website || 'empty'}}</a></span>
-                            </div>
-                           </div>
-                         </div>
-
-                       <!-- form -->
-                        <div class='row'>
-                            <div class='pull-right col-lg-4 col-md-4 col-sm-4' >
-                                <form editable-form name="rowform" onaftersave="experience.editExperience(item)" ng-show="rowform.$visible" class="form-buttons form-inline" >
-                                    <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary" >
-                                        save
-                                    </button>
-                                    <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
-                                        cancel
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class='row' ng-show='experience.showEditable'>
-                            <div class='pull-right'>
-                                <div class="buttons col-lg-12 col-md-8 col-sm-12" ng-show="!rowform.$visible">
-                                    <button class="btn btn-primary" ng-click="rowform.$show()">edit</button>
-                                    <button class="btn btn-danger" ng-click="experience.removeExperience(item)">del</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
             </section>
-            <!--Work expirience info section end-->
+            <!--Left side info section end-->
 
-
-            <!--Education info section -->
-            <section class="row education" ng-controller="EducationController as education">
-                <!-- tittle row -->
-                <div class="col-lg-10 col-md-10 col-sm-10">
-                    <h4>EDUCATION</h4>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2">
-                    <button type="button" ng-click='showDiv=true' class="btn btn-info add" ng-show='education.showEditable'> + </button>
-                </div>
-
-                <!-- add new education -->
-                <form ng-submit="" style="margin:30px" ng-show="showDiv"  validate>
-                    <hr />
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3">
-                            <p>Enter your institution name:</p>
-                       </div>
-                       <div class='col-lg-5 col-md-5'>
-                            <input type='text' id='institutionName' ng-model='education.user.institution' placeholder="Eneter institution name" />
-                        </div>
+            <!--right side -->
+            <section class="col-lg-8 col-md-8 col-sm-12 rightside" style="background-color:white;   height: 100%">
+                <h2></h2>
+                <!--Work expirience info section -->
+                <section class="workExprience" ng-controller="WorkExperienceController as experience">
+                    <!-- tittle row -->
+                    <div class="col-lg-10 col-md-10 col-sm-10 pull-left">
+                        <h4>WORK EXPIRIENCE</h4>
                     </div>
-                    <div class='row'>
-                        <div class='col-lg-3 col-md-3'>
-                            <p>Enter date from - to</p>
-                        </div>
-                        <div class="col-lg-3 col-md-3">
-                                <input type='date' ng-model='education.user.dateFrom' />
-                        </div>
-                         <div class="col-lg-3 col-md-3">
-                                <input type='date' ng-model='education.user.dateTo' />
-                         </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-lg-3 col-md-3">
-                            <p>Enter your area</p>
-                        </div>
-                        <div class='col-lg-5 col-md-5'>
-                            <input type='text' placeholder="Eneter area" ng-model='education.user.area' />
-                        </div>
-                     </div>
-                     <div class='row'>
-                         <div class='col-lg-3 col-md-3'>
-                             <p>Enter summary</p>
-                         </div>
-                         <div class='col-lg-5 col-md-5'>
-                            <input type='text' placeholder="Eneter summary" ng-model='education.user.summary' />
-                         </div>
-                     </div>
-                     <div class='row'>
-                         <div class='col-lg-3 col-md-3'>
-                             <p>Enter study type</p>
-                         </div>
-                         <div class='col-lg-5 col-md-5'>
-                            <input type='text' placeholder="Enter your study type" ng-model='education.user.studyType' />
-                        </div>
-                     </div>
-                    <div class='row'>
-                        <div class='col-lg-3 col-md-3'>
-                            <input type="submit" class="btn-primary btn-sm" value="Add" ng-click="education.addEducation(education.user); showDiv=false">
-                             <input type="button" ng-disabled="rowform.$waiting" ng-click="showDiv=false" class="btn btn-default btn-sm" value='Cancel' />
-                        </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 pull-right" ng-show='experience.showEditable'>
+                        <button type="button" ng-click='showDiv=true' class="btn btn-info add  "> + </button>
                     </div>
-                </form>
-                <!--education -->
-                <div class="row" style='padding-top:50px' ng-repeat="item in education.items">
-                    <div class="col-lg-10 col-md-10 col-sm-10">
-                        <div class="container">
+
+                    <!-- new experience -->
+                    <form ng-submit="" editable-form style="margin:30px" ng-show="showDiv" validate>
+                        <hr />
                         <div class="row">
-                            <div  class="col-lg-3 col-md-3 col-sm-3"  ng-hide="item.institution == ''">
-                                <h4 style="margin-left:0px;"  editable-text='item.institution' e-form="rowform">{{item.institution || 'empty'}}</h4>
+                            <div class="col-lg-3 col-md-3">
+                                <p>Enter your company name:</p>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-7" ng-hide="item.startDate == '' && item.endDate == ''">
-                                <h4 class='dispaly:inline'><span editable-date='item.startDate'  e-form="rowform"  ng-hide="item.startDate == ''">{{item.startDate || 'empty' |  date:'dd-MM-yyyy'}}</span>
-                                - <span editable-date='item.endDate'  e-form="rowform"  ng-hide="item.endDate == ''">{{item.endDate || 'empty' |  date:'dd-MM-yyyy'}}</span></h4>
+                            <div class='col-lg-5 col-md-5'>
+                                <input type='text' id='companyName' ng-model='experience.user.company' placeholder="Eneter company name" />
                             </div>
                         </div>
-                        </div>
-                        <div class="container">
-                          <div class='row'>
-                            <div class="col-lg-7 col-md-7 col-sm-10"  ng-hide="item.area == ''">
-                               <b>Position: <span editable-text="item.area" e-form="rowform"> {{item.area || 'empty'}}</span></b>
-                            </div>
-                            <div class='col-lg-7 col-md-7 col-sm-12'  ng-hide="item.summary == ''">
-                                <span editable-textarea="item.summary" e-rows="7" e-cols="100" e-form="rowform">
-                                <b>Summary</b>: {{item.summary || 'empty'}}</span>
-                            </div>
-                            <div class='col-lg-7 col-md-7 col-sm-10'>
-                                <b><span editable-text="item.studyType" e-form="rowform"  ng-hide="item.studyType == ''">Study type: {{item.studyType || 'empty'}}</span></b>
-                            </div>
-                           </div>
-                         </div>
-
-
-                    <!-- buttons -->
                         <div class='row'>
-                            <div class='pull-right col-lg-4 col-md-4 col-sm-4' >
-                                <form editable-form name="rowform" onaftersave="education.editEducation(item)" ng-show="rowform.$visible" class="form-buttons form-inline" >
-                                    <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary" >
+                            <div class='col-lg-3 col-md-3'>
+                                <p>Enter date from - to</p>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <input type='date' ng-model='experience.user.dateFrom' />
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <input type='date' ng-model='experience.user.dateTo' />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3">
+                                <p>Enter your position</p>
+                            </div>
+                            <div class='col-lg-5 col-md-5'>
+                                <input type='text' placeholder="Eneter position" ng-model='experience.user.position' />
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-lg-3 col-md-3'>
+                                <p>Enter summary</p>
+                            </div>
+                            <div class='col-lg-5 col-md-5'>
+                                <input type='text' placeholder="Eneter summary" ng-model='experience.user.summary' />
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-lg-3 col-md-3'>
+                                <p>Enter comapany website</p>
+                            </div>
+                            <div class='col-lg-5 col-md-5'>
+                                <input type='text' placeholder="Web site" ng-model='experience.user.website' />
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-lg-3 col-md-3'>
+                                <input type="submit" class="btn-primary btn-sm" value="Add" ng-click="experience.addExperience(experience.user); showDiv=false">
+                                <input type="button" ng-disabled="rowform.$waiting" ng-click="showDiv=false" class="btn btn-default btn-sm" value='Cancel' />
+                            </div>
+                        </div>
+                    </form>
+                    <hr />
+                    <!-- company/description row -->
+                    <div class="row" style='padding-top:50px' ng-repeat="item in experience.items">
+                        <div class="col-lg-10 col-md-10 col-sm-10">
+                            <div class="container">
+                                <div class='row'>
+                                    <div ng-hide="item.company == ''" class="col-lg-3 col-md-3 col-sm-3">
+                                        <h4 style='margin-left:0px' editable-text='item.company' e-form="rowform">{{item.company || 'empty'}}</h4>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-7" ng-hide="item.startDate == '' && item.endDate == ''">
+                                        <h4 class='dispaly:inline'><span editable-date='item.startDate'  e-form="rowform" ng-hide="item.startDate == ''">{{item.startDate || 'empty' |  date:'dd-MM-yyyy'}}</span>
+                                    - <span editable-date='item.endDate'  e-form="rowform" ng-hide="item.endDate == ''">{{item.endDate || 'empty' |  date:'dd-MM-yyyy'}}</span></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class='row'>
+                                    <div class="col-lg-7 col-md-7 col-sm-10" ng-hide="item.position == ''">
+                                        <b>Position: <span editable-text="item.position" e-form="rowform"> {{item.position || 'empty'}}</span></b>
+                                    </div>
+                                    <div class='col-lg-7 col-md-7 col-sm-12' ng-hide="item.summary == ''">
+                                        <span editable-textarea="item.summary" e-rows="7" e-cols="80" e-form="rowform"><b>Summary</b>: {{item.summary || 'empty'}}</span>
+                                    </div>
+                                    <div class='col-lg-7 col-md-7 col-sm-10'>
+                                        <span editable-text="item.website" e-form="rowform" ng-hide="item.website == ''"><a ng-href='{{item.website}}'>{{item.website || 'empty'}}</a></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- form -->
+                            <div class='row'>
+                                <div class='pull-right col-lg-4 col-md-4 col-sm-4'>
+                                    <form editable-form name="rowform" onaftersave="experience.editExperience(item)" ng-show="rowform.$visible" class="form-buttons form-inline">
+                                        <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
                                         save
                                     </button>
-                                    <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                                        <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
                                         cancel
                                     </button>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
-                        <div class='row' ng-show='education.showEditable'>
-                            <div class='pull-right'>
-                                <div class="buttons col-lg-12 col-md-8 col-sm-12" ng-show="!rowform.$visible">
-                                    <button class="btn btn-primary" ng-click="rowform.$show()">edit</button>
-                                    <button class="btn btn-danger" ng-click="education.removeEducation(item)">del</button>
+                            <div class='row' ng-show='experience.showEditable'>
+                                <div class='pull-right'>
+                                    <div class="buttons col-lg-12 col-md-8 col-sm-12" ng-show="!rowform.$visible">
+                                        <button class="btn btn-primary" ng-click="rowform.$show()">edit</button>
+                                        <button class="btn btn-danger" ng-click="experience.removeExperience(item)">del</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        </div>
-                </div>
-                <!-- education/description row -->
-            </section>
-            <hr/>
-            <!--Education info section end-->
+                    </div>
 
-            <!--Technical skills info section -->
-            <section class="row skills" ng-controller='TechnicalSkillsController as technicalSkill'>
-                <div class="col-md-10">
-                    <h4>TECHNICAL SKILLS</h4>
-                </div>
-                <div class="col-md-2">
-                    <button type="button" class="btn btn-info add" ng-click="showDiv=true" ng-show='technicalSkill.showEditable'> + </button>
-                </div>
-                <form class="col-md-6" ng-submit="technicalSkill.addSkill()" style="margin:30px" ng-show="showDiv">
-                    <input type="text" class="form-control" ng-model="technicalSkill.textName" placeholder="Language"><br>
-                    <input type="number" class="form-control" ng-model="technicalSkill.numLevel" placeholder="Knowledge percentage"><br>
-                    <input type="submit" class="btn btn-primary" value="Add"  ng-click="showDiv=false">
-                    <input type="button" class="btn btn-default" value="Cancel"  ng-click="showDiv=false">
-                </form>
-                <div class="row bar-sections">
-                    <div class="col-md-6" ng-repeat="x in technicalSkill.techSkills">
-                        <div class="col-md-6">
-                            <span ng-click="rowform.$show()" editable-text="x.name" e-name="name" e-form="rowform" e-required>
+
+                </section>
+                <!--Work expirience info section end-->
+
+
+                <!--Education info section -->
+                <section class="row education" ng-controller="EducationController as education">
+                    <!-- tittle row -->
+                    <div class="col-lg-10 col-md-10 col-sm-10">
+                        <h4>EDUCATION</h4>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <button type="button" ng-click='showDiv=true' class="btn btn-info add" ng-show='education.showEditable'> + </button>
+                    </div>
+
+                    <!-- add new education -->
+                    <form ng-submit="" style="margin:30px" ng-show="showDiv" validate>
+                        <hr />
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3">
+                                <p>Enter your institution name:</p>
+                            </div>
+                            <div class='col-lg-5 col-md-5'>
+                                <input type='text' id='institutionName' ng-model='education.user.institution' placeholder="Eneter institution name" />
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-lg-3 col-md-3'>
+                                <p>Enter date from - to</p>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <input type='date' ng-model='education.user.dateFrom' />
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <input type='date' ng-model='education.user.dateTo' />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3">
+                                <p>Enter your area</p>
+                            </div>
+                            <div class='col-lg-5 col-md-5'>
+                                <input type='text' placeholder="Eneter area" ng-model='education.user.area' />
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-lg-3 col-md-3'>
+                                <p>Enter summary</p>
+                            </div>
+                            <div class='col-lg-5 col-md-5'>
+                                <input type='text' placeholder="Eneter summary" ng-model='education.user.summary' />
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-lg-3 col-md-3'>
+                                <p>Enter study type</p>
+                            </div>
+                            <div class='col-lg-5 col-md-5'>
+                                <input type='text' placeholder="Enter your study type" ng-model='education.user.studyType' />
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-lg-3 col-md-3'>
+                                <input type="submit" class="btn-primary btn-sm" value="Add" ng-click="education.addEducation(education.user); showDiv=false">
+                                <input type="button" ng-disabled="rowform.$waiting" ng-click="showDiv=false" class="btn btn-default btn-sm" value='Cancel' />
+                            </div>
+                        </div>
+                    </form>
+                    <!--education -->
+                    <div class="row" style='padding-top:50px' ng-repeat="item in education.items">
+                        <div class="col-lg-10 col-md-10 col-sm-10">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-3 col-sm-3" ng-hide="item.institution == ''">
+                                        <h4 style="margin-left:0px;" editable-text='item.institution' e-form="rowform">{{item.institution || 'empty'}}</h4>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-7" ng-hide="item.startDate == '' && item.endDate == ''">
+                                        <h4 class='dispaly:inline'><span editable-date='item.startDate'  e-form="rowform"  ng-hide="item.startDate == ''">{{item.startDate || 'empty' |  date:'dd-MM-yyyy'}}</span>
+                                - <span editable-date='item.endDate'  e-form="rowform"  ng-hide="item.endDate == ''">{{item.endDate || 'empty' |  date:'dd-MM-yyyy'}}</span></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class='row'>
+                                    <div class="col-lg-7 col-md-7 col-sm-10" ng-hide="item.area == ''">
+                                        <b>Position: <span editable-text="item.area" e-form="rowform"> {{item.area || 'empty'}}</span></b>
+                                    </div>
+                                    <div class='col-lg-7 col-md-7 col-sm-12' ng-hide="item.summary == ''">
+                                        <span editable-textarea="item.summary" e-rows="7" e-cols="100" e-form="rowform">
+                                <b>Summary</b>: {{item.summary || 'empty'}}</span>
+                                    </div>
+                                    <div class='col-lg-7 col-md-7 col-sm-10'>
+                                        <b><span editable-text="item.studyType" e-form="rowform"  ng-hide="item.studyType == ''">Study type: {{item.studyType || 'empty'}}</span></b>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- buttons -->
+                            <div class='row'>
+                                <div class='pull-right col-lg-4 col-md-4 col-sm-4'>
+                                    <form editable-form name="rowform" onaftersave="education.editEducation(item)" ng-show="rowform.$visible" class="form-buttons form-inline">
+                                        <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                                        save
+                                    </button>
+                                        <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                                        cancel
+                                    </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class='row' ng-show='education.showEditable'>
+                                <div class='pull-right'>
+                                    <div class="buttons col-lg-12 col-md-8 col-sm-12" ng-show="!rowform.$visible">
+                                        <button class="btn btn-primary" ng-click="rowform.$show()">edit</button>
+                                        <button class="btn btn-danger" ng-click="education.removeEducation(item)">del</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- education/description row -->
+                </section>
+                <hr/>
+                <!--Education info section end-->
+
+                <!--Technical skills info section -->
+                <section class="row skills" ng-controller='TechnicalSkillsController as technicalSkill'>
+                    <div class="col-md-10">
+                        <h4>TECHNICAL SKILLS</h4>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-info add" ng-click="showDiv=true" ng-show='technicalSkill.showEditable'> + </button>
+                    </div>
+                    <form class="col-md-6" ng-submit="technicalSkill.addSkill()" style="margin:30px" ng-show="showDiv">
+                        <input type="text" class="form-control" ng-model="technicalSkill.textName" placeholder="Language"><br>
+                        <input type="number" class="form-control" ng-model="technicalSkill.numLevel" placeholder="Knowledge percentage"><br>
+                        <input type="submit" class="btn btn-primary" value="Add" ng-click="showDiv=false">
+                        <input type="button" class="btn btn-default" value="Cancel" ng-click="showDiv=false">
+                    </form>
+                    <div class="row bar-sections">
+                        <div class="col-md-6" ng-repeat="x in technicalSkill.techSkills">
+                            <div class="col-md-6">
+                                <span ng-click="rowform.$show()" editable-text="x.name" e-name="name" e-form="rowform" e-required>
                               {{ x.name || 'empty'  | uppercase}}
                             </span>
 
-                        </div>
-                        <div class="col-md-6">
-                            <div class="progress"ng-click="rowform.$show()" editable-number="x.level" e-name="percentage" e-form="rowform" e-required>
-                                <div class="progress-bar barBlue" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:{{x.level}}%">
-                                    <!--<span class="sr-only">70% Complete</span>-->
+                            </div>
+                            <div class="col-md-6">
+                                <div class="progress" ng-click="rowform.$show()" editable-number="x.level" e-name="percentage" e-form="rowform" e-required>
+                                    <div class="progress-bar barBlue" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:{{x.level}}%">
+                                        <!--<span class="sr-only">70% Complete</span>-->
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == x">
-                         <hr>
-                          <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary" ng-click='technicalSkill.editTechnicalSkill(x)'>
+                            <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == x">
+                                <hr>
+                                <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary" ng-click='technicalSkill.editTechnicalSkill(x)'>
                             Save
                           </button>
-                          <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                                <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
                             Cancel
                           </button>
-                          <button type="button" ng-disabled="rowform.$waiting" ng-click="technicalSkill.removeSkill($index)" class="btn btn-danger">
+                                <button type="button" ng-disabled="rowform.$waiting" ng-click="technicalSkill.removeSkill($index)" class="btn btn-danger">
                             Delete
                           </button>
-                          <hr>
+                                <hr>
 
-                        </form>
+                            </form>
 
+                        </div>
                     </div>
-                </div>
 
-            </section>
-            <hr/>
-            <!--Technical skills info section -->
+                </section>
+                <hr/>
+                <!--Technical skills info section -->
 
-            <!--Languages info section -->
-            <section class="row skills" ng-controller='LanguageController as lanCtrl'>
-                <div class="col-md-10">
-                    <h4>LANGUAGES</h4>
-                </div>
-                <div class="col-md-2">
-                    <button type="button" class="btn btn-info add" ng-click="showDiv=true" ng-show='lanCtrl.showEditable'> + </button>
-                </div>
-                <form class="col-md-6" ng-submit="lanCtrl.addLanguage()" style="margin:30px" ng-show="showDiv">
-                    <input type="text" class="form-control" ng-model="lanCtrl.textName" placeholder="Language"><br>
-                    <input type="number" class="form-control" ng-model="lanCtrl.numLevel" placeholder="Knowledge percentage"><br>
-                    <input type="submit" class="btn btn-primary" value="Add"  ng-click="showDiv=false">
-                    <input type="button" class="btn btn-default" value="Cancel"  ng-click="showDiv=false">
-                </form>
-                <div class="row bar-sections">
-                    <div class="col-md-6" ng-repeat="x in lanCtrl.languages">
-                        <div class="col-md-6">
-                            <span ng-click="rowform.$show()" editable-text="x.name" e-name="name" e-form="rowform" e-required>
+                <!--Languages info section -->
+                <section class="row skills" ng-controller='LanguageController as lanCtrl'>
+                    <div class="col-md-10">
+                        <h4>LANGUAGES</h4>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-info add" ng-click="showDiv=true" ng-show='lanCtrl.showEditable'> + </button>
+                    </div>
+                    <form class="col-md-6" ng-submit="lanCtrl.addLanguage()" style="margin:30px" ng-show="showDiv">
+                        <input type="text" class="form-control" ng-model="lanCtrl.textName" placeholder="Language"><br>
+                        <input type="number" class="form-control" ng-model="lanCtrl.numLevel" placeholder="Knowledge percentage"><br>
+                        <input type="submit" class="btn btn-primary" value="Add" ng-click="showDiv=false">
+                        <input type="button" class="btn btn-default" value="Cancel" ng-click="showDiv=false">
+                    </form>
+                    <div class="row bar-sections">
+                        <div class="col-md-6" ng-repeat="x in lanCtrl.languages">
+                            <div class="col-md-6">
+                                <span ng-click="rowform.$show()" editable-text="x.name" e-name="name" e-form="rowform" e-required>
                               {{ x.name || 'empty'  | uppercase}}
                             </span>
 
-                        </div>
-                        <div class="col-md-6">
-                            <div class="progress"ng-click="rowform.$show()" editable-number="x.level" e-name="percentage" e-form="rowform" e-required>
-                                <div class="progress-bar barBlue" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:{{x.level}}%">
-                                    <!--<span class="sr-only">70% Complete</span>-->
-                                </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="progress" ng-click="rowform.$show()" editable-number="x.level" e-name="percentage" e-form="rowform" e-required>
+                                    <div class="progress-bar barBlue" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:{{x.level}}%">
+                                        <!--<span class="sr-only">70% Complete</span>-->
+                                    </div>
+                                </div>
 
-                        </div>
-                        <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == x">
-                         <hr>
-                          <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary" ng-click='lanCtrl.editLanguage(x)'>
+                            </div>
+                            <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == x">
+                                <hr>
+                                <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary" ng-click='lanCtrl.editLanguage(x)'>
                             Save
                           </button>
-                          <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                                <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
                             Cancel
                           </button>
-                          <button type="button" ng-disabled="rowform.$waiting" ng-click="lanCtrl.removeLang($index)" class="btn btn-danger">
+                                <button type="button" ng-disabled="rowform.$waiting" ng-click="lanCtrl.removeLang($index)" class="btn btn-danger">
                             Delete
                           </button>
-                          <hr>
+                                <hr>
 
-                        </form>
+                            </form>
 
+                        </div>
                     </div>
-                </div>
 
+                </section>
+                <!--Languages skills info section end -->
+                <!--right side info section end -->
             </section>
             <!--Languages skills info section end -->
             <!--right side info section end -->
-        </section>
-            <!--Languages skills info section end -->
-            <!--right side info section end -->
-        </section>
-       </div>
+            </section>
+        </div>
     </main>
-    </div>
+</div>

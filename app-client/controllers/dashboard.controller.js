@@ -88,10 +88,15 @@ cvApp.controller('DashController', ["CvServices", "my_DashService", '$http', "$w
             createDate: {
                 type: Date,
                 default: Date.now
+            },
+            userID: {
+                id: sessionStorage.getItem('currentUserID')
             }
+
         };
         my_DashService.insertResume(newResume)
             .then(function(response) {
+
                 vm.resumes.push(newResume);
                 alert('New resume saved');
                 //reset the form

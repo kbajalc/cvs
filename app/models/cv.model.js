@@ -53,9 +53,8 @@ var ResumeSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    created_by: {
-        type: Schema.ObjectId,
-        ref: 'User'
+    userID: {
+        id: String
     }
 });
 
