@@ -27,7 +27,7 @@ cvApp.controller('authController', function($scope, $http, $rootScope, $location
             if (data.state == 'success') {
                 $rootScope.authenticated = true;
                 $rootScope.currentUser = data.user.username;
-
+                $rootScope.currentUserID = data.user._id;
                 $rootScope.sess = data.user;
                 sessionStorage.setItem('currentUser', $rootScope.sess.username);
                 $location.path('/dashboard');

@@ -33,33 +33,39 @@ var cvApp = angular.module('cvApp', ['ngRoute', 'ngResource', 'xeditable'])
         });
 
         $locationProvider.html5Mode(true);
-    }).run(function(editableOptions, $rootScope, $http, $location) {
-            editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
+    }).run(function(editableOptions, $rootScope, $http, $location, $route) {
+        editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
 
-            //Route restrictions
+        //Route restrictions
 
-            $rootScope.$on('$locationChangeStart', function(event, next, current) {
+        $rootScope.$on('$locationChangeStart', function(event, next, current) {
+            var nextPath = $location.path(),
+                nextRoute = $route.routes[nextPath];
+            console.log($location.path());
+            console.log($route.routes[$location.path()]);
+            if (sessionStorage.currentUser == null) {
+                if (next.templateUrl == 'views/login.template.url') {} else {
 
-                if (sessionStorage.currentUser == null) {
-                    if (next.templateUrl == 'views/login.template.url') {} else {
-                        $location.path('/');
-                    }
-
-                }
-
-                if (sessionStorage.length > 0) {
-                    $rootScope.currentUser = sessionStorage.currentUser;
-                    $rootScope.authenticated = true;
-                } else {
-                    $rootScope.authenticated = false;
+                    $location.path('/');
 
                 }
 
-                $rootScope.signout = function() {
-                    $http.get('auth/signout');
-                    $rootScope.authenticated = false;
+            } else if (nextPath === '/' || nextPath === '/login') $location.path('/dashboard');
 
-                    sessionStorage.clear();
-                      $location.path('/');
-                };
-            });});
+            if (sessionStorage.length > 0) {
+                $rootScope.currentUser = sessionStorage.currentUser;
+                $rootScope.authenticated = true;
+            } else {
+                $rootScope.authenticated = false;
+
+            }
+
+            $rootScope.signout = function() {
+                $http.get('auth/signout');
+                $rootScope.authenticated = false;
+
+                sessionStorage.clear();
+                $location.path('/');
+            };
+        });
+    });
