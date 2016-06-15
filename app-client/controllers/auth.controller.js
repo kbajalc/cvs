@@ -3,7 +3,7 @@ cvApp.controller('authController', function($scope, $http, $rootScope, $location
         username: '',
         password: ''
     };
-    $scope.error_message = '';
+    $scope.errorMessage = '';
 
     $scope.login = function() {
         $http.post('/auth/login', $scope.user).success(function(data) {
@@ -16,7 +16,7 @@ cvApp.controller('authController', function($scope, $http, $rootScope, $location
                 sessionStorage.setItem('currentUserID', $rootScope.sess._id);
                 $location.path('/dashboard');
             } else {
-                $scope.error_message = data.message;
+                $scope.errorMessage = data.message;
                 $rootScope.sess = null;
             }
         });
@@ -32,7 +32,7 @@ cvApp.controller('authController', function($scope, $http, $rootScope, $location
                 sessionStorage.setItem('currentUser', $rootScope.sess.username);
                 $location.path('/dashboard');
             } else {
-                $scope.error_message = data.message;
+                $scope.errorMessage = data.message;
             }
         });
     };

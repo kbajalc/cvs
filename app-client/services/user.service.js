@@ -4,7 +4,7 @@
     cvApp.factory('userService', ['$http', '$q', function($http, $q) {
         return {
             registerUser: function(user) {
-                return $http.post('http://localhost:8080/auth/users/', user)
+                return $http.post('/api/users/', user)
                     .then(function(response) {
                         return response.message;
                     }, function(errResponse) {
@@ -14,7 +14,7 @@
             },
 
             getUser: function(user_id) {
-                return $http.get('http://localhost:8080/auth/users/:' + user_id)
+                return $http.get('/api/users/:' + user_id)
                     .then(function(response) {
                         return response.message;
                     }, function(errResponse) {
@@ -24,7 +24,7 @@
             },
 
             getByUsername: function(username) {
-                return $http.get('http://localhost:8080/auth/users/:' + username)
+                return $http.get('/api/users/:' + username)
                     .then(function(response) {
                         return response.message;
                     }, function(errResponse) {
@@ -34,7 +34,7 @@
             },
 
             updateUser: function(user, user_id) {
-                return $http.put('http://localhost:8080/auth/users/:' + user_id, user)
+                return $http.put('/api/users/:' + user_id, user)
                     .then(function(response) {
                         return response.message;
                     }, function(errResponse) {
@@ -44,7 +44,7 @@
             },
 
             deleteUser: function(user_id) {
-                return $http.delete('http://localhost:8080/auth/users/:' + user_id)
+                return $http.delete('/api/users/:' + user_id)
                     .then(function(response) {
                         return response.message;
                     }, function(errResponse) {
@@ -54,7 +54,7 @@
             },
 
             getAllUsers: function() {
-                return $http.get('http://localhost:8080/auth/users/')
+                return $http.get('/api/users/')
                     .then(function(response) {
                         return response.data || [];
                     }, function(errResponse) {
