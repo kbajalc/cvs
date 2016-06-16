@@ -1,110 +1,86 @@
 //factory to get all resumes from db
-cvApp.factory('CvServices', ['$http', '$q',"$location", function($http, $q, $location) {
-    var vm = this;
-    // var resumes = {};
-    var ress='';
-    var cvForUserId;
-    var showEditable;
-    var all;
-
-    var getAllResumes = function() {
-        var deferred = $q.defer();
-        $http.get('/api/resumes').
-            success(function(data, status, headers, config) {
-                return deferred.resolve(data);
-        })
-        .error(function(data, status, headers, config) {
-            deferred.reject('Error occured while retrieving CVs');
-            console.log("error");
-         });
-        return deferred.promise;
-    }
-
-    //   var getResumesForUser =  function(id) {
-    //     var deferred = $q.defer();
-    //     $http.get('api/resumes/'+id).
-    //         success(function(data, status, headers, config) {
-    //             return deferred.resolve(data);
-    //     })
-    //     .error(function(data, status, headers, config) {
-    //         deferred.reject('Error occured while retrieving CVs');
-    //         console.log("error");
-    //      });
-    //     return deferred.promise;
-    // }
-
-
-    function getAllResumesWithoutQ (){
-        return $http.get('api/resumes')
-            .then(function (res) {
-                ress = res.data;
-                return res.data;
-            });
-    };
-
-    return {
-         getResumesForUserById: function(id, value){
-           showEditable = value;
+cvApp.factory('CvServices', ['$http', '$q',"$location","$rootScope", function($http, $q, $location, $rootScope) {
+    var  urlBase = '/auth/resumes';
+    var ress = '';
+    var resume='';
+    var showEditableMode;
+ return {  
+        getResumes: function() {
             var deferred = $q.defer();
-            $http.get('api/resumes/'+id).
-                success(function(data, status, headers, config) {
-                    return deferred.resolve(data), $location.path('/editor');
+            $http.get(urlBase).
+                success(function(data) {
+                    return deferred.resolve(data);
             })
             .error(function(data, status, headers, config) {
                 deferred.reject('Error occured while retrieving CVs');
                 console.log("error");
             });
-            return deferred.promise.then(function(data){
-                    cvForUserId =  data;
-                });
-         },
-         getValueForEditable : function(){
-             return showEditable
-         },
-
-        //function for dashboard
-        getCv: function() {
-          console.log('ulagam');
-            return getAllResumes().then(function(data){
-                return data[0];
+            return deferred.promise;
+        },      
+        insertResume: function (resume) {
+            return $http.post(urlBase, resume);
+        },
+        updateResume : function (resume) {
+            return $http.put(urlBase + '/' + resume.ID, resume)
+        },
+        deleteResume : function (id) {
+            return $http.delete(urlBase + '/' + id);
+        },        
+        getResumeForSelectedUser: function(id, value, redirect){
+            showEditableMode = value;
+            var deferred = $q.defer();
+            $http.get(urlBase+ '/'+ (id ||  "576107d70fed4c1411000008")).
+                success(function(data) {
+                    if(redirect){
+                        return deferred.resolve(data), $location.path('/editor');
+                    }
+                    else{
+                         return deferred.resolve(data);
+                    }
+            })
+            .error(function(data, status, headers, config) {
+                deferred.reject('Error occured while retrieving CVs');
+                console.log("error");
             });
+            if(redirect){
+                return deferred.promise.then(function(data){
+                        resume =  data;
+                });
+            }
+            else{
+                return deferred.promise;   
+            }
         },
-        getAllCvs: function() {
-            return  getAllResumes();
-        },
+        
         //function for about section
         getBasicItems: function(userEmail) {
-           return cvForUserId.basics;
+           return resume.basics;
         },
-
         //function for contact section
         getAllContacts: function() {
-          return cvForUserId.contacts;
+          return resume.contacts;
         },
         //function fo experience
         getAllExperience: function(userEmail) {
-         return cvForUserId.work;
+         return resume.work;
         },
         addNewExperience: function(userEmail, experience) {
-            //zapisi vo baza experience izgraden spored daden json od kero, ne znam kako
-        },
-        editExperience: function(userEmail, experience) {
-            //smeni vo baza experience izgraden spored daden json od kero, ne znam kako
+            resume._id=null;
+           $http.post(urlBase, resume).then(function(response) {
+               console.log(response.data.message)
+           },function(error){
+               console.log('Unable to insert customer: ' + error.message);
+           })
         },
         removeExperience: function(userEmail, item) {
             //izbrisi iskustvo od bazata za daden user, vo item e jsono od experience i treba da se najde od baza i da se izbrise
         },
-
-
         //function for education
         getAllEducation: function(userEmail) {
-             return cvForUserId.education;
+             return resume.education;
         },
         addNewEducation: function(userEmail, education) {
-            //zapisi vo baza education izgraden spored daden json od kero, ne znam kako
-        },
-        editEducation: function(userEmail, education) {
-            //smeni vo baza education izgraden spored daden json od kero, ne znam kako
+            //zapisi vo baza education izgraden spored daden json od kero
         },
         removeEducation: function(userEmail, item) {
             //izbrisi education od bazata za daden user,  vo item e jsono od experience i treba da se najde od baza i da se izbrise
@@ -112,44 +88,38 @@ cvApp.factory('CvServices', ['$http', '$q',"$location", function($http, $q, $loc
 
         //function for personal skill section
         getAllPersonalSkill: function(userEmail) {
-            return cvForUserId.skills;
+            return resume.skills;
         },
         addNewPersonallSkill: function(userEmail, item) {
-            //zapisi vo baza new personal skill izgraden spored daden json od kero, ne znam kako
+            //zapisi vo baza new personal skill izgraden spored daden json od kero
         },
         removePersonallSkill: function(userEmail, index) {
             //izbrisi personall skill od bazata za daden user po daden index-na koe pozicija se naoga vo bazatata,  vo item e jsono od experience i treba da se najde od baza i da se izbrise
         },
-        editPersonallSkill: function(userEmail, item) {
-            //smeni vo baza personall skill  izgraden spored daden json od kero, ne znam kako
-        },
 
         //function for technicall skill section
         getAllTechnicalSkill: function(userEmail) {
-             return cvForUserId.profSkills;
+             return resume.profSkills;
         },
         addNewTechnicalSkill: function(userEmail, item) {
-            //zapisi vo baza new Technical skill izgraden spored daden json od kero, ne znam kako
+            //zapisi vo baza new Technical skill izgraden spored daden json od kero
         },
         removeTechnicalSkill: function(userEmail, index) {
             //izbrisi Technical skill od bazata za daden user po daden index-na koe pozicija se naoga vo bazatata,  vo item e jsono od experience i treba da se najde od baza i da se izbrise
         },
-        editTechnicalSkill: function(userEmail, item) {
-            //smeni vo baza Technical skill  izgraden spored daden json od kero, ne znam kako
-        },
 
         //function for technicall skill section
         getAllLanguages: function(userEmail) {
-             return cvForUserId.languages;
+             return resume.languages;
         },
         addNewLanguage: function(userEmail, item) {
-            //zapisi vo baza new Technical skill izgraden spored daden json od kero, ne znam kako
+            //zapisi vo baza new Technical skill izgraden spored daden json od kero
         },
         removeLanguage: function(userEmail, index) {
             //izbrisi Technical skill od bazata za daden user po daden index-na koe pozicija se naoga vo bazatata,  vo item e jsono od experience i treba da se najde od baza i da se izbrise
         },
-        editLanguage: function(userEmail, item) {
-            //smeni vo baza Technical skill  izgraden spored daden json od kero, ne znam kako
+        showEditableMode:function(){
+            return showEditableMode;
         }
 
     }

@@ -52,40 +52,35 @@ module.exports = function(passport) {
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
         function(req, username, password, done) {
-
-
             User.findOne({
                 'username': username
             }, function(err, user) {
-
                 if (err) {
                     console.log('Error in SignUp: ' + err);
                     return done(err);
                 }
-
                 if (user) {
                     console.log('User already exists with username: ' + username);
                     return done(null, false);
                 } else {
-
-                    var newUser = new User();
-
-                    // newUser.name = name;
-                    // newUser.lastname = lastname;
-                    newUser.username = username;
-                    newUser.password = createHash(password);
-
-
-
-                    // save the user
-                    newUser.save(function(err) {
-                        if (err) {
-                            console.log('Error in Saving user: ' + err);
-                            throw err;
-                        }
-                        console.log(newUser.username + ' Registration succesful');
-                        return done(null, newUser);
-                    });
+                   if(password.length < 6){
+                     return done(null, false);
+                   }else{
+                      var newUser = new User();
+                      // newUser.name = name;
+                      // newUser.lastname = lastname;
+                      newUser.username = username;
+                      newUser.password = createHash(password);
+                      // save the user
+                      newUser.save(function(err) {
+                          if (err) {
+                              console.log('Error in Saving user: ' + err);
+                              throw err;
+                          }
+                          console.log(newUser.username + ' Registration succesful');
+                          return done(null, newUser);
+                      });
+                    }
                 }
             });
         }));
