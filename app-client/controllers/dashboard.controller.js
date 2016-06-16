@@ -1,6 +1,6 @@
 'use strict';
 
-cvApp.controller('DashController', ["CvServices", "my_DashService", '$http', "$window", "$location", function(CvServices, my_DashService, $http, $window, $location) {
+cvApp.controller('DashController', ['$scope', "CvServices", "my_DashService", '$http', "$window", "$location", function($scope, CvServices, my_DashService, $http, $window, $location) {
     var vm = this;
     vm.showEditable = CvServices.getValueForEditable();
     vm.user = CvServices.getCv().then(function(data) {
@@ -11,6 +11,7 @@ cvApp.controller('DashController', ["CvServices", "my_DashService", '$http', "$w
     CvServices.getAllCvs().then(function(data) {
         vm.allCvs = data;
     });
+
 
     vm.displayCvForSpecificUser = function(cv, value) {
         CvServices.getResumesForUserById(cv._id, value);
