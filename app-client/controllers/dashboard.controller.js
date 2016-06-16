@@ -4,16 +4,18 @@ cvApp.controller('DashController', ["CvServices", '$http', "$window", "$location
     var vm = this;
 
     // get data for current logged user
-    CvServices.getResumeForSelectedUser('', true, false).then(function(data) {
-        vm.user = data;
-    });
+    // CvServices.getResumeForSelectedUser('', true, false).then(function(data) {
+    //     vm.user = data;
+    // });
 
     vm.hasCv;
     //get all cvs
     CvServices.getResumes().then(function(data) {
         vm.resumes = data;
+        CvServices.getResumeForSelectedUser('', true, false).then(function(data) {
+            vm.user = data;
+        });
         vm.hasCv = checkCv(vm.resumes);
-
     });
 
     //get cv for selected user
@@ -75,7 +77,7 @@ cvApp.controller('DashController', ["CvServices", '$http', "$window", "$location
                 default: Date.now
             },
             userID: {
-                id: $rootScope.currentUserID
+                id: sessionStorage.getItem('currentUserID')
             }
 
         };
@@ -122,19 +124,18 @@ cvApp.controller('DashController', ["CvServices", '$http', "$window", "$location
             } //end find the current cv
         } //end of update resume
 
-        //check does current user has cv in database return true or false
+    //check does current user has cv in database return true or false
     function checkCv(resumes) {
+        console.log(resumes);
         if (resumes.length == 0) {
-            console.log('klecka');
             return false;
         }
         for (var i = 0; i < resumes.length; i++) {
-            if (resumes[i].userID.id === sessionStorage.getItem('currentUserID')) {
-                console.log('ima');
+            if (resumes[i].userID.id === sessionStorage.currentUserID) {
+                console.log('have a ID');
                 return true;
             } else {
-
-                console.log('njama');
+                console.log('dont have ID');
                 return false;
             }
         }
