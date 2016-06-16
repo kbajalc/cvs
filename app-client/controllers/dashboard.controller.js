@@ -1,6 +1,6 @@
 'use strict';
 
-cvApp.controller('DashController', ["CvServices", '$http', "$window", "$location", "$rootScope", function(CvServices, $http, $window, $location,$rootScope) {
+cvApp.controller('DashController', ["CvServices", '$http', "$window", "$location", "$rootScope", function(CvServices, $http, $window, $location, $rootScope) {
     var vm = this;
 
     // get data for current logged user
@@ -8,15 +8,19 @@ cvApp.controller('DashController', ["CvServices", '$http', "$window", "$location
         vm.user = data;
     });
 
+    vm.hasCv;
     //get all cvs
     CvServices.getResumes().then(function(data) {
         vm.resumes = data;
+        vm.hasCv = checkCv(vm.resumes);
+
     });
 
     //get cv for selected user
     vm.displayCvForSpecificUser = function(cv, value) {
         CvServices.getResumeForSelectedUser(cv._id, value, true);
     }
+
 
     //INSERT NEW  resume
     vm.insertResume = function() {
@@ -75,18 +79,18 @@ cvApp.controller('DashController', ["CvServices", '$http', "$window", "$location
             }
 
         };
-    CvServices.insertResume(newResume)
-        .then(function(response) {
-            vm.resumes.push(newResume);
-            alert('New resume saved');
-            //reset the form
-            document.forms['newCvForm'].reset();
-            console.log('Resume saved');
-            $location.path('/editor');
-        }, function(error) {
-            console.log('Unable to insert customer: ' + error.message);
-        });
-};
+        CvServices.insertResume(newResume)
+            .then(function(response) {
+                vm.resumes.push(newResume);
+                alert('New resume saved');
+                //reset the form
+                document.forms['newCvForm'].reset();
+                console.log('Resume saved');
+                $location.path('/editor');
+            }, function(error) {
+                console.log('Unable to insert customer: ' + error.message);
+            });
+    };
     //DELETE resume
     vm.deleteResume = function(id) {
         CvServices.deleteResume(id)
@@ -117,4 +121,22 @@ cvApp.controller('DashController', ["CvServices", '$http', "$window", "$location
                 }
             } //end find the current cv
         } //end of update resume
+
+        //check does current user has cv in database return true or false
+    function checkCv(resumes) {
+        if (resumes.length == 0) {
+            console.log('klecka');
+            return false;
+        }
+        for (var i = 0; i < resumes.length; i++) {
+            if (resumes[i].userID.id === sessionStorage.getItem('currentUserID')) {
+                console.log('ima');
+                return true;
+            } else {
+
+                console.log('njama');
+                return false;
+            }
+        }
+    }
 }]);
