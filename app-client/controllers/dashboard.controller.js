@@ -12,10 +12,12 @@ cvApp.controller('DashController', ["CvServices", '$http', "$window", "$location
     //get all cvs
     CvServices.getResumes().then(function(data) {
         vm.resumes = data;
+        vm.hasCv = CvServices.hasCVforHIdeButtons();
+        console.log(vm.hasCv + "sdfsdfsdfsdfsdf");
         CvServices.getResumeForSelectedUser('', true, false).then(function(data) {
             vm.user = data;
         });
-        vm.hasCv = checkCv(vm.resumes);
+        //vm.hasCv = checkCv(vm.resumes);
     });
 
     //get cv for selected user
@@ -88,7 +90,7 @@ cvApp.controller('DashController', ["CvServices", '$http', "$window", "$location
                 //reset the form
                 document.forms['newCvForm'].reset();
                 console.log('Resume saved');
-                $location.path('/editor');
+                $location.path('/dashboard');
             }, function(error) {
                 console.log('Unable to insert customer: ' + error.message);
             });

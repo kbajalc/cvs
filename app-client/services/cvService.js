@@ -4,7 +4,10 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
     var ress = '';
     var resume = '';
     var showEditableMode;
+    var resumeCheck;
     var currentUserCV;
+    //list for all resumes for currentUser
+    var listOfloggedUsers = [];
 
     return {
         getResumes: function() {
@@ -13,9 +16,17 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
             success(function(data) {
                     for (var obj in data) {
                         if (data[obj].userID.id === sessionStorage.currentUserID) {
-                            currentUserCV = data[obj];
+                            listOfloggedUsers.push(data[obj])
                         }
                     }
+                    console.log(listOfloggedUsers.length);
+                    if (listOfloggedUsers.length == 0) {
+                        resumeCheck = true;
+                    } else {
+                        resumeCheck = false;
+                    }
+                    // get the last updated resume
+                    currentUserCV = listOfloggedUsers[listOfloggedUsers.length - 1];
                     return deferred.resolve(data);
                 })
                 .error(function(data, status, headers, config) {
@@ -53,6 +64,12 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
             } else {
                 return deferred.promise;
             }
+        },
+
+        // if user has a resume , hide the new resume button
+        hasCVforHIdeButtons: function() {
+            console.log(resumeCheck);
+            return resumeCheck;
         },
         //function for about section
         getBasicItems: function(userEmail) {
