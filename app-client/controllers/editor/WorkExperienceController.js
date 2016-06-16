@@ -10,7 +10,7 @@
 
 cvApp.controller('WorkExperienceController', ['CvServices', function(CvServices) {
     var vm = this;
-    vm.showEditable = CvServices.showEditableMode();
+    vm.showEditable = CvServices.getValueForEditable();
     vm.items= CvServices.getAllExperience('userEmail');
     vm.addExperience = function(user){
         var  inserted = {
@@ -31,18 +31,19 @@ cvApp.controller('WorkExperienceController', ['CvServices', function(CvServices)
         user.summary='';
      };
 
-    //  vm.editExperience = function(user){
-    //     var  inserted = {
-    //         'company': user.company,
-    //         'postion': user.position,
-    //         'website': user.website,
-    //         'startDate': user.startDate,
-    //         'endDate':user.endDate,
-    //         'summary': user.summary
-    //     };
 
-    //    CvServices.editExperience('userEmail', inserted);
-    //    };
+     vm.editExperience = function(user){
+        var  inserted = {
+            'company': user.company,
+            'postion': user.position,
+            'website': user.website,
+            'startDate': user.startDate,
+            'endDate':user.endDate,
+            'summary': user.summary
+        };
+
+       CvServices.editExperience('userEmail', inserted);
+       };
 
        vm.removeExperience = function(item){
           vm.items.pop(item)

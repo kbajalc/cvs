@@ -19,7 +19,7 @@
                                     <b>LAST NAME:</b>
                                 </div>
                                 <div class="col-md-12">
-                                    {{dash.user.basics.lastName}}
+                                    {{dash.user.basics.lastname}}
                                 </div>
                                 <div class="col-md-12">
                                     <b>EMAIL:</b>
@@ -30,14 +30,14 @@
                             </div>
                             <div class="col-md-6 ">
                                 <div class="col-md-12 col-md-offset-5 basic-info-btn">
-                                    <a href="#" class="btn btn-primary  addEditPDFbtn" ng-click='dash.displayCvForSpecificUser(dash.user, true)'">Edit my CV</a>
+                                    <a href="#" class="btn btn-primary  addEditPDFbtn" ng-click='dash.displayCvForSpecificUser(dash.user, true)' style="width: 150px;">Edit my CV</a>
                                 </div>
                                 <div class="col-md-12 col-md-offset-5 basic-info-btn">
-                                    <a href="/addResume " class="btn btn-info addEditPDFbtn">Create new CV</a>
+                                    <a href="/addResume " class="btn btn-info addEditPDFbtn" style="width: 150px;">Create new CV</a>
                                 </div>
 
                                 <div class="col-md-12 col-md-offset-5 basic-info-btn">
-                                    <a href="#" class="btn btn-danger addEditPDFbtn">Export PDF</a>
+                                    <a href="#" class="btn btn-danger addEditPDFbtn" style="width: 150px;">Export PDF</a>
 
                                 </div>
                             </div>
@@ -52,7 +52,7 @@
     <nav class="navbar navbar-default" id="searchEmployee">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#" id="nav-emp">EMPLOEES</a>
+                <a class="navbar-brand" href="#" id="nav-emp">EMPLOYEES</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <form class="navbar-form navbar-right" role="search">
@@ -71,7 +71,7 @@
     <section id="employeesSection">
         <div class="row">
             <div class="col-md-12">
-                <div ng-repeat="cvs in dash.resumes | filter:searchEmployee | orderBy:'basics.firstName'">
+                <div ng-repeat="cvs in dash.allCvs | filter:searchEmployee | orderBy:'basics.firstName'">
                     <div class="col-md-4" style="padding-top: 15px;">
                         <div class="w3-card-4">
                             <header class="w3-container w3-light-grey">
@@ -79,7 +79,7 @@
                             </header>
                             <div class="w3-container">
                                 <img src="img/avatar.png " alt="Avatar " class="w3-left img-response" id="cvListImg" />
-                                <h4>{{cvs.basics.jobTittle}}</h4>
+                                <h4>{{cvs.basics.jobTitle}}</h4>
                                 <br/>
                                 <h5>{{cvs.contacts.email}}</h5>
                             </div>

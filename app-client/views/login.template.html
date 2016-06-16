@@ -5,30 +5,38 @@
 	<div class="col-md-12">
 		<div class="form">
 
-
+			<ul class="tab-group">
+				<li class="tab active"><a href="#signup">Sign Up</a></li>
+				<li class="tab"><a href="#login">Log In</a></li>
+			</ul>
 
 			<div class="tab-content">
 				<div id="signup">
-					<ul class="tab-group">
-						<li class="tab" ng-class="{ active: route.current.activeNav === 'navDashboard'}"><a href="#signup">Sign Up</a></li>
-						<li class="tab"><a href="#login">Log In</a></li>
-					</ul>
 					<h1>Sign Up</h1>
 
 					<form ng-submit="register()" name="myForm">
 						<!-- method="post" -->
 
 						<div class="top-row">
+							<!-- <div class="field-wrap">
+
+								<input type="text" ng-model="user.name" id="uname" placeholder="User name*" required autocomplete="off" />
+							</div>
+
+							<div class="field-wrap">
+
+								<input type="text" ng-model="user.lastname" id="lname" placeholder="Last name*" required autocomplete="off" />
+							</div> -->
 						</div>
 
 						<div class="field-wrap">
+
 							<input type="email" ng-model="user.username" id="email" placeholder="Email Address*" required autocomplete="off" />
-							<span ng-show="error_message_username" class="error_message">{{error_message_username}}</span>
 						</div>
 
 						<div class="field-wrap">
+
 							<input type="password" ng-model="user.password" id="password" placeholder="Password*" required autocomplete="off" />
-							<span ng-show="error_message_password_length" class="error_message">{{error_message_password_length}}</span>
 						</div>
 
 						<button type="submit" class="button button-block">Get Started</button>
@@ -38,11 +46,6 @@
 				</div>
 
 				<div id="login">
-					<ul class="tab-group">
-						<li class="tab"><a href="#signup">Sign Up</a></li>
-						<li class="tab" ng-class="{ active: route.current.activeNav === 'navDashboard'}"><a href="#login">Log In</a></li>
-					</ul>
-
 					<h1>Welcome Back!</h1>
 
 					<form ng-submit="login()">
@@ -58,6 +61,7 @@
 						</div>
 
 						<p class="forgot"><a href="#">Forgot Password?</a></p>
+
 
 						<button type="submit" class="button button-block">Log In</button>
 

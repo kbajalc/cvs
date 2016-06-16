@@ -1,13 +1,7 @@
 cvApp.controller('TechnicalSkillsController',['CvServices', function(CvServices) {
  var vm=this;
- vm.showEditable = CvServices.showEditableMode();
+ vm.showEditable = CvServices.getValueForEditable();
  vm.techSkills =CvServices.getAllTechnicalSkill('userEmail');
- vm.statuses = [
-        {value: 25, text: 'Begginer'},
-        {value: 50, text: 'Intermediate'},
-        {value: 75, text: 'Advanced'},
-        {value: 100, text: 'Expert'}
-    ];
   // remove user
   vm.removeSkill = function(index) {
     vm.techSkills.splice(index, 1);
@@ -25,7 +19,7 @@ cvApp.controller('TechnicalSkillsController',['CvServices', function(CvServices)
         vm.numLevel = '';
     };
     
-    // vm.editTechnicalSkill= function(item){
-    //    CvServices.editTechnicalSkill('userEmail', item); 
-    // }
+    vm.editTechnicalSkill= function(item){
+       CvServices.editTechnicalSkill('userEmail', item); 
+    }
 }]);

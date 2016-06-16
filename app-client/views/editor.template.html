@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="/css/editor.css">
 <div id='editorTemplate'>
     <main class="main">
@@ -24,7 +23,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 col-lg-12" id="jobTittle">
-                                <h4 style='color:white;border-bottom: none;' editable-text="about.user.jobTittle" ng-model='about.user.jobTittle' class='text-center'>{{about.user.jobTitle || 'empty'}}</h4>
+                                <h4 style='color:white;border-bottom: none;' editable-text="about.user.jobTittle" ng-model='about.user.jobTittle' class='text-center'>{{about.user.jobTittle || 'empty'}}</h4>
                             </div>
                         </div>
                     </section>
@@ -60,15 +59,14 @@
                         <div class="col-md-2" ng-show='about.showEditable'>
                             <button type="button" class="btn btn-info add btn-sm" ng-click="showDiv=true"> + </button>
                         </div>
-                        <form class="col-md-12" ng-submit="about.addContact()" style="margin:30px 10px 30px 10px" ng-show="showDiv">
-                            <select class="form-control" style="color:black" name="selected" id="selected" ng-model="selected">
-                               <option value="{{about.contacts.email || 'Enter Email' }}">Email</option>
-                               <option value="{{about.contacts.phone || 'Enter Phone' }}">Phone</option>
-                               <option value="{{about.contacts.city || 'Enter City' }}">City</option>
-                               <option value="{{about.contacts.country || 'Enter Country' }}">Country</option>
-                               <option value="{{about.contacts.website || 'Enter Website' }}">Website</option>
-                               <option value="{{about.contacts.social.network || 'Enter Social Network' }}">Social Network</option>
-                           </select>
+                        <form class="col-md-12" ng-submit="about.addContact()" style="margin:30px" ng-show="showDiv">
+                            <select style="color:black" name="selected" id="selected" ng-model="selected">
+                       <option value="{{about.contacts.email || 'Enter Email' }}">Email</option>
+                       <option value="{{about.contacts.phone || 'Enter Phone' }}">Phone</option>
+                       <option value="{{about.contacts.city || 'Enter City' }}">City</option>
+                       <option value="{{about.contacts.country || 'Enter Country' }}">Country</option>
+                       <option value="{{about.contacts.website || 'Enter Website' }}">Website</option>
+                   </select>
                             <input type="text" class="form-control" ng-model="personalSkills.textInput" placeholder="{{selected}}"><br>
 
                             <input type="submit" class="btn btn-primary" value="Add" ng-click="showDiv=false">
@@ -76,10 +74,10 @@
                         </form>
                         <div class="bar-sections">
                             <div class="col-md-10">
-                                <div ng-hide="about.contacts.email == ''" ng-click="rowform.$show()" editable-text="about.contacts.email" e-name="email" e-form="rowform" e-required>
+                                <div ng-hide="about.contacts.email == null" ng-click="rowform.$show()" editable-text="about.contacts.email" e-name="email" e-form="rowform" e-required>
                                     {{ about.contacts.email}}
                                 </div>
-                                <div ng-hide="about.contacts.phone == ''" ng-click="rowform.$show()" editable-text="about.contacts.phone" e-name="phone" e-form="rowform" e-required>
+                                <div ng-hide="about.contacts.phone == null" ng-click="rowform.$show()" editable-text="about.contacts.phone" e-name="phone" e-form="rowform" e-required>
                                     {{ about.contacts.phone}}
                                 </div>
                                 <div ng-hide="about.contacts.city == null" ng-click="rowform.$show()" editable-text="about.contacts.city" e-name="city" e-form="rowform" e-required>
@@ -92,7 +90,7 @@
                                     <a href="#">{{ about.contacts.website}}</a>
                                 </div>
                                 <div ng-repeat="s in about.contacts.social">
-                                    <div ng-hide="s.network == null" ng-click="rowform.$show()" editable-text="s.network" e-name="facebook" e-form="rowform" e-required style='color:white'>
+                                    <div ng-hide="s.network == null" ng-click="rowform.$show()" editable-text="social" e-name="facebook" e-form="rowform" e-required style='color:white'>
                                         {{s.network}}
                                     </div>
                                 </div>
@@ -129,18 +127,9 @@
                     <div class="col-md-2">
                         <button type="button" class="btn btn-info add btn-sm" ng-click="showDiv=true" ng-show='personalSkills.showEditable'> + </button>
                     </div>
-                    <form class="col-md-12" ng-submit="personalSkills.addPerSkill()" style="margin:30px 10px 30px 10px" ng-show="showDiv">
+                    <form class="col-md-12" ng-submit="personalSkills.addPerSkill()" style="margin:30px" ng-show="showDiv">
                         <input type="text" class="form-control" ng-model="personalSkills.textName" placeholder="Language"><br>
-                        <!--<input type="number" class="form-control" ng-model="personalSkills.numLevel" placeholder="Knowledge percentage">-->
-                        
-                        <!--<div class="form-group">-->
-                                                      
-                            <select class="form-control" ng-options="s.value as s.text for s in personalSkills.statuses" ng-model="personalSkills.numLevel">
-                            </select>
-                        
-                            <br>
-                        
-                        
+                        <input type="number" class="form-control" ng-model="personalSkills.numLevel" placeholder="Knowledge percentage"><br>
                         <input type="submit" class="btn btn-primary" value="Add" ng-click="showDiv=false">
                         <input type="button" class="btn btn-default" value="Cancel" ng-click="showDiv=false">
                     </form>
@@ -152,13 +141,12 @@
 
                         </div>
                         <div class="col-md-6">
-                            <div class="progress" href="#" editable-select="x.level" e-ng-options="s.value as s.text for s in personalSkills.statuses" e-form="rowform" ng-click="rowform.$show()">
-                                <!--{{user.status}}-->
+                            <div class="progress" ng-click="rowform.$show()" editable-number="x.level" e-name="percentage" e-form="rowform" e-required>
                                 <div class="progress-bar barWhite" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:{{x.level}}%">
+                                    <!--<span class="sr-only">70% Complete</span>-->
                                 </div>
                             </div>
                         </div>
-                        
                         <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline col-md-12" shown="inserted == x">
                             <hr>
                             <button type="submit" ng-disabled="rowform.$waiting" ng-click='personalSkills.editPersonallSkill(x)' class="btn btn-primary">
@@ -435,16 +423,7 @@
                     </div>
                     <form class="col-md-6" ng-submit="technicalSkill.addSkill()" style="margin:30px" ng-show="showDiv">
                         <input type="text" class="form-control" ng-model="technicalSkill.textName" placeholder="Language"><br>
-                        <!--<input type="number" class="form-control" ng-model="technicalSkill.numLevel" placeholder="Knowledge percentage">-->
-                        
-                        <div class="form-group">
-                                                      
-                            <select class="form-control" ng-options="s.value as s.text for s in technicalSkill.statuses" ng-model="technicalSkill.numLevel">
-                            </select>
-                        
-                            <br>
-                        </div>
-                        <br>
+                        <input type="number" class="form-control" ng-model="technicalSkill.numLevel" placeholder="Knowledge percentage"><br>
                         <input type="submit" class="btn btn-primary" value="Add" ng-click="showDiv=false">
                         <input type="button" class="btn btn-default" value="Cancel" ng-click="showDiv=false">
                     </form>
@@ -457,9 +436,9 @@
 
                             </div>
                             <div class="col-md-6">
-                                <div class="progress" href="#" editable-select="x.level" e-ng-options="s.value as s.text for s in technicalSkill.statuses" e-form="rowform" ng-click="rowform.$show()">
-                                <!--{{user.status}}-->
-                                    <div class="progress-bar barWhite" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:{{x.level}}%">
+                                <div class="progress" ng-click="rowform.$show()" editable-number="x.level" e-name="percentage" e-form="rowform" e-required>
+                                    <div class="progress-bar barBlue" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:{{x.level}}%">
+                                        <!--<span class="sr-only">70% Complete</span>-->
                                     </div>
                                 </div>
                             </div>
@@ -495,16 +474,7 @@
                     </div>
                     <form class="col-md-6" ng-submit="lanCtrl.addLanguage()" style="margin:30px" ng-show="showDiv">
                         <input type="text" class="form-control" ng-model="lanCtrl.textName" placeholder="Language"><br>
-                        <!--<input type="number" class="form-control" ng-model="lanCtrl.numLevel" placeholder="Knowledge percentage"><br>-->
-                        
-                        <div class="form-group">
-                                                      
-                            <select class="form-control" ng-options="s.value as s.text for s in lanCtrl.statuses" ng-model="lanCtrl.numLevel">
-                            </select>
-                        
-                            <br>
-                        </div>
-                        
+                        <input type="number" class="form-control" ng-model="lanCtrl.numLevel" placeholder="Knowledge percentage"><br>
                         <input type="submit" class="btn btn-primary" value="Add" ng-click="showDiv=false">
                         <input type="button" class="btn btn-default" value="Cancel" ng-click="showDiv=false">
                     </form>
@@ -517,11 +487,11 @@
 
                             </div>
                             <div class="col-md-6">
-                                <div class="progress" href="#" editable-select="x.level" e-ng-options="s.value as s.text for s in lanCtrl.statuses" e-form="rowform" ng-click="rowform.$show()">
-                                <!--{{user.status}}-->
-                                    <div class="progress-bar barWhite" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:{{x.level}}%">
+                                <div class="progress" ng-click="rowform.$show()" editable-number="x.level" e-name="percentage" e-form="rowform" e-required>
+                                    <div class="progress-bar barBlue" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:{{x.level}}%">
+                                        <!--<span class="sr-only">70% Complete</span>-->
                                     </div>
-                            </div>
+                                </div>
 
                             </div>
                             <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == x">

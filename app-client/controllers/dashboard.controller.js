@@ -1,23 +1,43 @@
 'use strict';
 
-cvApp.controller('DashController', ["CvServices", '$http', "$window", "$location", "$rootScope", function(CvServices, $http, $window, $location,$rootScope) {
+cvApp.controller('DashController', ['$scope', "CvServices", "my_DashService", '$http', "$window", "$location", function($scope, CvServices, my_DashService, $http, $window, $location) {
     var vm = this;
-    
-    // get data for current logged user
-    CvServices.getResumeForSelectedUser('', true, false).then(function(data) {
+    vm.showEditable = CvServices.getValueForEditable();
+    vm.user = CvServices.getCv().then(function(data) {
         vm.user = data;
+        console.log(data);
     });
-    
-    //get all cvs
-    CvServices.getResumes().then(function(data) {
-        vm.resumes = data;
+
+    CvServices.getAllCvs().then(function(data) {
+        vm.allCvs = data;
     });
-    
-    //get cv for selected user
+
+
     vm.displayCvForSpecificUser = function(cv, value) {
-        CvServices.getResumeForSelectedUser(cv._id, value, true);
+        CvServices.getResumesForUserById(cv._id, value);
     }
-    
+    vm.editProfile = function(id) {
+        CvServices.getResumesForUserById(id, true);
+
+    }
+
+
+    vm.resumes;
+    vm.createResume;
+    vm.updateResume;
+    vm.allCvs;
+
+    getResumes();
+    //GET all resumes from DB
+    function getResumes() {
+        my_DashService.getResumes()
+            .then(function(resumes) {
+                vm.resumes = resumes.data;
+            }, function(err) {
+                console.log("Can not display users" + err.message);
+            });
+    }
+
     //INSERT NEW  resume
     vm.insertResume = function() {
         var newResume = {
@@ -71,25 +91,26 @@ cvApp.controller('DashController', ["CvServices", '$http', "$window", "$location
                 default: Date.now
             },
             userID: {
-                id: $rootScope.currentUserID 
+                id: sessionStorage.getItem('currentUserID')
             }
 
         };
-    CvServices.insertResume(newResume)
-        .then(function(response) {
-            vm.resumes.push(newResume);
-            alert('New resume saved');
-            //reset the form
-            document.forms['newCvForm'].reset();
-            console.log('Resume saved');
-            $location.path('/editor');
-        }, function(error) {
-            console.log('Unable to insert customer: ' + error.message);
-        });
-};
+        my_DashService.insertResume(newResume)
+            .then(function(response) {
+
+                vm.resumes.push(newResume);
+                alert('New resume saved');
+                //reset the form
+                document.forms['newCvForm'].reset();
+                console.log('Resume saved');
+                $location.path('/editor');
+            }, function(error) {
+                console.log('Unable to insert customer: ' + error.message);
+            });
+    };
     //DELETE resume
     vm.deleteResume = function(id) {
-        CvServices.deleteResume(id)
+        my_DashService.deleteResume(id)
             .then(function(data) {
                 vm.status = "Deleted Resume , Please refresh resumes list";
                 for (var i = 0; i < vm.resumes.length; i++) {

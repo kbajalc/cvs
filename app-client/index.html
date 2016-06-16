@@ -58,12 +58,12 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse" ng-controller="authController">
                     <ul class="nav navbar-nav">
-                        <li ng-show="authenticated" ng-class="{ active: route.current.activeNav === 'navDashboard'}">
+                        <li ng-show="authenticated">
                             <a href="/dashboard" id="currentUser">Dashboard</a>
                         </li>
-                        <!-- <li ng-show="authenticated">
+                        <li ng-show="authenticated">
                             <a href="#" id="currentUser">Export PDF</a>
-                        </li> -->
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li ng-show="authenticated">

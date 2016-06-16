@@ -2,42 +2,41 @@
     padding-top: 30px;
     background-color: #c0dfd9;
 }
+
 body {
     background-color: #9AD3DE;
 }
+
 .loginTemplate {
     padding-top: 30px;
     background-color: #c0dfd9;
 }
+
 #nav-color {
     background-color: rgba(19, 35, 47, 0.9) !important;
     font-family: "Segoe UI", Arial, sans-serif;
     color: white;
     font-size: 15px;
 }
+
 #main-body {
     padding: 60px;
 }
-.navbar-brand {
-    color: #008C9E !important;
+
+#currentUser {
+    color: #008C9E;
 }
-.navbar-brand:hover {
-    color: white !important;
-    font-size: 21px;
-    transition: 0.2s;
+
+#signOut {
+    float: right;
+    margin-left: 650px;
 }
-.nav li a {
-    color: white !important;
+
+#logOut:hover {
+    color: #008C9E;
+    text-decoration: none;
 }
-#currentUser:hover {
-    background-color: #008C9E !important;
-}
-.error_message {
-    color: #00DFFC !important;
-}
-.navbar-nav li.active a {
-    background: #008C9E !important;
-}
+
 
 /*************editor.template ***************/
 
@@ -46,29 +45,36 @@ body {
     padding: 0;
     height: 100%;
 }
+
 #editorTemplate .about {
     padding-left: 5%;
 }
-#editorTemplate h3, h4 {
+
+#editorTemplate h3,
+h4 {
     margin-left: 20px;
     font-weight: bold;
 }
+
 
 /*delete list style bullet points*/
 
 #editorTemplate ul>li {
     list-style-type: none;
 }
+
 #editorTemplate .basicContact i {
     font-size: 1.5em;
     margin: 10px;
     margin-left: -39px;
 }
+
 #editorTemplate .social i {
     font-size: 1.5em;
     margin: 10px;
     margin-left: -39px;
 }
+
 
 /*left aside*/
 
@@ -78,56 +84,70 @@ body {
     height: 100%;
     padding-right: 5%;
 }
+
 #editorTemplate .progress {
     border: 1px solid rgba(255, 255, 200, 0.3);
     border-radius: 15px;
     height: 15px;
     background-color: transparent;
 }
+
 #editorTemplate .barWhite {
     background-color: white;
 }
+
 #editorTemplate .barBlue {
     background-color: #005580;
     border: 1px solid rgba(255, 255, 200, 0.3);
 }
+
 #editorTemplate .add {
     border-radius: 50%;
     margin-top: 10px;
     margin-bottom: 30px;
 }
+
 #editorTemplate .bar-sections {
     margin: 10%;
 }
+
 #editorTemplate .form-buttons.form-inline {
     float: right;
 }
+
 
 /*right aside*/
 
 
 /************ login template ************/
 
-#loginTemplate *, *:before, *:after {
+#loginTemplate *,
+*:before,
+*:after {
     box-sizing: border-box;
 }
+
 #loginTemplate html {
     overflow-y: scroll;
 }
+
 #loginTemplate .loginTemplate {
     background: #9ad3de;
     font-family: 'Titillium Web', sans-serif;
     padding-top: 30px;
 }
+
 #loginTemplate a {
     text-decoration: none;
     color: #00DFFC;
     -webkit-transition: .5s ease;
     transition: .5s ease;
 }
+
 #loginTemplate a:hover {
     color: #005F6B;
 }
+
 #loginTemplate .form {
     background: #343838;
     padding: 40px;
@@ -136,16 +156,19 @@ body {
     border-radius: 4px;
     box-shadow: 0 4px 10px 4px #005F6B;
 }
+
 #loginTemplate .tab-group {
     list-style: none;
     padding: 0;
     margin: 0 0 40px 0;
 }
+
 #loginTemplate .tab-group:after {
     content: "";
     display: table;
     clear: both;
 }
+
 #loginTemplate .tab-group li a {
     display: block;
     text-decoration: none;
@@ -160,23 +183,28 @@ body {
     -webkit-transition: .5s ease;
     transition: .5s ease;
 }
+
 #loginTemplate .tab-group li a:hover {
     background: #00B4CC;
     color: #ffffff;
 }
+
 #loginTemplate .tab-group .active a {
     background: #008C9E;
     color: #ffffff;
 }
-#loginTemplate .tab-content> div:last-child {
+
+#loginTemplate .tab-content > div:last-child {
     display: none;
 }
+
 #loginTemplate h1 {
     text-align: center;
     color: #ffffff;
     font-weight: 300;
     margin: 0 0 40px;
 }
+
 #loginTemplate label {
     position: absolute;
     -webkit-transform: translateY(6px);
@@ -189,23 +217,29 @@ body {
     pointer-events: none;
     font-size: 22px;
 }
+
 #loginTemplate label .req {
     margin: 2px;
     color: #1ab188;
 }
+
 #loginTemplate label.active {
     -webkit-transform: translateY(50px);
     transform: translateY(50px);
     left: 2px;
     font-size: 14px;
 }
+
 #loginTemplate label.active .req {
     opacity: 0;
 }
+
 #loginTemplate label.highlight {
     color: #ffffff;
 }
-#loginTemplate input, textarea {
+
+#loginTemplate input,
+textarea {
     font-size: 22px;
     display: block;
     width: 100%;
@@ -219,31 +253,39 @@ body {
     -webkit-transition: border-color .25s ease, box-shadow .25s ease;
     transition: border-color .25s ease, box-shadow .25s ease;
 }
-#loginTemplate input:focus, textarea:focus {
+
+#loginTemplate input:focus,
+textarea:focus {
     outline: 0;
     border-color: #00B4CC;
 }
+
 #loginTemplate textarea {
     border: 2px solid #a0b3b0;
     resize: vertical;
 }
+
 #loginTemplate .field-wrap {
     position: relative;
     margin-bottom: 40px;
 }
+
 #loginTemplate .top-row:after {
     content: "";
     display: table;
     clear: both;
 }
-#loginTemplate .top-row> div {
+
+#loginTemplate .top-row > div {
     float: left;
     width: 48%;
     margin-right: 4%;
 }
-#loginTemplate .top-row> div:last-child {
+
+#loginTemplate .top-row > div:last-child {
     margin: 0;
 }
+
 #loginTemplate .button {
     border: 0;
     outline: none;
@@ -259,42 +301,54 @@ body {
     transition: all 0.5s ease;
     -webkit-appearance: none;
 }
-#loginTemplate .button:hover, .button:focus {
+
+#loginTemplate .button:hover,
+.button:focus {
     background: #005F6B;
 }
+
 #loginTemplate .button-block {
     display: block;
     width: 100%;
 }
+
 #loginTemplate .forgot {
     margin-top: -20px;
     text-align: right;
 }
+
+
 /*********** dashboard-css *************/
 
 #dashboardTemplate body {
     padding-top: 30px;
     background-color: #9ad3de;
 }
+
 #dashboardTemplate #nav-color {
     background-color: #343838;
 }
+
 #cvListImg {
     margin: 5px 15px 5px -15px;
     width: 100px;
     height: 100px;
 }
+
 #dashboardTemplate #basic-info {
     margin-top: 39px;
     padding-top: 21px;
 }
+
 #dashboardTemplate #basic-info-font {
     font-size: 20px;
     font-family: "Segoe UI", Arial, sans-serif;
 }
+
 #dashboardTemplate .basic-info-btn {
     margin-bottom: 6px;
 }
+
 #imgDashboard {
     width: 250px;
     height: 250px;
@@ -302,6 +356,7 @@ body {
     margin-top: 10px;
     box-shadow: 6px 3px 3px rgba(0, 0, 0, 0.2);
 }
+
 .addEditPDFbtn {
     width: 150px;
     height: 50px;
@@ -309,18 +364,19 @@ body {
     font-family: "Segoe UI", Arial, sans-serif;
     padding: 10px;
     font-size: 20px;
-    border-radius: 5px;
-    box-shadow: 2px 2px 2px #888888;
 }
+
 #nav-emp {
     margin-left: 450px;
     font-size: 22px;
     color: black;
     font-family: "Segoe UI", Arial, sans-serif;
 }
+
 #searchEmployee {
     margin-top: 20px;
 }
+
 
 /*section scrollabler*/
 
@@ -330,20 +386,24 @@ body {
     overflow-x: hidden
 }
 
+
 /************ Dashbouard template ************/
 
 .basic-info-btn {
     margin-bottom: 6px;
 }
+
 #basic-info-font {
     font-size: 20px;
     font-family: cursive;
 }
+
 #dashboard-back {
     background-color: #d8eef3;
     margin-top: 20px;
     border-radius: 5px;
 }
+
 #basic-info {
     margin-top: 39px;
     padding-top: 21px;
