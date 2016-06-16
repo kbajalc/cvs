@@ -1,8 +1,8 @@
 //angular.module('MainCtrl', [])
 'use strict';
 
-cvApp.controller('MainController', ['Login', function($scope, Login) {
+cvApp.controller('MainController', function($scope) {
 
+	$scope.tagline = 'Start page comming soon....';
 
-
-}]);
+});

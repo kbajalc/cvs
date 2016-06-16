@@ -9,7 +9,7 @@ cvApp.factory('CvServices', ['$http', '$q',"$location", function($http, $q, $loc
 
     var getAllResumes = function() {
         var deferred = $q.defer();
-        $http.get('/api/resumes').
+        $http.get('auth/resumes').
             success(function(data, status, headers, config) {
                 return deferred.resolve(data);
         })
@@ -22,7 +22,7 @@ cvApp.factory('CvServices', ['$http', '$q',"$location", function($http, $q, $loc
 
     //   var getResumesForUser =  function(id) {
     //     var deferred = $q.defer();
-    //     $http.get('api/resumes/'+id).
+    //     $http.get('auth/resumes/'+id).
     //         success(function(data, status, headers, config) {
     //             return deferred.resolve(data);
     //     })
@@ -35,7 +35,7 @@ cvApp.factory('CvServices', ['$http', '$q',"$location", function($http, $q, $loc
 
 
     function getAllResumesWithoutQ (){
-        return $http.get('api/resumes')
+        return $http.get('auth/resumes')
             .then(function (res) {
                 ress = res.data;
                 return res.data;
@@ -46,7 +46,7 @@ cvApp.factory('CvServices', ['$http', '$q',"$location", function($http, $q, $loc
          getResumesForUserById: function(id, value){
            showEditable = value;
             var deferred = $q.defer();
-            $http.get('api/resumes/'+id).
+            $http.get('auth/resumes/'+id).
                 success(function(data, status, headers, config) {
                     return deferred.resolve(data), $location.path('/editor');
             })
