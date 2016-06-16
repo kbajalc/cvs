@@ -58,7 +58,7 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse" ng-controller="authController">
                     <ul class="nav navbar-nav">
-                        <li ng-show="authenticated">
+                        <li ng-show="authenticated" ng-class="{ active: route.current.activeNav === 'navDashboard'}">
                             <a href="/dashboard" id="currentUser">Dashboard</a>
                         </li>
                         <li ng-show="authenticated">

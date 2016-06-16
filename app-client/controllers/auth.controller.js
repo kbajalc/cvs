@@ -1,9 +1,13 @@
-cvApp.controller('authController', function($scope, $http, $rootScope, $location) {
+'use strict'
+
+cvApp.controller('authController', function($scope, $http, $rootScope, $route, $location) {
     $scope.user = {
         username: '',
         password: ''
     };
-    $scope.errorMessage = '';
+    $scope.error_message_username = '';
+    $scope.error_message_password_length = '';
+    $scope.route = $route;
 
     $scope.login = function() {
         $http.post('/auth/login', $scope.user).success(function(data) {
@@ -16,7 +20,7 @@ cvApp.controller('authController', function($scope, $http, $rootScope, $location
                 sessionStorage.setItem('currentUserID', $rootScope.sess._id);
                 $location.path('/dashboard');
             } else {
-                $scope.errorMessage = data.message;
+                $scope.error_message = data.message;
                 $rootScope.sess = null;
             }
         });
@@ -30,9 +34,22 @@ cvApp.controller('authController', function($scope, $http, $rootScope, $location
                 $rootScope.currentUserID = data.user._id;
                 $rootScope.sess = data.user;
                 sessionStorage.setItem('currentUser', $rootScope.sess.username);
+                sessionStorage.setItem('currentUserID', $rootScope.sess._id);
                 $location.path('/dashboard');
             } else {
-                $scope.errorMessage = data.message;
+                //login->auth->passport->routes->auth
+
+                if ($scope.user.password.length < 3) {
+                    console.log("bbbb");
+                    $scope.error_message_password_length = "Your password length must be at least 3 characters";
+                } else {
+                    console.log("cccc");
+                    $scope.error_message_username = data.message;
+                }
+                if ($scope.user.password.length >= 3) {
+                    console.log("aaaa");
+                    $scope.error_message_password_length = "";
+                }
             }
         });
     };

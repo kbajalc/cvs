@@ -19,7 +19,7 @@ var app = express();
 
 var rootPath = path.normalize(__dirname + '/../');
 
-//config
+//config server
 app.use(logger('dev'));
 app.use(session({secret: 'itgmarulez'}));
 app.use(bodyParser.json());

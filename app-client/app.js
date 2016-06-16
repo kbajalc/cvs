@@ -6,7 +6,8 @@ var cvApp = angular.module('cvApp', ['ngRoute', 'ngResource', 'xeditable'])
         // home page LOGIN
         $routeProvider.when('/', {
             templateUrl: '/views/login.template.html',
-            controller: 'authController'
+            controller: 'authController',
+            activeNav: 'navDashboard'
         });
         $routeProvider.when('/login', {
             templateUrl: '/views/login.template.html',
@@ -16,7 +17,8 @@ var cvApp = angular.module('cvApp', ['ngRoute', 'ngResource', 'xeditable'])
         $routeProvider.when('/dashboard', {
             templateUrl: '/views/dashboard.template.html',
             controller: 'DashController',
-            controllerAs: 'dash'
+            controllerAs: 'dash',
+            activeNav: 'navDashboard'
         });
         //CV EDITOR
         $routeProvider.when('/editor', {

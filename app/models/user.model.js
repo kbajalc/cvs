@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var crypto = require('crypto');
 var Schema = mongoose.Schema;
-
+//
 var userSchema = new Schema({
     username: String,
     password: String,

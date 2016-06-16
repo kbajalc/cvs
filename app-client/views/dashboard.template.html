@@ -71,7 +71,7 @@
     <section id="employeesSection">
         <div class="row">
             <div class="col-md-12">
-                <div ng-repeat="cvs in dash.allCvs | filter:searchEmployee | orderBy:'basics.firstName'">
+                <div ng-repeat="cvs in dash.resumes | filter:searchEmployee | orderBy:'basics.firstName'">
                     <div class="col-md-4" style="padding-top: 15px;">
                         <div class="w3-card-4">
                             <header class="w3-container w3-light-grey">

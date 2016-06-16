@@ -102,6 +102,6 @@ cvApp.controller('user-Ctrl', ['$scope', 'userService', function($scope, userSer
             name: '',
             email: ''
         };
-        $scope.myForm.$setPristine(); //reser form
+        $scope.myForm.$setPristine(); //reset form
     };
 }]);

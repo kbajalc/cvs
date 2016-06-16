@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Resume = mongoose.model('Resume');
 //var Resume = require('./app/models/cv.model');
-
+//
 function isAuthenticated(req, res, next) {
 
     //allow all get request methods
