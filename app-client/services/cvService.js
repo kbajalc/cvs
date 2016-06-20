@@ -1,8 +1,7 @@
 //factory to get all resumes from db
 cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function($http, $q, $location, $rootScope) {
     var urlBase = '/api/resumes';
-    var ress = '';
-    var resume = '';
+    var resume = [];
     var showEditableMode;
     var resumeCheck;
     var currentUserCV;
@@ -10,6 +9,13 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
     var listOfloggedUsers = [];
 
     return {
+      init: function(){
+         resume = {};
+         showEditableMode ='';
+         resumeCheck='';
+         currentUserCV={};
+         listOfloggedUsers = [];
+      },
         getResumes: function() {
             var deferred = $q.defer();
             $http.get(urlBase).
@@ -19,7 +25,6 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
                             listOfloggedUsers.push(data[obj])
                         }
                     }
-                    console.log(listOfloggedUsers.length);
                     if (listOfloggedUsers.length == 0) {
                         resumeCheck = false;
                     } else {
@@ -69,7 +74,6 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
 
         // if user has a resume , hide the new resume button
         hasCVforHIdeButtons: function() {
-            console.log(resumeCheck);
             return resumeCheck;
         },
         //function for about section
