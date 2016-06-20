@@ -107,6 +107,7 @@ cvApp.controller('DashController', ["CvServices", '$http', "$window", "$location
                         vm.resumes.splice(i, i);
                         break;
                     }
+                     window.location.reload();
                 }
             }, function(err) {
                 vm.status = "Unable to delete resume";

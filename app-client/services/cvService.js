@@ -21,9 +21,9 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
                     }
                     console.log(listOfloggedUsers.length);
                     if (listOfloggedUsers.length == 0) {
-                        resumeCheck = true;
-                    } else {
                         resumeCheck = false;
+                    } else {
+                        resumeCheck = true;
                     }
                     // get the last updated resume
                     currentUserCV = listOfloggedUsers[listOfloggedUsers.length - 1];
@@ -45,6 +45,7 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
             return $http.delete(urlBase + '/' + id);
         },
         getResumeForSelectedUser: function(id, value, redirect) {
+            showEditableMode = value;
             var deferred = $q.defer();
             $http.get(urlBase + '/' + (id || currentUserCV._id)).success(function(data) {
                     if (redirect) {
