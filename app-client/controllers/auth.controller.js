@@ -5,8 +5,10 @@ cvApp.controller('authController', function($scope, $http, $rootScope, $route, $
         username: '',
         password: ''
     };
-    $scope.error_message_username = '';
-    $scope.error_message_password_length = '';
+    $scope.errorMessageUsername = '';
+    $scope.errorMessagePasswordLength = '';
+    $scope.errorMessageLoginPassword = '';
+    $scope.errorMessageLoginUsername = '';
     $scope.route = $route;
 
     $scope.login = function() {
@@ -20,8 +22,15 @@ cvApp.controller('authController', function($scope, $http, $rootScope, $route, $
                 sessionStorage.setItem('currentUserID', $rootScope.sess._id);
                 $location.path('/dashboard');
             } else {
-                $scope.error_message = data.message;
+                console.log("-->" + data.message[0]);
                 $rootScope.sess = null;
+                if (data.message == "The password is incorrect") {
+                    $scope.errorMessageLoginPassword = data.message[0];
+                    $scope.errorMessageLoginUsername = "";
+                }else {
+                    $scope.errorMessageLoginPassword = "";
+                    $scope.errorMessageLoginUsername = data.message[0];
+                }
             }
         });
     };
@@ -38,17 +47,14 @@ cvApp.controller('authController', function($scope, $http, $rootScope, $route, $
                 $location.path('/dashboard');
             } else {
                 //login->auth->passport->routes->auth
-
-                if ($scope.user.password.length < 3) {
-                    console.log("bbbb");
-                    $scope.error_message_password_length = "Your password length must be at least 3 characters";
-                } else {
-                    console.log("cccc");
-                    $scope.error_message_username = data.message;
-                }
                 if ($scope.user.password.length >= 3) {
-                    console.log("aaaa");
-                    $scope.error_message_password_length = "";
+                    $scope.errorMessagePasswordLength = "";
+                }
+                if ($scope.user.password.length < 3) {
+                    $scope.errorMessageUsername = "";
+                    $scope.errorMessagePasswordLength = "Your password length must be at least 3 characters";
+                } else {
+                    $scope.errorMessageUsername = data.message[0];
                 }
             }
         });

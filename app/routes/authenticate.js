@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 module.exports = function(passport) {
-//
+
     //sends successful login state back to angular
     router.get('/success', function(req, res) {
         res.send({
@@ -13,23 +13,26 @@ module.exports = function(passport) {
 
     //sends failure login state back to angular
     router.get('/failure', function(req, res) {
+      // console.log("--->"+req.flash('failUsername'));
         res.send({
             state: 'failure',
             user: null,
-            message: "Invalid username or password"
+            message: req.flash('failLogin')
         });
     });
 
     //log in
     router.post('/login', passport.authenticate('login', {
         successRedirect: '/auth/success',
-        failureRedirect: '/auth/failure'
+        failureRedirect: '/auth/failure',
+        failureFlash: true
     }));
 
     //sign up
     router.post('/signup', passport.authenticate('signup', {
         successRedirect: '/auth/success',
-        failureRedirect: '/auth/failure'
+        failureRedirect: '/auth/failure',
+        failureFlash: true
     }));
 
     //log out

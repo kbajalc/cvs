@@ -28,20 +28,17 @@ module.exports = function(passport) {
                     'username': username
                 },
                 function(err, user) {
-
-                    if (err)
+                    if (err) {
                         return done(err);
+                    }
                     // if username does not exist
                     if (!user) {
-                        console.log('User Not Found with username ' + username);
-                        return done(null, false);
+                        return done(null, false, req.flash('failLogin', " The username: '" + username + "' doesn't exist"));
                     }
                     // wrong password
                     if (!isValidPassword(user, password)) {
-                        console.log('Invalid Password');
-                        return done(null, false);
+                      return done(null, false, req.flash('failLogin', "The password is incorrect"));
                     }
-
                     return done(null, user);
                 }
             );
@@ -56,12 +53,12 @@ module.exports = function(passport) {
                 'username': username
             }, function(err, user) {
                 if (err) {
-                    console.log('Error in SignUp: ' + err);
+                    // console.log('Error in SignUp: ' + err);
                     return done(err);
                 }
                 if (user) {
-                    console.log('User already exists with username: ' + username);
-                    return done(null, false);
+                    // console.log('User already exists with username: ' + username);
+                    return done(null, false, req.flash('failLogin', "User already exists with username: " + username));
                 } else {
                     if (password.length < 3) {
                         return done(null, false);
@@ -72,10 +69,10 @@ module.exports = function(passport) {
                         // save user
                         newUser.save(function(err) {
                             if (err) {
-                                console.log('Error in Saving user: ' + err);
+                                // console.log('Error in Saving user: ' + err);
                                 throw err;
                             }
-                            console.log(newUser.username + ' Registration succesful');
+                            // console.log(newUser.username + ' Registration succesful');
                             return done(null, newUser);
                         });
                     }

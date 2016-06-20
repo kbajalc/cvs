@@ -23,12 +23,12 @@
 
 						<div class="field-wrap">
 							<input type="email" ng-model="user.username" id="email" placeholder="Email Address*" required autocomplete="off" />
-							<span ng-show="error_message_username" class="error_message">{{error_message_username}}</span>
+							<span ng-show="errorMessageUsername" class="error_message">{{errorMessageUsername}}</span>
 						</div>
 
 						<div class="field-wrap">
 							<input type="password" ng-model="user.password" id="password" placeholder="Password*" required autocomplete="off" />
-							<span ng-show="error_message_password_length" class="error_message">{{error_message_password_length}}</span>
+							<span ng-show="errorMessagePasswordLength" class="error_message">{{errorMessagePasswordLength}}</span>
 						</div>
 
 						<button type="submit" class="button button-block">Get Started</button>
@@ -48,13 +48,13 @@
 					<form ng-submit="login()">
 
 						<div class="field-wrap">
-
 							<input type="email" ng-model="user.username" placeholder="Email Address*" required autocomplete="off" />
+							<span ng-show="errorMessageLoginUsername" class="error_message">{{errorMessageLoginUsername}}</span>
 						</div>
 
 						<div class="field-wrap">
-
 							<input type="password" ng-model="user.password" required placeholder="Password*" autocomplete="off" />
+							<span ng-show="errorMessageLoginPassword" class="error_message">{{errorMessageLoginPassword}}</span>
 						</div>
 
 						<p class="forgot"><a href="#">Forgot Password?</a></p>

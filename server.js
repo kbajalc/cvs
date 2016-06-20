@@ -13,6 +13,8 @@ var api = require('./app/routes/api');
 var authenticate = require('./app/routes/authenticate.js')(passport);
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/testBD');
+var flash = require('connect-flash');
+
 //port
 var port = process.env.PORT || 8080;
 var app = express();
@@ -28,6 +30,7 @@ app.use(cookieParser());
 app.use(express.static(rootPath + 'cvs/app-client'));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 // Initialize Passport
 var initPassport = require('./app/config/passport.js');
