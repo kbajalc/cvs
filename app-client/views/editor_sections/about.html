@@ -1,0 +1,114 @@
+<div ng-controller="AboutController as about">
+    <!--Basis info section -->
+
+    <section class="row basicsInfo">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <img src="http://philosophy.ucr.edu/wp-content/uploads/2014/10/no-profile-img.gif" alt="profileImg" class="img-circle img-responsive" id="img">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <h4 style='color:white;border-bottom: none;' editable-text="about.user.firstName" ng-model='about.user.name' class='text-center'>{{about.user.firstName || 'empty'}}</h4>
+                <h4 style='color:white;border-bottom: none;' editable-text="about.user.lastName" ng-model='about.user.name' class='text-center'>{{about.user.lastName || 'empty'}}</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-lg-12" id="jobTittle">
+                <h4 style='color:white;border-bottom: none;' editable-text="about.user.jobTittle" ng-model='about.user.jobTittle' class='text-center'>{{about.user.jobTitle || 'empty'}}</h4>
+            </div>
+        </div>
+    </section>
+    <!--Basis info section end -->
+    <!--Summary info section -->
+    <section class="row summary" style="text-align: left;">
+        <div class='col-lg-12 col-sm-12'>
+            <h4><span class="glyphicon glyphicon-file" aria-hidden="true"></span> ABOUT</h4>
+            <span class='about' style='color:white;border-bottom: none;' ng-click="rowformSummary.$show()" editable-textarea="about.user.summary" e-rows="7" e-cols="40" ng-model='about.user.summary' class='text-center' e-form="rowformSummary"><small>{{about.user.summary || 'empty'}}</small></span>
+            <form editable-form name="rowformSummary" ng-show="rowformSummary.$visible" class="form-buttons form-inline col-md-12" shown="inserted == about.user">
+                <hr>
+                <button type="submit" ng-disabled="rowformSummary.$waiting" ng-click='' class="btn btn-primary">
+            Save
+          </button>
+                <button type="button" ng-disabled="rowformSummary.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+            Cancel
+          </button>
+                <button type="button" ng-disabled="rowformSummary.$waiting" ng-click="" class="btn btn-danger">
+            Delete
+          </button>
+                <hr>
+            </form>
+            <hr/>
+        </div>
+    </section>
+    <!--Basis info section -->
+
+    <!--Contact info section -->
+    <section class="row skills">
+        <div class="col-md-10" style="margin-top: 8px;">
+            <h4> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> CONTACT</h4>
+        </div>
+        <div class="col-md-2" ng-show='about.showEditable'>
+            <button type="button" class="btn btn-info add btn-sm" ng-click="showDiv=true"> + </button>
+        </div>
+        <form class="col-md-12" ng-submit="about.addContact()" style="margin:30px 10px 30px 10px" ng-show="showDiv">
+            <select class="form-control" style="color:black" name="selected" id="selected" ng-model="selected">
+               <option value="{{about.contacts.email || 'Enter Email' }}">Email</option>
+               <option value="{{about.contacts.phone || 'Enter Phone' }}">Phone</option>
+               <option value="{{about.contacts.city || 'Enter City' }}">City</option>
+               <option value="{{about.contacts.country || 'Enter Country' }}">Country</option>
+               <option value="{{about.contacts.website || 'Enter Website' }}">Website</option>
+               <option value="{{about.contacts.social.network || 'Enter Social Network' }}">Social Network</option>
+           </select>
+            <input type="text" class="form-control" ng-model="personalSkills.textInput" placeholder="{{selected}}"><br>
+
+            <input type="submit" class="btn btn-primary" value="Add" ng-click="showDiv=false">
+            <input type="button" class="btn btn-default" value="Cancel" ng-click="showDiv=false">
+        </form>
+        <div class="bar-sections">
+            <div class="col-md-10">
+                <div ng-hide="about.contacts.email == ''" ng-click="rowform.$show()" editable-text="about.contacts.email" e-name="email" e-form="rowform" e-required>
+                    {{ about.contacts.email}}
+                </div>
+                <div ng-hide="about.contacts.phone == ''" ng-click="rowform.$show()" editable-text="about.contacts.phone" e-name="phone" e-form="rowform" e-required>
+                    {{ about.contacts.phone}}
+                </div>
+                <div ng-hide="about.contacts.city == null" ng-click="rowform.$show()" editable-text="about.contacts.city" e-name="city" e-form="rowform" e-required>
+                    {{ about.contacts.city}}
+                </div>
+                <div ng-hide="about.contacts.country == null" ng-click="rowform.$show()" editable-text="about.contacts.country" e-name="country" e-form="rowform" e-required>
+                    {{ about.contacts.country}}
+                </div>
+                <div ng-hide="about.contacts.website == null" ng-click="rowform.$show()" editable-text="about.contacts.website" e-name="website" e-form="rowform" e-required>
+                    <a href="#">{{ about.contacts.website}}</a>
+                </div>
+                <div ng-repeat="s in about.contacts.social">
+                    <div ng-hide="s.network == null" ng-click="rowform.$show()" editable-text="s.network" e-name="facebook" e-form="rowform" e-required style='color:white'>
+                        {{s.network}}
+                    </div>
+                </div>
+
+            </div>
+
+            <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline col-md-12" shown="inserted == about.contacts">
+                <hr>
+                <button type="submit" ng-disabled="rowform.$waiting" ng-click='personalSkills.editPersonallSkill(x)' class="btn btn-primary">
+            Save
+          </button>
+                <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+            Cancel
+          </button>
+                <button type="button" ng-disabled="rowform.$waiting" ng-click="about.removeContacts($index)" class="btn btn-danger">
+            Delete
+          </button>
+                <hr>
+            </form>
+
+        </div>
+
+    </section>
+    <hr/>
+    <!--Contact info section end-->
+
+    <!-- About controller end -->
+</div>
