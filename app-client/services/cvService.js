@@ -1,5 +1,5 @@
 //factory to get all resumes from db
-cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function($http, $q, $location, $rootScope) {
+cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function ($http, $q, $location, $rootScope) {
     var urlBase = '/api/resumes';
     var resume = [];
     var showEditableMode;
@@ -55,6 +55,7 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
               }
           }
     return {
+
       //initialing variables
       init: function(){
          resume = {};
@@ -67,14 +68,16 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
       getResumes: getResumes,
       getResumeForSelectedUser:getResumeForSelectedUser,
         insertResume: function(resume) {
+
             return $http.post(urlBase, resume);
         },
-        updateResume: function(resume) {
+        updateResume: function (resume) {
             return $http.put(urlBase + '/' + resume.ID, resume)
         },
-        deleteResume: function(id) {
+        deleteResume: function (id) {
             return $http.delete(urlBase + '/' + id);
         },
+
         //add new section
         addNewSection: function() {
             resume._id = null;
@@ -88,9 +91,10 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
             }, function(error) {
                 console.log('Unable to insert customer: ' + error.message);
             })
+
         },
         // if user has a resume , hide the new resume button
-        hasCVforHIdeButtons: function() {
+        hasCVforHIdeButtons: function () {
             return resumeCheck;
         },
         //editable mode when reading my cv, otherwise not
@@ -98,17 +102,19 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
             return showEditableMode;
         },
         //function for about section
+
         getBasicItems: function() {
             return resume.basics;
         },
         //function for contact section
-        getAllContacts: function() {
+        getAllContacts: function () {
             return resume.contacts;
         },
         removeContact: function(){
           //remove contact
         },
         //function fo experience
+
         getAllExperience: function() {
             return resume.work;
         },
@@ -120,9 +126,11 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
             return resume.education;
         },
         removeEducation: function(item) {
+
             //izbrisi education od bazata za daden user,  vo item e jsono od experience i treba da se najde od baza i da se izbrise
         },
         //function for personal skill section
+
         getAllPersonalSkill: function() {
             return resume.skills;
         },
@@ -137,11 +145,13 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
             //izbrisi Technical skill od bazata za daden user po daden index-na koe pozicija se naoga vo bazatata,  vo item e jsono od experience i treba da se najde od baza i da se izbrise
         },
         //function for technicall skill section
+
         getAllLanguages: function() {
             return resume.languages;
         },
         removeLanguage: function(userEmail, index) {
             //izbrisi Technical skill od bazata za daden user po daden index-na koe pozicija se naoga vo bazatata,  vo item e jsono od experience i treba da se najde od baza i da se izbrise
+
         }
     }
 }]);

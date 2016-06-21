@@ -1,6 +1,7 @@
 'use strict';
 cvApp.controller('DashController', ["CvServices", '$http', "$window", "$location", "$rootScope", function(CvServices, $http, $window, $location, $rootScope) {
     var vm = this;
+
     vm.resumes=[];
     vm.init = function(){
       vm.user={};
@@ -24,6 +25,7 @@ cvApp.controller('DashController', ["CvServices", '$http', "$window", "$location
     vm.displayCvForSpecificUser = function(cv, value) {
         CvServices.getResumeForSelectedUser(cv._id, value, true);
     }
+
     //INSERT NEW  resume
     vm.insertResume = function() {
         var newResume = {
@@ -104,7 +106,7 @@ cvApp.controller('DashController', ["CvServices", '$http', "$window", "$location
                         vm.resumes.splice(i, i);
                         break;
                     }
-                     window.location.reload();
+                    window.location.reload();
                 }
             }, function(err) {
                 vm.status = "Unable to delete resume";
