@@ -1,9 +1,8 @@
 'use strict';
-
 cvApp.controller('PersonalSkillsController', ['CvServices',function(CvServices) {
  var vm=this;
  vm.showEditable = CvServices.showEditableMode();
- vm.perSkills = CvServices.getAllPersonalSkill("userEmail");
+ vm.items = CvServices.getAllPersonalSkill();
  vm.statuses = [
     {value: 25, text: 'Begginer'},
     {value: 50, text: 'Intermediate'},
@@ -12,7 +11,7 @@ cvApp.controller('PersonalSkillsController', ['CvServices',function(CvServices) 
  ];
   // remove user
   vm.removePerSkill = function(index) {
-      vm.perSkills.splice(index, 1);
+      vm.items.splice(index, 1);
      CvServices.removePersonallSkill("userEmail", index);
   };
 
@@ -22,12 +21,12 @@ cvApp.controller('PersonalSkillsController', ['CvServices',function(CvServices) 
     // };
 
     vm.addPerSkill = function () {
-        var inserted ={
+        var skills ={
             name: vm.textName,
             level: vm.numLevel
         }
-        vm.perSkills.push(inserted);
-        CvServices.addNewPersonallSkill('userEmail', inserted);
+        vm.items.push(skills);
+        CvServices.addNewSection();
         vm.textName = '';
         vm.numLevel = '';
     };

@@ -43,8 +43,6 @@ var cvApp = angular.module('cvApp', ['ngRoute', 'ngResource', 'xeditable'])
         $rootScope.$on('$locationChangeStart', function(event, next, current) {
             var nextPath = $location.path(),
                 nextRoute = $route.routes[nextPath];
-            console.log($location.path());
-            console.log($route.routes[$location.path()]);
             if (sessionStorage.currentUser == null) {
                 if (next.templateUrl == 'views/login.template.url') {} else {
 
@@ -70,4 +68,40 @@ var cvApp = angular.module('cvApp', ['ngRoute', 'ngResource', 'xeditable'])
                 $location.path('/');
             };
         });
-    });
+    }).directive('aboutDirective', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'views/editor_sections/about.html'
+
+        };
+    }).directive('personalSkillsDirective', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'views/editor_sections/personal_skills.html'
+
+        };
+    }).directive('workExpDirective', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'views/editor_sections/work_experience.html'
+
+        };
+    }).directive('educationDirective', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'views/editor_sections/education.html'
+
+        };
+    }).directive('techSkillsDirective', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'views/editor_sections/technical_skills.html'
+
+        };
+    }).directive('languagesDirective', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'views/editor_sections/languages.html'
+
+        };
+    });;

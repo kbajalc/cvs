@@ -1,37 +1,28 @@
 'use strict';
-
-/**
- * @ngdoc function
- * @name cvApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the cvApp
- */
 cvApp.controller('EducationController', ['CvServices',function (CvServices) {
     var vm=this;
     vm.showEditable = CvServices.showEditableMode();
-    vm.items  = CvServices.getAllEducation('userEmail');
+    vm.items  = CvServices.getAllEducation();
     vm.addEducation = function(user){
-        var  inserted = {
-            'institution': user.institution || '',
-            'area': user.area || '',
-            'studyType': user.studyType || '',
-            'startDate': user.dateFrom || '',
-            'endDate':user.dateTo || '',
-            'summary': user.summary || ''
+        var  education = {
+            institution: user.institution || '',
+            area: user.area || '',
+            studyType: user.studyType || '',
+            startDate: user.dateFrom || '',
+            endDate:user.dateTo || '',
+            summary: user.summary || ''
         };
-
-       vm.items.push(inserted);
-       CvServices.addNewEducation('userEmail', inserted);
-        user.institution='';
-        user.area='';
-        user.studyType='';
-        user.dateFrom='';
-        user.dateTo='';
-        user.summary='';
+       vm.items.push(education);
+       CvServices.addNewSection();
+       user.institution='';
+       user.area='';
+       user.studyType='';
+       user.dateFrom='';
+       user.dateTo='';
+       user.summary='';
      };
 
-    //  vm.editEducation = function(user){
+    //  vm.editEducation = function(){
     //     var  inserted = {
     //         'institution': user.institution,
     //         'area': user.area,
@@ -45,6 +36,6 @@ cvApp.controller('EducationController', ['CvServices',function (CvServices) {
 
        vm.removeEducation = function(item){
            vm.items.pop(item);
-           CvServices.removeEducation('userEmail', item);
+           CvServices.removeEducation(item);
        }
 }]);

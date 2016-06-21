@@ -1,0 +1,117 @@
+<section class="workExprience" ng-controller="WorkExperienceController as experience">
+                    <!-- tittle row -->
+                    <div class="col-lg-10 col-md-10 col-sm-10 pull-left">
+                        <h4>WORK EXPIRIENCE</h4>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 pull-right" ng-show='experience.showEditable'>
+                        <button type="button" ng-click='showDiv=true' class="btn btn-info add  "> + </button>
+                    </div>
+
+                    <!-- new experience -->
+                    <form editable-form style="margin:30px" ng-show="showDiv" validate>
+                        <hr />
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3">
+                                <p>Enter your company name:</p>
+                            </div>
+                            <div class='col-lg-5 col-md-5'>
+                                <input type='text' id='companyName' ng-model='experience.user.company' placeholder="Eneter company name" />
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-lg-3 col-md-3'>
+                                <p>Enter date from - to</p>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <input type='date' ng-model='experience.user.dateFrom' />
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <input type='date' ng-model='experience.user.dateTo' />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3">
+                                <p>Enter your position</p>
+                            </div>
+                            <div class='col-lg-5 col-md-5'>
+                                <input type='text' placeholder="Eneter position" ng-model='experience.user.position' />
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-lg-3 col-md-3'>
+                                <p>Enter summary</p>
+                            </div>
+                            <div class='col-lg-5 col-md-5'>
+                                <input type='text' placeholder="Eneter summary" ng-model='experience.user.summary' />
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-lg-3 col-md-3'>
+                                <p>Enter comapany website</p>
+                            </div>
+                            <div class='col-lg-5 col-md-5'>
+                                <input type='text' placeholder="Web site" ng-model='experience.user.website' />
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-lg-3 col-md-3'>
+                                <input type="submit" class="btn-primary btn-sm" value="Add" ng-click="experience.addExperience(experience.user); showDiv=false">
+                                <input type="button" ng-disabled="rowform.$waiting" ng-click="showDiv=false" class="btn btn-default btn-sm" value='Cancel' />
+                            </div>
+                        </div>
+                    </form>
+                    <hr />
+                    <!-- company/description row -->
+                    <div class="row" style='padding-top:50px' ng-repeat="item in experience.items">
+                        <div class="col-lg-10 col-md-10 col-sm-10">
+                            <div class="container">
+                                <div class='row'>
+                                    <div ng-hide="item.company == ''" class="col-lg-3 col-md-3 col-sm-3">
+                                        <h4 style='margin-left:0px' editable-text='item.company' e-form="rowform">{{item.company || 'empty'}}</h4>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-7" ng-hide="item.startDate == null && item.endDate == null">
+                                        <h4 class='dispaly:inline'><span editable-date='item.startDate'  e-form="rowform" ng-hide="item.startDate == null">{{item.startDate || 'empty' |  date:'dd-MM-yyyy'}}</span>
+                                    - <span editable-date='item.endDate'  e-form="rowform" ng-hide="item.endDate == null">{{item.endDate || 'empty' |  date:'dd-MM-yyyy'}}</span></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class='row'>
+                                    <div class="col-lg-7 col-md-7 col-sm-10" ng-hide="item.position == ''">
+                                        <b>Position: <span editable-text="item.position" e-form="rowform"> {{item.position || 'empty'}}</span></b>
+                                    </div>
+                                    <div class='col-lg-7 col-md-7 col-sm-12' ng-hide="item.summary == ''">
+                                        <span editable-textarea="item.summary" e-rows="7" e-cols="80" e-form="rowform"><b>Summary</b>: {{item.summary || 'empty'}}</span>
+                                    </div>
+                                    <div class='col-lg-7 col-md-7 col-sm-10'>
+                                        <span editable-text="item.website" e-form="rowform" ng-hide="item.website == ''"><a ng-href='{{item.website}}'>{{item.website || 'empty'}}</a></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- form -->
+                            <div class='row'>
+                                <div class='pull-right col-lg-4 col-md-4 col-sm-4'>
+                                    <form editable-form name="rowform" onaftersave="experience.editExperience(item)" ng-show="rowform.$visible" class="form-buttons form-inline">
+                                        <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                                        save
+                                    </button>
+                                        <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                                        cancel
+                                    </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class='row' ng-show='experience.showEditable'>
+                                <div class='pull-right'>
+                                    <div class="buttons col-lg-12 col-md-8 col-sm-12" ng-show="!rowform.$visible">
+                                        <button class="btn btn-primary" ng-click="rowform.$show()">edit</button>
+                                        <button class="btn btn-danger" ng-click="experience.removeExperience(item)">del</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </section>

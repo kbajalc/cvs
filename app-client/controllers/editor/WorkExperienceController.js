@@ -1,28 +1,19 @@
 'use strict';
-
-/**
- * @ngdoc function
- * @name cvApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the cvApp
- */
-
 cvApp.controller('WorkExperienceController', ['CvServices', function(CvServices) {
     var vm = this;
+    vm.items= CvServices.getAllExperience();
     vm.showEditable = CvServices.showEditableMode();
-    vm.items= CvServices.getAllExperience('userEmail');
     vm.addExperience = function(user){
-        var  inserted = {
-            'company': user.company,
-            'postion': user.position,
-            'website': user.website,
-            'startDate': user.dateFrom,
-            'endDate':user.dateTo,
-            'summary': user.summary
+        var  work = {
+            company: user.company || '',
+            position: user.position,
+            website: user.website,
+            startDate:user.dateFrom || '',
+            endDate: user.dateTo || '',
+            summary: user.summary
         };
-        vm.items.push(inserted);
-        CvServices.addNewExperience('userEmail', inserted);
+        vm.items.push(work);
+        CvServices.addNewSection();
         user.company='';
         user.position='';
         user.website='';
