@@ -9,7 +9,7 @@
         </div>
         <div class="row">
             <div class="col-md-12 col-lg-12">
-                <h4 style='color:white;border-bottom: none;' editable-text="about.user.firstName" ng-model='about.user.name' class='text-center'>{{about.user.firstName || 'empty'}}</h4>
+                <h4 e-ng-disabled='readOnly' style='color:white;border-bottom: none;' editable-text="about.user.firstName" ng-model='about.user.name' class='text-center'>{{about.user.firstName || 'empty'}}</h4>
                 <h4 style='color:white;border-bottom: none;' editable-text="about.user.lastName" ng-model='about.user.name' class='text-center'>{{about.user.lastName || 'empty'}}</h4>
             </div>
         </div>
@@ -23,7 +23,7 @@
     <!--Summary info section -->
     <section class="row summary" style="text-align: left;">
         <div class='col-lg-12 col-sm-12'>
-            <h4><span class="glyphicon glyphicon-file" aria-hidden="true"></span> ABOUT</h4>
+            <h4> ABOUT</h4>
             <span class='about' style='color:white;border-bottom: none;' ng-click="rowformSummary.$show()" editable-textarea="about.user.summary" e-rows="7" e-cols="40" ng-model='about.user.summary' class='text-center' e-form="rowformSummary"><small>{{about.user.summary || 'empty'}}</small></span>
             <form editable-form name="rowformSummary" ng-show="rowformSummary.$visible" class="form-buttons form-inline col-md-12" shown="inserted == about.user">
                 <hr>
@@ -46,7 +46,7 @@
     <!--Contact info section -->
     <section class="row skills">
         <div class="col-md-10" style="margin-top: 8px;">
-            <h4> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> CONTACT</h4>
+            <h4> CONTACT</h4>
         </div>
         <div class="col-md-2" ng-show='about.showEditable'>
             <button type="button" class="btn btn-info add btn-sm" ng-click="showDiv=true"> + </button>

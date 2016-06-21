@@ -2,34 +2,32 @@
 
 cvApp.controller('DashController', ["CvServices", '$http', "$window", "$location", "$rootScope", function(CvServices, $http, $window, $location, $rootScope) {
     var vm = this;
-    vm.resumes=[];
+    vm.resumes = [];
     // get data for current logged user
     // CvServices.getResumeForSelectedUser('', true, false).then(function(data) {
     //     vm.user = data;
     // });
-    vm.init = function(){
-      vm.user={};
-      vm.resumes=[];
-      CvServices.init();
-      CvServices.getResumes().then(function(data) {
-          vm.resumes = data;
-          vm.hasCv = CvServices.hasCVforHIdeButtons();
-          console.log(vm.hasCv + "sdfsdfsdfsdfsdf");
-          CvServices.getResumeForSelectedUser('', true, false).then(function(data) {
-              vm.user = data;
-          });
-          //vm.hasCv = checkCv(vm.resumes);
-      });
-}
-      //get cv for selected user
-      vm.displayCvForSpecificUser = function(cv, value) {
-          CvServices.getResumeForSelectedUser(cv._id, value, true);
-      }
+    vm.init = function() {
+            vm.user = {};
+            vm.resumes = [];
+            CvServices.init();
+            CvServices.getResumes().then(function(data) {
+                vm.resumes = data;
+                vm.hasCv = CvServices.hasCVforHIdeButtons();
+                CvServices.getResumeForSelectedUser('', true, false).then(function(data) {
+                    vm.user = data;
+                });
+                //vm.hasCv = checkCv(vm.resumes);
+            });
+        }
+        //get cv for selected user
+    vm.displayCvForSpecificUser = function(cv, value) {
+        CvServices.getResumeForSelectedUser(cv._id, value, true);
+    }
 
 
     vm.hasCv;
     //get all cvs
-
 
     //INSERT NEW  resume
     vm.insertResume = function() {
@@ -112,7 +110,7 @@ cvApp.controller('DashController', ["CvServices", '$http', "$window", "$location
                         vm.resumes.splice(i, i);
                         break;
                     }
-                     window.location.reload();
+                    window.location.reload();
                 }
             }, function(err) {
                 vm.status = "Unable to delete resume";

@@ -1,6 +1,6 @@
 <section class="row skills" ng-controller='PersonalSkillsController as personalSkills'>
     <div class="col-md-10" style="margin-top: 8px;">
-        <h4> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> PERSONAL SKILLS</h4>
+        <h4>PERSONAL SKILLS</h4>
     </div>
     <div class="col-md-2">
         <button type="button" class="btn btn-info add btn-sm" ng-click="showDiv=true" ng-show='personalSkills.showEditable'> + </button>
@@ -18,7 +18,8 @@
 
         </div>
 
-        <input type="submit" class="btn btn-primary" value="Add"><!-- ng-click="showDiv=false"-->
+        <input type="submit" class="btn btn-primary" value="Add">
+        <!-- ng-click="showDiv=false"-->
         <input type="button" class="btn btn-default" value="Cancel" ng-click="showDiv=false">
     </form>
     <div class="bar-sections" ng-repeat="x in personalSkills.perSkills">
