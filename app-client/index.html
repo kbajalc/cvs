@@ -9,7 +9,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script> -->
     <!-- Latest compiled and minified CSS -->
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -86,7 +86,7 @@
     </div>
 
     <!-- JS -->
-    <script src="/js/login.js"></script>
+  
     <script src="/js/angular/angular.js">
     </script>
     <script src="/js/angular/angular-route.js">
@@ -94,6 +94,9 @@
     <script src="/js/angular/angular-resource.js"></script>
 
     </script>
+    <script src="/js/ngFileUpload/ng-file-upload-shim.min.js"></script>
+    <!-- for no html5 browsers support -->
+    <script src="/js/ngFileUpload/ng-file-upload.min.js"></script>
     <script src="/js/xeditable.min.js"></script>
     <script src="app.js"></script>
 
@@ -116,8 +119,11 @@
     <script src="/controllers/editor/PersonalSkillsController.js"></script>
     <script src="/controllers/editor/TechnicalSkillsController.js"></script>
     <script src="/controllers/editor/WorkExperienceController.js"></script>
+    <script src="/controllers/upload.controller.js"></script>
+    <script src="/directives/image.upload.directive.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/login.js"></script>
 </body>
 
 </html>

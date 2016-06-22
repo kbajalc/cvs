@@ -39,12 +39,14 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
             resumeCheck = '';
             currentUserCV = {};
             listOfloggedUsers = [];
+            //image location based on logged userId
+            if (sessionStorage.currentUserID) $rootScope.currentImage = sessionStorage.currentUserID;
         }, //View your resume in editiable mode
         getResumeForSelectedUser: function(id, value, redirect) {
             var deferred = $q.defer();
-            if ((typeof(currentUserCV) !== 'undefined') && (currentUserCV.id === id)) {
+            if (value) {
                 showEditableMode = value;
-                $http.get(urlBase + '/' + (currentUserCV._id)).success(function(data) {
+                $http.get(urlBase + '/' + (id || currentUserCV._id)).success(function(data) {
                         if (redirect) {
                             return deferred.resolve(data), $location.path('/editor');
                         } else {
@@ -55,9 +57,9 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
                         deferred.reject('Error occured while retrieving CVs');
                         console.log("error");
                     });
-                //end of if statment
-            } else if ((typeof(currentUserCV) == "undefined") || (currentUserCV._id !== id)) {
-                $http.get(urlBase + '/' + id).success(function(data) {
+                //end of if statement
+            } else {
+                $http.get(urlBase + '/' + (id || currentUserCV._id)).success(function(data) {
                         if (redirect) {
                             return deferred.resolve(data), $location.path('/resumeViewMode');
                         } else {
