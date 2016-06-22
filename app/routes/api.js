@@ -3,8 +3,8 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Resume = mongoose.model('Resume');
-//var Resume = require('./app/models/cv.model');
-//
+var multer = require('multer');
+
 function isAuthenticated(req, res, next) {
 
     //allow all get request methods
@@ -19,10 +19,50 @@ function isAuthenticated(req, res, next) {
     return res.redirect('/login');
 };
 
+//multer config
+var storage = multer.diskStorage({ //multers disk storage settings
+    destination: function(req, file, cb) {
+        cb(null, './app-client/img/') //where images are stored
+    },
+    filename: function(req, file, cb) {
+
+        // var timestamp = Date.now();
+        //userID included in image name
+        cb(null, file.fieldname + '-' + req.params.userID +'.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
+    }
+});
+
+var upload = multer({ //multer settings
+    storage: storage
+}).single('file');
+
+
+
 //Authentication middleware
 router.use('/users', isAuthenticated);
 router.use('/resumes', isAuthenticated);
+router.use('/upload', isAuthenticated);
 
+//Upload route
+router.route('/upload/:userID')
+    .post(function(req, res) {
+        upload(req, res, function(err) {
+            if (err) {
+                res.json({
+                    errorCode: 1,
+                    errDesc: err
+                });
+                return;
+            }
+            res.json({
+                errorCode: 0,
+                errDesc: null
+
+            });
+        })
+    });
+
+//User api
 router.route('/users')
     .post(function(req, res) {
         var user = new User();

@@ -48,12 +48,14 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
             resumeCheck = '';
             currentUserCV = {};
             listOfloggedUsers = [];
+            //take current userID from session as a name for the image
+            if(sessionStorage.currentUserID) $rootScope.currentImage = sessionStorage.currentUserID;
         }, //View your resume in editiable mode
         getResumeForSelectedUser: function(id, value, redirect) {
             var deferred = $q.defer();
-            console.log(id);
                 showEditableMode = value;
                 $http.get(urlBase + '/' + (id || currentUserCV._id)).success(function(data) {
+
                         if (redirect) {
                             if(value){
                               return deferred.resolve(data), $location.path('/editor');
@@ -69,7 +71,6 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
                         deferred.reject('Error occured while retrieving CVs');
                         console.log("error");
                     });
-                //end of if statment
 
             if (redirect) {
                 return deferred.promise.then(function(data) {
