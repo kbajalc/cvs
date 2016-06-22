@@ -4,7 +4,8 @@
       <section class="row basicsInfo">
                         <div class="row">
                             <div class="col-md-6 col-md-offset-3">
-                                <img src="http://philosophy.ucr.edu/wp-content/uploads/2014/10/no-profile-img.gif" alt="profileImg" class="img-circle img-responsive" id="img">
+                              <img ng-click="showme=true" ng-hide="showme" ng-src="img/file-{{currentImage}}.jpg" alt="profileImg" onerror="this.onerror=null; this.src='img/avatar.png';" class="img-circle img-responsive" id="img">
+<upload-image ng-show="showme" ng-submit="showme=false; about.init();" ng-cancel="showme=true"></upload-image>
                             </div>
                         </div>
                         <div class="row">

@@ -1,6 +1,6 @@
 'use strict';
 
-var cvApp = angular.module('cvApp', ['ngRoute', 'ngResource', 'xeditable'])
+var cvApp = angular.module('cvApp', ['ngRoute', 'ngResource', 'xeditable', 'ngFileUpload'])
     .config(function($routeProvider, $locationProvider) {
 
         // home page LOGIN

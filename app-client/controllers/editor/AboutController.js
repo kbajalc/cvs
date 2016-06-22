@@ -1,5 +1,5 @@
 'use strict';
-cvApp.controller('AboutController',['CvServices', function(CvServices) {
+cvApp.controller('AboutController',['CvServices','$rootScope', function(CvServices, $rootScope) {
     var vm= this;
     vm.showEditable = CvServices.showEditableMode();
     vm.user = CvServices.getBasicItems();
@@ -10,6 +10,12 @@ cvApp.controller('AboutController',['CvServices', function(CvServices) {
         {value: 75, text: 'Advanced'},
         {value: 100, text: 'Master'}
     ];
+
+    var init = function(){
+      if(sessionStorage.currentUserID) $rootScope.currentImage = sessionStorage.currentUserID;
+    }
+
+    init();
     vm.addContact = function(){
       var contacts = vm.items;
 

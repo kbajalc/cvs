@@ -33,7 +33,7 @@ cvApp.controller('DashController', ["CvServices", '$http', "$window", "$location
                 firstName: vm.basics.firstName,
                 lastName: vm.basics.lastName,
                 jobTitle: vm.basics.jobTittle,
-                picture: '',
+                picture: '', //session TODO: take it from session
                 summary: vm.basics.summary
             },
             contacts: {
