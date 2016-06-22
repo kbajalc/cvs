@@ -6,9 +6,9 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label style="font-size: 21px;color: darkblue; font-family: cursive;">Basics</label>
-                            <input type="text" name="dash.basics.firstName" class="form-control" ng-model="dash.basics.firstName" ng-init="dash.basics.firstName=''" placeholder="First name">
+                            <input type="text" name="dash.basics.firstName" class="form-control" ng-model="dash.basics.firstName" ng-init="dash.basics.firstName=''" required placeholder="First name">
                             <br>
-                            <input type="text" name="dash.basics.lastName" class="form-control" ng-model="dash.basics.lastName" ng-init="dash.basics.lastName=''" placeholder="Last name">
+                            <input type="text" name="dash.basics.lastName" class="form-control" ng-model="dash.basics.lastName" ng-init="dash.basics.lastName=''" required placeholder="Last name">
                             <br>
                             <input type="text" name="dash.basics.jobTittle" class="form-control" ng-model="dash.basics.jobTittle" ng-init="dash.basics.jobTitle=''" placeholder="Job Title">
                             <br>
@@ -22,7 +22,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label style="font-size: 21px;color: darkblue; font-family: cursive;">Contacts</label>
-                            <input type="email" name="dash.contacts.email" class="form-control" ng-model="dash.contacts.email" ng-init="dash.contacts.email=''" value='{{dash.a}}'>
+                            <input type="email" name="dash.contacts.email" class="form-control" ng-model="dash.contacts.email" ng-init="dash.contacts.email=currentUser" value='{{dash.a}}'>
                             <br>
                             <input type="text" name="dash.contacts.phone" class="form-control" ng-model="dash.contacts.phone" ng-init="dash.contacts.phone=''" placeholder="Phone">
                             <br>

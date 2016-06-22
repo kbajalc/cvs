@@ -41,21 +41,21 @@
         <div class="bar-sections">
             <div class="col-md-10">
                 <div ng-hide="about.contacts.email == ''" ng-click="rowform.$show()" e-name="email" e-form="rowform" e-required>
-                    {{ about.contacts.email}}
+                    {{ about.items.email}}
                 </div>
                 <div ng-hide="about.contacts.phone == ''" ng-click="rowform.$show()" e-name="phone" e-form="rowform" e-required>
-                    </span> {{ about.contacts.phone}}
+                    </span> {{ about.items.phone}}
                 </div>
                 <div ng-hide="about.contacts.city == null" ng-click="rowform.$show()" e-name="city" e-form="rowform" e-required>
-                    {{ about.contacts.city}}
+                    {{ about.items.city}}
                 </div>
                 <div ng-hide="about.contacts.country == null" ng-click="rowform.$show()" e-name="country" e-form="rowform" e-required>
-                    {{ about.contacts.country}}
+                    {{ about.items.country}}
                 </div>
                 <div ng-hide="about.contacts.website == null" ng-click="rowform.$show()" e-name="website" e-form="rowform" e-required>
-                    <a href="#">{{ about.contacts.website}}</a>
+                    <a href="#">{{ about.items.website}}</a>
                 </div>
-                <div ng-repeat="s in about.contacts.social">
+                <div ng-repeat="s in about.items.social">
                     <div ng-hide="s.network == null" ng-click="rowform.$show()" e-name="facebook" e-form="rowform" e-required style='color:white'>
                         {{s.network}}
                     </div>
