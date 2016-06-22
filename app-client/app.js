@@ -1,6 +1,6 @@
 'use strict';
 
-var cvApp = angular.module('cvApp', ['ngRoute', 'ngResource', 'xeditable', 'ngFileUpload'])
+var cvApp = angular.module('cvApp', ['ngRoute', 'ngResource', 'xeditable'])
     .config(function($routeProvider, $locationProvider) {
 
         // home page LOGIN
@@ -27,7 +27,7 @@ var cvApp = angular.module('cvApp', ['ngRoute', 'ngResource', 'xeditable', 'ngFi
         $routeProvider.when('/addResume', {
             templateUrl: '/views/addResume.template.html',
             controller: 'DashController',
-            controllerAs: 'dash'
+            controllerAs: "dash"
 
         });
         //CV in VIEW mode
@@ -72,78 +72,78 @@ var cvApp = angular.module('cvApp', ['ngRoute', 'ngResource', 'xeditable', 'ngFi
                 sessionStorage.clear();
                 $location.path('/');
             };
-        })
+        });
     }).directive('aboutDirective', function() {
         return {
             restrict: 'E',
-            templateUrl: 'views/editor/about.template.html'
+            templateUrl: 'views/editor_sections/about.html'
 
         };
     }).directive('personalSkillsDirective', function() {
         return {
             restrict: 'E',
-            templateUrl: 'views/editor/personal.template.html'
+            templateUrl: 'views/editor_sections/personal_skills.html'
 
         };
     }).directive('workExpDirective', function() {
         return {
             restrict: 'E',
-            templateUrl: 'views/editor/work.template.html'
+            templateUrl: 'views/editor_sections/work_experience.html'
 
         };
     }).directive('educationDirective', function() {
         return {
             restrict: 'E',
-            templateUrl: 'views/editor/education.template.html'
+            templateUrl: 'views/editor_sections/education.html'
 
         };
     }).directive('techSkillsDirective', function() {
         return {
             restrict: 'E',
-            templateUrl: 'views/editor/technical.template.html'
+            templateUrl: 'views/editor_sections/technical_skills.html'
 
         };
     }).directive('languagesDirective', function() {
         return {
             restrict: 'E',
-            templateUrl: 'views/editor/languages.template.html'
+            templateUrl: 'views/editor_sections/languages.html'
 
         };
         //directives for view mode the resume
     }).directive('aboutDirectiveView', function() {
         return {
             restrict: 'E',
-            templateUrl: 'views/preview/about.template.html'
+            templateUrl: 'views/view_section/aboutView.html'
 
         };
     }).directive('personalSkillsDirectiveView', function() {
         return {
             restrict: 'E',
-            templateUrl: 'views/preview/personal.template.html'
+            templateUrl: 'views/view_section/personal_skillsView.html'
 
         };
     }).directive('workExpDirectiveView', function() {
         return {
             restrict: 'E',
-            templateUrl: 'views/preview/work.template.html'
+            templateUrl: 'views/view_section/work_experienceView.html'
 
         };
     }).directive('educationDirectiveView', function() {
         return {
             restrict: 'E',
-            templateUrl: 'views/preview/education.template.html'
+            templateUrl: 'views/view_section/educationView.html'
 
         };
     }).directive('techSkillsDirectiveView', function() {
         return {
             restrict: 'E',
-            templateUrl: 'views/preview/technical.template.html'
+            templateUrl: 'views/view_section/technical_skillsView.html'
 
         };
     }).directive('languagesDirectiveView', function() {
         return {
             restrict: 'E',
-            templateUrl: 'views/preview/languages.template.html'
+            templateUrl: 'views/view_section/languagesView.html'
 
         };
     });

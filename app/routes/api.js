@@ -3,8 +3,8 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Resume = mongoose.model('Resume');
-var multer = require('multer');
-
+//var Resume = require('./app/models/cv.model');
+//
 function isAuthenticated(req, res, next) {
 
     //allow all get request methods
@@ -19,46 +19,9 @@ function isAuthenticated(req, res, next) {
     return res.redirect('/login');
 };
 
-
-
 //Authentication middleware
 router.use('/users', isAuthenticated);
 router.use('/resumes', isAuthenticated);
-router.use('/upload', isAuthenticated);
-
-//multer's disk storage settings
-var storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, './app-client/img/') //store here
-    },
-    filename: function(req, file, cb) {
-        //var timestamp = Date.now();
-        //image name, pattern: file-[userID].jpg
-        cb(null, file.fieldname + '-' + req.params.userID + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
-    }
-});
-//multer settings
-var upload = multer({
-    storage: storage
-}).single('file');
-
-router.route('/upload/:userID')
-    .post(function(req, res) {
-        upload(req, res, function(err) {
-            if (err) {
-                res.json({
-                    errorCode: 1,
-                    errDesc: err
-                });
-                return;
-            }
-            res.json({
-                errorCode: 0,
-                errDesc: null
-
-            });
-        })
-    });
 
 router.route('/users')
     .post(function(req, res) {
@@ -208,7 +171,7 @@ router.route('/resumes/:id')
     .delete(function(req, res) {
         Resume.findById(req.params.id, function(err, data) {
             if (err) {
-                res.send('Error' + err);
+                es.send('Error' + err);
             }
             data.remove();
             res.send({
@@ -220,4 +183,4 @@ router.route('/resumes/:id')
      * END OF RESUMES api
      *****************************************************/
 
-module.exports = router;
+     module.exports = router;
