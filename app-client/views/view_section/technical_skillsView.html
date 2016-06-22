@@ -1,0 +1,23 @@
+<section class="row skills" ng-controller='TechnicalSkillsController as technicalSkill'>
+    <div class="col-md-10">
+        <h4>TECHNICAL SKILLS</h4>
+    </div>
+    <div class="row bar-sections">
+        <div class="col-md-6" ng-repeat="x in technicalSkill.techSkills">
+            <div class="col-md-6">
+                <span ng-click="rowform.$show()" e-name="name" e-form="rowform" e-required>
+              {{ x.name || 'empty'  | uppercase}}
+            </span>
+
+            </div>
+            <div class="col-md-6">
+                <div class="progress" href="#" e-ng-options="s.value as s.text for s in technicalSkill.statuses" e-form="rowform" ng-click="rowform.$show()">
+                    <!--{{user.status}}-->
+                    <div class="progress-bar barWhite" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:{{x.level}}%">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
