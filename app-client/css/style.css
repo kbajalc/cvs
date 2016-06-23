@@ -1,3 +1,9 @@
+.wordBreak {
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+}
 .loginTemplate {
     padding-top: 30px;
     background-color: #c0dfd9;
