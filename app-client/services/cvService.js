@@ -8,39 +8,43 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
     //list for all resumes for currentUser
     var listOfloggedUsers = [];
     return {
-      getResumes: function() {
-                  var deferred = $q.defer();
-                  $http.get(urlBase).
-                  success(function(data) {
-                          for (var obj in data) {
-                              if (data[obj].userID.id === sessionStorage.currentUserID) {
-                                  listOfloggedUsers.push(data[obj])
-                              }
-                          }
-                          if (listOfloggedUsers.length == 0) {
-                              resumeCheck = false;
-                          } else {
-                              resumeCheck = true;
-                          }
-                          // get the last updated resume
-                          currentUserCV = listOfloggedUsers[listOfloggedUsers.length - 1];
-                          var hash = {};
-                          var arrData=[];
-                          for (var i = 0; i < data.length; i++) {
-                              if(data[i].userID.id == sessionStorage.currentUserID) continue;
-                              hash[data[i].userID.id]=(data[i]);
-                          }
-                          for (var a in hash) {
-                              arrData.push(hash[a]);
-                          }
-                          return deferred.resolve(arrData);
-                      })
-                      .error(function(data, status, headers, config) {
-                          deferred.reject('Error occured while retrieving CVs');
-                          console.log("error");
-                      });
-                  return deferred.promise;
-              },
+        getResumes: function() {
+            var deferred = $q.defer();
+            $http.get(urlBase).
+            success(function(data) {
+                    for (var obj in data) {
+                        if (data[obj].userID.id === sessionStorage.currentUserID) {
+                            listOfloggedUsers.push(data[obj])
+                        }
+                    }
+                    if (listOfloggedUsers.length == 0) {
+                        resumeCheck = false;
+                    } else {
+                        resumeCheck = true;
+                    }
+
+                    // get the last updated resume
+                    currentUserCV = listOfloggedUsers[listOfloggedUsers.length - 1];
+                    var hash = {};
+                    var arrData = [];
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].userID.id == sessionStorage.currentUserID) continue;
+                        hash[data[i].userID.id] = (data[i]);
+                    }
+                    for (var a in hash) {
+                        arrData.push(hash[a]);
+                    }
+                    return deferred.resolve(arrData);
+                })
+                .error(function(data, status, headers, config) {
+                    deferred.reject('Error occured while retrieving CVs');
+                    console.log("error");
+                });
+            return deferred.promise;
+        },
+        getID: function() {
+            return currentUserCV._id;
+        },
         //initialing variables
         init: function() {
             resume = {};
@@ -49,28 +53,27 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
             currentUserCV = {};
             listOfloggedUsers = [];
             //take current userID from session as a name for the image
-            if(sessionStorage.currentUserID) $rootScope.currentImage = sessionStorage.currentUserID;
+            if (sessionStorage.currentUserID) $rootScope.currentImage = sessionStorage.currentUserID;
         }, //View your resume in editiable mode
         getResumeForSelectedUser: function(id, value, redirect) {
             var deferred = $q.defer();
-                showEditableMode = value;
-                $http.get(urlBase + '/' + (id || currentUserCV._id)).success(function(data) {
-
-                        if (redirect) {
-                            if(value){
-                              return deferred.resolve(data), $location.path('/editor');
-                            }
-                            else{
-                              return deferred.resolve(data), $location.path('/resumeViewMode');
-                            }
+            showEditableMode = value;
+            $http.get(urlBase + '/' + (id || currentUserCV._id)).success(function(data) {
+                    if (redirect) {
+                        if (value) {
+                            return deferred.resolve(data), $location.path('/editor');
                         } else {
-                            return deferred.resolve(data);
+                            return deferred.resolve(data), $location.path('/resumeViewMode');
                         }
-                    })
-                    .error(function(data, status, headers, config) {
-                        deferred.reject('Error occured while retrieving CVs');
-                        console.log("error");
-                    });
+                    } else {
+                        return deferred.resolve(data);
+                    }
+
+                })
+                .error(function(data, status, headers, config) {
+                    deferred.reject('Error occured while retrieving CVs');
+                    console.log("error");
+                });
 
             if (redirect) {
                 return deferred.promise.then(function(data) {
@@ -84,7 +87,7 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
         //get all resumes
 
         insertResume: function(resume) {
-             window.location.reload();
+            window.location.reload();
             return $http.post(urlBase, resume);
         },
         updateResume: function() {

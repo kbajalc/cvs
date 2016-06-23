@@ -4,8 +4,8 @@
             <div class="vd_content-section clearfix">
                 <div class="row">
                     <div class="col-md-3">
-                      <img ng-click="showme=true" ng-hide="showme" ng-src="img/file-{{currentImage}}.jpg" class="img-responsive" id="imgDashboard" onerror="this.onerror=null; this.src='/img/avatar.png';" alt="avatar" />
-                       <upload-image ng-show="showme" ng-submit="showme=false; dash.init();" ng-cancel="showme=true"></upload-image>
+                        <img ng-click="showme=true" ng-hide="showme" ng-src="img/file-{{currentImage}}.jpg" class="img-responsive" id="imgDashboard" onerror="this.onerror=null; this.src='/img/avatar.png';" alt="avatar" />
+                        <upload-image ng-show="showme" ng-submit="showme=false; dash.init();" ng-cancel="showme=true"></upload-image>
                     </div>
                     <div class="col-md-9" id="basic-info">
                         <div class="col-md-12">
@@ -35,7 +35,7 @@
                                     <a href="" class="btn btn-success  addEditPDFbtn" ng-click='dash.displayCvForSpecificUser(dash.user, true)' style="width: 150px;">Edit my CV</a>
                                 </div>
                                 <div class="col-md-12 col-md-offset-5 basic-info-btn" ng-if="!dash.hasCv">
-                                    <a href="" class="btn btn-info addEditPDFbtn" ng-click = 'dash.insertResume()' style="width: 150px;">Create new CV</a>
+                                    <a href="" class="btn btn-info addEditPDFbtn" ng-click='dash.insertResume()' style="width: 150px;">Create new CV</a>
                                 </div>
 
                                 <div class="col-md-12 col-md-offset-5 basic-info-btn" ng-if="dash.hasCv">
