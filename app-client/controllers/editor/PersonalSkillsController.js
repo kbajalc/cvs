@@ -14,20 +14,22 @@ cvApp.controller('PersonalSkillsController', ['CvServices',function(CvServices) 
       vm.items.splice(index, 1);
      CvServices.removePersonallSkill("userEmail", index);
   };
-
-    // vm.editPersonallSkill= function(item) {
-    //     CvServices.editPersonallSkill('userEmail', item);
-    //     console.log(item)
-    // };
-
-    vm.addPerSkill = function () {
-        var skills ={
-            name: vm.textName,
-            level: vm.numLevel
-        }
-        vm.items.push(skills);
-        CvServices.addNewSection();
-        vm.textName = '';
-        vm.numLevel = '';
-    };
+  vm.addPerSkill = function () {
+      var skills ={
+          name: vm.textName,
+          level: vm.numLevel
+      }
+      vm.items.push(skills);
+      CvServices.addNewSection();
+      vm.textName = '';
+      vm.numLevel = '';
+  };
+  vm.editPersonallSkill= function(item, index) {
+    var skills= {
+           name: item.name,
+           level: item.level
+       }
+       vm.items[index] = skills;
+     CvServices.addNewSection();
+  };
 }]);

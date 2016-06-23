@@ -26,7 +26,12 @@ cvApp.controller('TechnicalSkillsController',['CvServices', function(CvServices)
         vm.numLevel = '';
     };
 
-    // vm.editTechnicalSkill= function(item){
-    //    CvServices.editTechnicalSkill('userEmail', item);
-    // }
+    vm.editTechnicalSkill= function(item, index){
+      var profSkills= {
+             name: item.name,
+             level: item.level
+         }
+         vm.items[index] = profSkills;
+       CvServices.addNewSection();
+    }
 }]);

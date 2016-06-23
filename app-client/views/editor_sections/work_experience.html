@@ -95,7 +95,7 @@
             <!-- form -->
             <div class='row'>
                 <div class='pull-right col-lg-4 col-md-4 col-sm-4'>
-                    <form editable-form name="rowform" onaftersave="experience.editExperience(item)" ng-show="rowform.$visible" class="form-buttons form-inline">
+                  <form editable-form name="rowform" onaftersave="experience.editExperience(item,$index)" ng-show="rowform.$visible" class="form-buttons form-inline">
                         <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
                                         save
                                     </button>

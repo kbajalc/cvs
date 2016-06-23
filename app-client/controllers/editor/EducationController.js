@@ -22,17 +22,18 @@ cvApp.controller('EducationController', ['CvServices',function (CvServices) {
        user.summary='';
      };
 
-    //  vm.editEducation = function(){
-    //     var  inserted = {
-    //         'institution': user.institution,
-    //         'area': user.area,
-    //         'studyType': user.studyType,
-    //         'startDate': user.dateFrom,
-    //         'endDate':user.dateTo,
-    //         'summary': user.summary
-    //     };
-    //     CvServices.editEducation('userEmail', inserted);
-    //    };
+     vm.editEducation = function(item, index){
+        var  education = {
+            institution: item.institution,
+            area: item.area,
+            studyType: item.studyType,
+            startDate: item.dateFrom,
+            endDate:item.dateTo,
+            summary: item.summary
+        };
+        vm.items[index] = education;
+       CvServices.addNewSection();
+       };
 
        vm.removeEducation = function(item){
            vm.items.pop(item);

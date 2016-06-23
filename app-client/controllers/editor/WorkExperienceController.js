@@ -22,18 +22,18 @@ cvApp.controller('WorkExperienceController', ['CvServices', function(CvServices)
         user.summary='';
      };
 
-    //  vm.editExperience = function(user){
-    //     var  inserted = {
-    //         'company': user.company,
-    //         'postion': user.position,
-    //         'website': user.website,
-    //         'startDate': user.startDate,
-    //         'endDate':user.endDate,
-    //         'summary': user.summary
-    //     };
-
-    //    CvServices.editExperience('userEmail', inserted);
-    //    };
+     vm.editExperience = function(item, index){
+            var  work = {
+                company: item.company,
+                postion: item.position,
+                website: item.website,
+                startDate: item.startDate,
+                endDate:item.endDate,
+                summary: item.summary
+            };
+            vm.items[index] = work;
+           CvServices.addNewSection();
+           };
 
        vm.removeExperience = function(item){
           vm.items.pop(item)

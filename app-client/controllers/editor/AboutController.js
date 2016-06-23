@@ -61,7 +61,14 @@ cvApp.controller('AboutController',['CvServices','$rootScope', function(CvServic
         vm.items.pop(item);
         CvServices.removeContacts('userEmail', index);
     };
-    vm.f= function() {
 
+    vm.editContacts = function(item){
+      vm.items=item;
+      CvServices.addNewSection();
     }
+    vm.editBasics = function(item){
+      vm.user.about = item;
+      CvServices.addNewSection();
+    }
+
 }]);

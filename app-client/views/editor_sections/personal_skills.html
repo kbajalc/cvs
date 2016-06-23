@@ -37,9 +37,9 @@
                 </div>
             </div>
 
-            <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline col-md-12" shown="inserted == x">
+            <form editable-form name="rowform" onaftersave="personalSkills.editPersonallSkill(x,$index)" ng-show="rowform.$visible" class="form-buttons form-inline col-md-12" shown="inserted == x">
                 <hr>
-                <button type="submit" ng-disabled="rowform.$waiting" ng-click='personalSkills.editPersonallSkill(x)' class="btn btn-primary">
+                <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
                                 Save
                               </button>
                 <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
