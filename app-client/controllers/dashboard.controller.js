@@ -1,78 +1,78 @@
 'use strict';
-cvApp.controller('DashController', ["CvServices", '$http', "$window", "$location", "$rootScope", function(CvServices, $http, $window, $location, $rootScope) {
+cvApp.controller('DashController', ["CvServices", '$http', "$window", "$location", "$rootScope", function (CvServices, $http, $window, $location, $rootScope) {
     var vm = this;
 
-    vm.resumes=[];
-    vm.init = function(){
-      vm.user={};
-      vm.resumes=[];
-      CvServices.init();
-      CvServices.getResumes().then(function(data) {
-          //get all resumes to list in dashboard
-          vm.resumes = data;
-          //hasCv to show or hide buttons(add new cv, edit my cv..)
-          vm.hasCv = CvServices.hasCVforHIdeButtons();
-          //('' - empty string 'cos is not neddet cv id to be pass when reading my cv becouse it is saved in session,
-          // true - to be in editable mode,
-          // false - to not redirect to /editor, only show basic information on dashboard)
-          CvServices.getResumeForSelectedUser('', true, false).then(function(data) {
-              //get resume for my cv
-              vm.user = data;
-          });
-      });
+    vm.resumes = [];
+    vm.init = function () {
+        vm.user = {};
+        vm.resumes = [];
+        CvServices.init();
+        CvServices.getResumes().then(function (data) {
+            //get all resumes to list in dashboard
+            vm.resumes = data;
+            //hasCv to show or hide buttons(add new cv, edit my cv..)
+            vm.hasCv = CvServices.hasCVforHIdeButtons();
+            //('' - empty string 'cos is not neddet cv id to be pass when reading my cv becouse it is saved in session,
+            // true - to be in editable mode,
+            // false - to not redirect to /editor, only show basic information on dashboard)
+            CvServices.getResumeForSelectedUser('', true, false).then(function (data) {
+                //get resume for my cv
+                vm.user = data;
+            });
+        });
     }
-      //get cv for selected user
-    vm.displayCvForSpecificUser = function(cv, value) {
+    //get cv for selected user
+    vm.displayCvForSpecificUser = function (cv, value) {
         CvServices.getResumeForSelectedUser(cv._id, value, true);
     }
 
     //INSERT NEW  resume
-    vm.insertResume = function() {
+    vm.insertResume = function () {
         var newResume = {
             basics: {
-                firstName: vm.basics.firstName,
-                lastName: vm.basics.lastName,
-                jobTitle: vm.basics.jobTittle,
-                picture: '', //session TODO: take it from session
-                summary: vm.basics.summary
+                firstName: null,
+                lastName: null,
+                jobTitle: null,
+                picture: null, //session TODO: take it from session
+                summary: null
             },
             contacts: {
-                email: vm.contacts.email,
-                phone: vm.contacts.phone,
-                city: vm.contacts.city,
-                country: vm.contacts.country,
-                website: vm.contacts.website,
+                email: null,
+                phone: null,
+                city: null,
+                country: null,
+                website: null,
                 social: [{
-                    network: vm.contacts.social.network
+                    network: null
                 }]
             },
             profSkills: [{
-                name: vm.profSkills.name,
-                level: vm.profSkills.level
+                name: null,
+                level: null
             }],
             work: [{
-                company: vm.work.company,
-                position: vm.work.position,
-                website: vm.work.website,
-                startDate: vm.work.startDate,
-                endDate: vm.work.endDate,
-                summary: vm.work.summary
+                company: null,
+                position: null,
+                website: null,
+                startDate: null,
+                endDate: null,
+                summary: null
             }],
             education: [{
-                institution: vm.education.institution,
-                area: vm.education.area,
-                studyType: vm.education.studyType,
-                startDate: vm.education.startDate,
-                endDate: vm.education.endDate,
-                summary: vm.education.summary
+                institution: null,
+                area: null,
+                studyType: null,
+                startDate: null,
+                endDate: null,
+                summary: null
             }],
             skills: [{
-                name: vm.skills.name,
-                level: vm.skills.level
+                name: null,
+                level: null
             }],
             languages: [{
-                name: vm.languages.name,
-                level: vm.languages.level
+                name: null,
+                level: null
             }],
             createDate: {
                 type: Date,
@@ -82,22 +82,29 @@ cvApp.controller('DashController', ["CvServices", '$http', "$window", "$location
                 id: sessionStorage.getItem('currentUserID')
             }
         };
-    CvServices.insertResume(newResume)
-        .then(function(response) {
-            vm.resumes.push(newResume);
-            console.log('New resume saved');
-            //reset the form
-            document.forms['newCvForm'].reset();
-            console.log('Resume saved');
-            $location.path('/dashboard');
-        }, function(error) {
-            console.log('Unable to insert customer: ' + error.message);
-        });
+        CvServices.insertResume(newResume)
+            .then(function (response) {
+                vm.resumes.push(newResume);
+                console.log('New resume saved');
+                //reset the form
+                //  document.forms['newCvForm'].reset();
+                console.log('Resume saved');
+                //CvServices.getResumes();
+                //CvServices.getResumeForSelectedUser('',true,true);
+                //$location.path('/dashboard');
+                // $location.path('/dashboard');
+               // $location.path('/editor')
+            }, function (error) {
+                console.log('Unable to insert customer: ' + error.message);
+            });
+
     };
+
+
     //DELETE resume
-    vm.deleteResume = function(id) {
+    vm.deleteResume = function (id) {
         CvServices.deleteResume(id)
-            .then(function(data) {
+            .then(function (data) {
                 vm.status = "Deleted Resume , Please refresh resumes list";
                 for (var i = 0; i < vm.resumes.length; i++) {
                     var currentCV = vm.resumes[i];
@@ -108,23 +115,23 @@ cvApp.controller('DashController', ["CvServices", '$http', "$window", "$location
                     }
                     window.location.reload();
                 }
-            }, function(err) {
+            }, function (err) {
                 vm.status = "Unable to delete resume";
-        });
-     };
+            });
+    };
 
 
     //UPDATE resume
-    vm.updateResume = function(id) {
-            var cv;
-            for (var i = 0; i < vm.resumes.length; i++) {
-                var currentCV = vm.resumes[i];
-                if (currentCV._id === id) {
-                    var cv = currentCV;
-                    break;
-                }
-            } //end find the current cv
-        } //end of update resume
+    vm.updateResume = function (id) {
+        var cv;
+        for (var i = 0; i < vm.resumes.length; i++) {
+            var currentCV = vm.resumes[i];
+            if (currentCV._id === id) {
+                var cv = currentCV;
+                break;
+            }
+        } //end find the current cv
+    } //end of update resume
 
     //check does current user has cv in database return true or false
     function checkCv(resumes) {

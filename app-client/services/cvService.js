@@ -84,7 +84,7 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
         //get all resumes
 
         insertResume: function(resume) {
-
+             window.location.reload();
             return $http.post(urlBase, resume);
         },
         updateResume: function() {

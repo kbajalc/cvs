@@ -22,8 +22,11 @@ cvApp.controller('LanguageController',['CvServices', function(CvServices) {
     };
     // remove user
     vm.removeLang = function(index) {
-      vm.languages.splice(index, 1);
-      CvServices.removeLanguage('userEmail', index);
+    //   vm.languages.splice(index, 1);
+    //   CvServices.removeLanguage('userEmail', index);
+
+    vm.items.splice(index, 1);
+    CvServices.removeLang('userEmail', index);
     };
 
     // vm.editLanguage= function(item) {
