@@ -64,6 +64,10 @@
                         <li ng-show="authenticated">
                             <a href="#" id="currentUser" class="create_pdf">Export PDF</a>
                         </li>
+
+                        <li ng-show="authenticated" ng-controller="DashController">
+                            <a href="#" id="currentUser" ng-if="hasResume()">Publish</a>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li ng-show="authenticated">

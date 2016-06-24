@@ -27,7 +27,7 @@ cvApp.controller('authController', function($scope, $http, $rootScope, $route, $
                 if (data.message == "The password is incorrect") {
                     $scope.errorMessageLoginPassword = data.message[0];
                     $scope.errorMessageLoginUsername = "";
-                }else {
+                } else {
                     $scope.errorMessageLoginPassword = "";
                     $scope.errorMessageLoginUsername = data.message[0];
                 }

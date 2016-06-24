@@ -55,6 +55,9 @@ var ResumeSchema = new Schema({
     },
     userID: {
         id: String
+    },
+    status: {
+        value: String
     }
 });
 

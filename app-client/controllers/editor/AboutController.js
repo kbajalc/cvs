@@ -54,6 +54,12 @@ cvApp.controller('AboutController',['CvServices','$rootScope', function(CvServic
        //vm.position.textPosition='';
        //vm.contact.textInput ='';
     }
+    vm.editName = function(item){
+      vm.user.firstName = (vm.user.firstName && vm.user.firstName) || '';
+      vm.user.lastName = (vm.user.lastName && vm.user.lastName) || '';
+      CvServices.addNewSection();
+      document.forms['rowformName'].reset();
+    }
 
     vm.editContacts = function(item){
       vm.items=item;
