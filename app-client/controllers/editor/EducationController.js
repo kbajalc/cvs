@@ -4,22 +4,22 @@ cvApp.controller('EducationController', ['CvServices',function (CvServices) {
     vm.showEditable = CvServices.showEditableMode();
     vm.items  = CvServices.getAllEducation();
     vm.addEducation = function(user){
+      if(!user){
+        alert('You must enter at least some value to be saved!')
+      }
+      else{
         var  education = {
             institution: user.institution || '',
-            area: user.area || '',
-            studyType: user.studyType || '',
-            startDate: user.dateFrom || '',
-            endDate:user.dateTo || '',
-            summary: user.summary || ''
+            area:  user.area || '',
+            studyType:  user.studyType || '',
+            startDate:  user.dateFrom || '',
+            endDate:  user.dateTo || '',
+            summary:  user.summary || ''
         };
        vm.items.push(education);
        CvServices.addNewSection();
-       user.institution='';
-       user.area='';
-       user.studyType='';
-       user.dateFrom='';
-       user.dateTo='';
-       user.summary='';
+       document.forms['newEducation'].reset();
+     }
      };
 
      vm.editEducation = function(item, index){
@@ -35,8 +35,8 @@ cvApp.controller('EducationController', ['CvServices',function (CvServices) {
        CvServices.addNewSection();
        };
 
-       vm.removeEducation = function(item){
-           vm.items.pop(item);
-           CvServices.removeEducation(item);
+       vm.removeEducation = function(index){
+         vm.items.splice(index, 1);
+         CvServices.addNewSection();
        }
 }]);

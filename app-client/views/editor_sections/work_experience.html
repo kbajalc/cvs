@@ -9,7 +9,7 @@
     </div>
 
     <!-- new experience -->
-    <form editable-form style="margin:30px" ng-show="showDiv" validate>
+    <form name='newExperience' editable-form style="margin:30px" ng-show="showDiv" validate>
         <hr />
         <div class="row">
             <div class="col-lg-3 col-md-3">
@@ -97,21 +97,21 @@
                 <div class='pull-right col-lg-4 col-md-4 col-sm-4'>
                   <form editable-form name="rowform" onaftersave="experience.editExperience(item,$index)" ng-show="rowform.$visible" class="form-buttons form-inline">
                         <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
-                                        save
-                                    </button>
+                            save
+                        </button>
                         <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
-                                        cancel
-                                    </button>
+                          cancel
+                      </button>
                     </form>
                 </div>
             </div>
             <div class='row' ng-show='experience.showEditable'>
-                <div class='pull-right'>
-                    <div class="buttons col-lg-12 col-md-8 col-sm-12" ng-show="!rowform.$visible">
-                        <button class="btn btn-primary" ng-click="rowform.$show()">edit</button>
-                        <button class="btn btn-danger" ng-click="experience.removeExperience(item)">del</button>
-                    </div>
-                </div>
+              <div class='pull-right'>
+                  <div class="buttons col-lg-12 col-md-8 col-sm-12" ng-show="!rowform.$visible">
+                      <button class="btn btn-primary" ng-click="rowform.$show()">edit</button>
+                      <button class="btn btn-danger" ng-click="experience.removeExperience($index)">del</button>
+                  </div>
+              </div>
             </div>
         </div>
     </div>

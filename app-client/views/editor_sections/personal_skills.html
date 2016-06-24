@@ -12,12 +12,8 @@
 
         <!--<div class="form-group">-->
 
-        <select class="form-control" ng-options="s.value as s.text for s in personalSkills.statuses" ng-model="personalSkills.numLevel">
-                            </select>
-
+        <select class="form-control" ng-options="s.value as s.text for s in personalSkills.statuses" ng-model="personalSkills.numLevel"></select>
         <br>
-
-
         <input type="submit" class="btn btn-primary" value="Add" ng-click="showDiv=false">
         <input type="button" class="btn btn-default" value="Cancel" ng-click="showDiv=false">
     </form>
@@ -25,9 +21,8 @@
         <div class="row wordBreak" ng-hide="x.name === null || x.level === null">
             <div class="col-md-6">
                 <span ng-click="rowform.$show()" editable-text="x.name" e-name="name" e-form="rowform" e-required>
-                              {{ x.name || 'empty' | uppercase}}
-                            </span>
-
+                    {{ x.name || 'empty' | uppercase}}
+                </span>
             </div>
             <div class="col-md-6">
                 <div class="progress" href="#" editable-select="x.level" e-ng-options="s.value as s.text for s in personalSkills.statuses" e-form="rowform" ng-click="rowform.$show()">
@@ -40,17 +35,16 @@
             <form editable-form name="rowform" onaftersave="personalSkills.editPersonallSkill(x,$index)" ng-show="rowform.$visible" class="form-buttons form-inline col-md-12" shown="inserted == x">
                 <hr>
                 <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
-                                Save
-                              </button>
+                  Save
+                </button>
                 <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
-                                Cancel
-                              </button>
+                  Cancel
+                </button>
                 <button type="button" ng-disabled="rowform.$waiting" ng-click="personalSkills.removePerSkill($index)" class="btn btn-danger">
-                                Delete
-                              </button>
+                  Delete
+                </button>
                 <hr>
             </form>
         </div>
-
     </div>
 </section>

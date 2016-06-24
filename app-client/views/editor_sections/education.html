@@ -8,7 +8,7 @@
     </div>
 
     <!-- add new education -->
-    <form style="margin:30px" ng-show="showDiv" validate>
+    <form name='newEducation' style="margin:30px" ng-show="showDiv" validate>
         <hr />
         <div class="row">
             <div class="col-lg-3 col-md-3">
@@ -107,7 +107,7 @@
                 <div class='pull-right'>
                     <div class="buttons col-lg-12 col-md-8 col-sm-12" ng-show="!rowform.$visible">
                         <button class="btn btn-primary" ng-click="rowform.$show()">edit</button>
-                        <button class="btn btn-danger" ng-click="education.removeEducation(item)">del</button>
+                        <button class="btn btn-danger" ng-click="education.removeEducation($index)">del</button>
                     </div>
                 </div>
             </div>

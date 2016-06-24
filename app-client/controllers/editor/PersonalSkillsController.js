@@ -9,11 +9,6 @@ cvApp.controller('PersonalSkillsController', ['CvServices',function(CvServices) 
     {value: 75, text: 'Advanced'},
     {value: 100, text: 'Master'}
  ];
-  // remove user
-  vm.removePerSkill = function(index) {
-      vm.items.splice(index, 1);
-     CvServices.removePersonallSkill("userEmail", index);
-  };
   vm.addPerSkill = function () {
       var skills ={
           name: vm.textName,
@@ -30,6 +25,10 @@ cvApp.controller('PersonalSkillsController', ['CvServices',function(CvServices) 
            level: item.level
        }
        vm.items[index] = skills;
+     CvServices.addNewSection();
+  };
+  vm.removePerSkill = function(index) {
+      vm.items.splice(index, 1);
      CvServices.addNewSection();
   };
 }]);

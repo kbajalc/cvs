@@ -8,6 +8,7 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
     //list for all resumes for currentUser
     var listOfloggedUsers = [];
     return {
+          //get all resumes
         getResumes: function() {
             var deferred = $q.defer();
             $http.get(urlBase).
@@ -54,7 +55,8 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
             listOfloggedUsers = [];
             //take current userID from session as a name for the image
             if (sessionStorage.currentUserID) $rootScope.currentImage = sessionStorage.currentUserID;
-        }, //View your resume in editiable mode
+        },
+        //View your resume in editiable mode
         getResumeForSelectedUser: function(id, value, redirect) {
             var deferred = $q.defer();
             showEditableMode = value;
@@ -84,8 +86,6 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
             }
 
         },
-        //get all resumes
-
         insertResume: function(resume) {
             window.location.reload();
             return $http.post(urlBase, resume);
@@ -96,15 +96,12 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
         deleteResume: function(id) {
             return $http.delete(urlBase + '/' + id);
         },
-
         //add new section
         addNewSection: function() {
             resume._id = null;
             console.log(resume);
             $http.post(urlBase, resume).then(function(response) {
                 console.log(response);
-                // getResumes();
-                // getResumeForSelectedUser('', true, true);
                 $location.path('/dashboard');
                 $location.path('/editor')
             }, function(error) {
@@ -121,7 +118,6 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
             return showEditableMode;
         },
         //function for about section
-
         getBasicItems: function() {
             return resume.basics;
         },
@@ -129,49 +125,25 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
         getAllContacts: function() {
             return resume.contacts;
         },
-        removeContact: function() {
-            //remove contact
-        },
-        //function fo experience
-
+        //function for work experience
         getAllExperience: function() {
             return resume.work;
-        },
-        removeExperience: function(userEmail, item) {
-            //izbrisi iskustvo od bazata za daden user, vo item e jsono od experience i treba da se najde od baza i da se izbrise
         },
         //function for education
         getAllEducation: function() {
             return resume.education;
         },
-        removeEducation: function(item) {
-
-            //izbrisi education od bazata za daden user,  vo item e jsono od experience i treba da se najde od baza i da se izbrise
-        },
         //function for personal skill section
-
         getAllPersonalSkill: function() {
             return resume.skills;
-        },
-        removePersonallSkill: function(userEmail, index) {
-            //izbrisi personall skill od bazata za daden user po daden index-na koe pozicija se naoga vo bazatata,  vo item e jsono od experience i treba da se najde od baza i da se izbrise
         },
         //function for technicall skill
         getAllTechnicalSkill: function(userEmail) {
             return resume.profSkills;
         },
-        removeTechnicalSkill: function(userEmail, index) {
-            //izbrisi Technical skill od bazata za daden user po daden index-na koe pozicija se naoga vo bazatata,  vo item e jsono od experience i treba da se najde od baza i da se izbrise
-        },
-        //function for technicall skill section
-
+        //function for language  section
         getAllLanguages: function() {
             return resume.languages;
-        },
-        removeLanguage: function(userEmail, index) {
-            //izbrisi Technical skill od bazata za daden user po daden index-na koe pozicija se naoga vo bazatata,  vo item e jsono od experience i treba da se najde od baza i da se izbrise
-
         }
-
     }
 }]);

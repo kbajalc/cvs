@@ -20,18 +20,16 @@ cvApp.controller('LanguageController',['CvServices', function(CvServices) {
         vm.textName = '';
         vm.numLevel = '';
     };
-    // remove user
-    vm.removeLang = function(index) {
-      vm.items.splice(index, 1);
-      CvServices.removeLang('userEmail', index);
-    };
-
     vm.editLanguage= function(item, index) {
       var languages= {
              name: item.name,
              level: item.level
          }
       vm.items[index] = languages;
+      CvServices.addNewSection();
+    };
+    vm.removeLang = function(index) {
+      vm.items.splice(index, 1);
       CvServices.addNewSection();
     };
 }]);

@@ -43,24 +43,17 @@ cvApp.controller('AboutController',['CvServices','$rootScope', function(CvServic
             contacts = vm.items;
       }
       vm.items=contacts;
-      console.log('pred da se add  ');
-      console.log( vm.items);
       CvServices.addNewSection();
       vm.contact.textInput = '';
     }
 
     vm.addBasic = function() {
-        vm.user.jobTitle = vm.position.textPosition || '';
+        vm.user.jobTitle = (vm.position && vm.position.textPosition) || '';
         vm.user.summary = vm.contact.textInput || '';
        CvServices.addNewSection();
-       vm.position.textPosition='';
-       vm.contact.textInput ='';
+       //vm.position.textPosition='';
+       //vm.contact.textInput ='';
     }
-
-    vm.removeContacts = function(item) {
-        vm.items.pop(item);
-        CvServices.removeContacts('userEmail', index);
-    };
 
     vm.editContacts = function(item){
       vm.items=item;
@@ -70,5 +63,4 @@ cvApp.controller('AboutController',['CvServices','$rootScope', function(CvServic
       vm.user.about = item;
       CvServices.addNewSection();
     }
-
 }]);

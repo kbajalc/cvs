@@ -4,40 +4,39 @@ cvApp.controller('WorkExperienceController', ['CvServices', function(CvServices)
     vm.items= CvServices.getAllExperience();
     vm.showEditable = CvServices.showEditableMode();
     vm.addExperience = function(user){
+      if(!user){
+        alert('You must enter at least some value to be saved!')
+      }else{
         var  work = {
             company: user.company || '',
-            position: user.position,
+            position: user.position || '',
             website: user.website,
-            startDate:user.dateFrom || '',
+            startDate: user.dateFrom || '',
             endDate: user.dateTo || '',
-            summary: user.summary
+            summary: user.summary || ''
         };
         vm.items.push(work);
         CvServices.addNewSection();
-        user.company='';
-        user.position='';
-        user.website='';
-        user.dateFrom='';
-        user.dateTo='';
-        user.summary='';
+        document.forms['newExperience'].reset();
+      }
      };
-
      vm.editExperience = function(item, index){
-            var  work = {
-                company: item.company,
-                postion: item.position,
-                website: item.website,
-                startDate: item.startDate,
-                endDate:item.endDate,
-                summary: item.summary
-            };
-            vm.items[index] = work;
-           CvServices.addNewSection();
-           };
+        var  work = {
+            company: item.company,
+            postion: item.position,
+            website: item.website,
+            startDate: item.startDate,
+            endDate:item.endDate,
+            summary: item.summary
+        };
+        vm.items[index] = work;
+       CvServices.addNewSection();
+      };
 
-       vm.removeExperience = function(item){
-          vm.items.pop(item)
-          CvServices.removeExperience('userEmail', item);
-          //alert("Delete is not done yet, Sorry!");
+       vm.removeExperience = function(index){
+         console.log('called ' + index );
+          vm.items.splice(index, 1);
+          CvServices.addNewSection();
        }
+
 }]);

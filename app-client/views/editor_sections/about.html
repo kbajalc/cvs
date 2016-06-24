@@ -6,7 +6,7 @@
                         <div class="row">
                             <div class="col-md-6 col-md-offset-3">
                               <img ng-click="showme=true" ng-hide="showme" ng-src="img/file-{{currentImage}}.jpg" alt="profileImg" onerror="this.onerror=null; this.src='img/avatar.png';" class="img-circle img-responsive" id="img">
-<upload-image ng-show="showme" ng-submit="showme=false; about.init();" ng-cancel="showme=true"></upload-image>
+                                <upload-image ng-show="showme" ng-submit="showme=false; about.init();" ng-cancel="showme=true"></upload-image>
                             </div>
                         </div>
                         <div class="row wordBreak">
@@ -18,7 +18,6 @@
 
                         <!--Job Position/Title-->
                         <div class="row wordBreak">
-
                             <div class="col-md-10 col-lg-10" style="margin-top: 8px;">
                                 <h4><div ng-hide="showDivAbout" style="color:white;border-bottom: none;"  ng-click="rowformPosition.$show()"  editable-text="about.user.jobTitle" ng-model="about.user.jobTitle" e-form="rowformPosition" class='text-center'> {{about.user.jobTitle || 'empty'}}</div></h4>
                             </div>
@@ -36,9 +35,6 @@
                             <button type="button" ng-disabled="rowformPosition.$waiting" ng-click="rowformPosition.$cancel()" class="btn btn-default">
                                 Cancel
                             </button>
-                            <button type="button" ng-disabled="rowformPosition.$waiting" ng-click="" class="btn btn-danger">
-                                Delete
-                            </button>
                             <hr>
 
                         </form>
@@ -47,12 +43,8 @@
 
                         <!--ADD POSITION/ABOUT-->
                         <form class="col-md-12" ng-submit="about.addBasic()" style="margin:30px 10px 30px 10px" ng-show="showDivAbout">
-
                             <input type="text" class="form-control" ng-model="about.position.textPosition" placeholder="POSITION"><br>
-
                             <textarea class="form-control" rows="5"  ng-model="about.contact.textInput" placeholder="ABOUT"></textarea><br>
-
-
                             <input type="submit" class="btn btn-primary" value="Add"  ng-click="showDivAbout=false">
                             <input type="button" class="btn btn-default" value="Cancel" ng-click="showDivAbout=false">
                         </form>
@@ -67,23 +59,17 @@
                             <h4 ng-hide="showDivAbout"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> ABOUT</h4>
                             <span ng-hide="showDivAbout" class='about' style='color:white;border-bottom: none;' ng-click="rowformSummary.$show()" editable-textarea="about.user.summary" e-rows="7" e-cols="40" ng-model='about.user.summary' class='text-justify' e-form="rowformSummary"><small>{{about.user.summary || 'empty'}}</small></span>
                             <form editable-form name="rowformSummary"  onaftersave="about.editBasics(about.user.summary)" ng-show="rowformSummary.$visible" class="form-buttons form-inline col-md-12" shown="inserted == about.user">
-
                                 <button type="submit" ng-disabled="rowformSummary.$waiting" ng-click='' class="btn btn-primary">
-                            Save
-                          </button>
+                                  Save
+                                </button>
                                 <button type="button" ng-disabled="rowformSummary.$waiting" ng-click="rowformSummary.$cancel()" class="btn btn-default">
-                            Cancel
-                          </button>
-                                <button type="button" ng-disabled="rowformSummary.$waiting" ng-click="" class="btn btn-danger">
-                            Delete
-                          </button>
-
+                                  Cancel
+                                </button>
                             </form>
                             <hr/>
                         </div>
                     </section>
                     <!--Basis info section -->
-
                     <!--Contact info section -->
                     <section class="row skills">
                         <div class="col-md-10" style="margin-top: 8px;">
@@ -128,25 +114,19 @@
                                         {{s.network}}
                                     </div>
                                 </div>
-
                             </div>
 
                             <form editable-form name="rowform" onaftersave="about.editContacts(about.items)" ng-show="rowform.$visible" class="form-buttons form-inline col-md-12" shown="inserted == about.items">
                                 <hr>
                                 <button type="submit" ng-disabled="rowform.$waiting"  class="btn btn-primary">
-                            Save
-                          </button>
+                                  Save
+                                </button>
                                 <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
-                            Cancel
-                          </button>
-                                <button type="button" ng-disabled="rowform.$waiting" ng-click="about.removeContacts($index)" class="btn btn-danger">
-                            Delete
-                          </button>
+                                  Cancel
+                                </button>
                                 <hr>
                             </form>
-
                         </div>
-
                     </section>
                     <hr/>
                     <!--Contact info section end-->

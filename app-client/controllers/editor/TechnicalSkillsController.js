@@ -9,12 +9,6 @@ cvApp.controller('TechnicalSkillsController',['CvServices', function(CvServices)
         {value: 75, text: 'Advanced'},
         {value: 100, text: 'Master'}
     ];
-  // remove user
-  vm.removeSkill = function(index) {
-    vm.items.splice(index, 1);
-    CvServices.removeTechnicalSkill('userEmail', index);
-  };
-
     vm.addSkill = function () {
          var profSkills= {
                 name: vm.textName,
@@ -33,5 +27,11 @@ cvApp.controller('TechnicalSkillsController',['CvServices', function(CvServices)
          }
          vm.items[index] = profSkills;
        CvServices.addNewSection();
-    }
+    };
+
+
+  vm.removeSkill = function(index) {
+    vm.items.splice(index, 1);
+    CvServices.addNewSection();
+  };
 }]);
