@@ -5,10 +5,28 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
     var showEditableMode;
     var resumeCheck;
     var currentUserCV;
+    var draftResume;
     //list for all resumes for currentUser
     var listOfloggedUsers = [];
+
+
+    var addNewSection = function() {
+
+        resume._id = null;
+        resume.status.value = "latest";
+        $http.post(urlBase, resume).then(function(response) {
+            
+            $location.path('/dashboard');
+            $location.path('/editor');
+
+
+        }, function(error) {
+            console.log('Unable to insert customer: ' + error.message);
+        })
+    };
+
     return {
-          //get all resumes
+        //get all resumes
         getResumes: function() {
             var deferred = $q.defer();
             $http.get(urlBase).
@@ -90,25 +108,18 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
             window.location.reload();
             return $http.post(urlBase, resume);
         },
+
         updateResume: function() {
-            return $http.put(urlBase + '/' + resume._id, resume)
+            resume.status.value = "draft";
+            $http.put(urlBase + '/' + resume._id, resume);
+            addNewSection();
+
         },
         deleteResume: function(id) {
             return $http.delete(urlBase + '/' + id);
         },
         //add new section
-        addNewSection: function() {
-            resume._id = null;
-            console.log(resume);
-            $http.post(urlBase, resume).then(function(response) {
-                console.log(response);
-                $location.path('/dashboard');
-                $location.path('/editor')
-            }, function(error) {
-                console.log('Unable to insert customer: ' + error.message);
-            })
-
-        },
+        //addNewSection: addNewSection,
         // if user has a resume , hide the new resume button
         hasCVforHIdeButtons: function() {
             return resumeCheck;

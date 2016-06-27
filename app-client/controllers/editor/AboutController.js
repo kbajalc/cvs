@@ -43,7 +43,8 @@ cvApp.controller('AboutController',['CvServices','$rootScope', function(CvServic
             contacts = vm.items;
       }
       vm.items=contacts;
-      CvServices.addNewSection();
+      CvServices.updateResume();
+      //CvServices.addNewSection();
       vm.contact.textInput = '';
     }
 

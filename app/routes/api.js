@@ -28,7 +28,7 @@ var storage = multer.diskStorage({ //multers disk storage settings
 
         // var timestamp = Date.now();
         //userID included in image name
-        cb(null, file.fieldname + '-' + req.params.userID +'.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
+        cb(null, file.fieldname + '-' + req.params.userID + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
     }
 });
 
@@ -161,6 +161,7 @@ router.route('/resumes')
                 res.send(err);
             res.json({
                 message: 'Resume saved!'
+
             });
         });
     })
@@ -192,22 +193,24 @@ router.route('/resumes/:id')
                 res.json(data);
             });
     })
-
-.put(function(req, res) {
-        Resume.findById(req.params.id, function(err, resume) {
-            if (err)
-                res.send(err);
-            resume.body = req.body;
-
-            resume.save(function(err) {
-                if (err)
-                    res.send(err);
-                res.json({
-                    message: 'User updated'
-                });
-            });
-        });
-    })
+    .put(function(req, res) {
+         Resume.findById(req.params.id, function(err, resume) {
+             console.log('req.body', req.body);
+             console.log('req.params', req.params);
+             if (err)
+                 res.send(err);
+             console.log('resume:', resume);
+             resume.status.value = 'draft';
+             // resume.body = req.body;
+             resume.save(function(err) {
+                 if (err)
+                     res.send(err);
+                 res.json({
+                     message: 'User updated'
+                 });
+             });
+         });
+     })
     .delete(function(req, res) {
         Resume.findById(req.params.id, function(err, data) {
             if (err) {
@@ -223,4 +226,4 @@ router.route('/resumes/:id')
      * END OF RESUMES api
      *****************************************************/
 
-     module.exports = router;
+module.exports = router;
