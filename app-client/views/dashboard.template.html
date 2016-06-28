@@ -43,7 +43,10 @@
                                 </div>
 
                                 <div class="col-md-12 col-md-offset-5 basic-info-btn" ng-if="dash.hasCv">
-                                    <a href="" class="btn btn-danger  addEditPDFbtn" ng-click='dash.deleteResume(dash.user._id)' style="width: 150px;">Publish CV</a>
+                                    <a href="" class="btn btn-info  addEditPDFbtn" ng-click='dash.publishResume(dash.user)' style="width: 150px;">Publish CV</a>
+                                </div>
+                                <div class="col-md-12 col-md-offset-5 basic-info-btn"  ng-if="dash.hasCv">
+                                    <a href="" class="btn btn-danger  addEditPDFbtn" ng-click='dash.unpublishResume(dash.user)' style="width: 150px;">Unpublish CV</a>
                                 </div>
                             </div>
                         </div>
