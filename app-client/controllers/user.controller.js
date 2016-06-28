@@ -29,8 +29,8 @@ cvApp.controller('user-Ctrl', ['$scope', 'userService', function($scope, userSer
     self.getUser = function(userId) {
         userService.getUser(userId)
             .then(function(response) {
-                self.user = response;
-                self.users = getAllUsers;
+                self.user = response.data;
+                //self.users = getAllUsers;
             }, function(errResponse) {
                 console.error('controller Error while fetching user!');
             });

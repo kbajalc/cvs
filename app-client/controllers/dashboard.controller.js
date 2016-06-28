@@ -1,9 +1,10 @@
 'use strict'
-cvApp.controller('DashController', ['CvServices', '$http', '$window', '$location', '$rootScope', function (CvServices, $http, $window, $location, $rootScope) {
+cvApp.controller('DashController', ['CvServices', '$http', '$window', '$location', '$rootScope','userService', function (CvServices, $http, $window, $location, $rootScope, userService) {
   var vm = this
 
   vm.resumes = []
   vm.init = function () {
+    var forUser = sessionStorage.currentUserID;
     vm.user = {}
     vm.resumes = []
     CvServices.init()
@@ -21,7 +22,17 @@ cvApp.controller('DashController', ['CvServices', '$http', '$window', '$location
         vm.user = data
       })
     })
-  }
+     if (forUser) {
+
+                    userService.getUser(forUser).then(function(res) {
+                        //console.log(res.data.imgUrl);
+                        vm.currentImg = 'img/' + res.data.imgUrl;
+                        vm.basicUser = res.data;
+                    });
+
+                }};
+  
+  
   // get cv for selected user
   vm.displayCvForSpecificUser = function (cv, value) {
     CvServices.getResumeForSelectedUser(cv._id, value, true)
@@ -165,4 +176,4 @@ cvApp.controller('DashController', ['CvServices', '$http', '$window', '$location
       }
     }
   }
-}])
+}]);

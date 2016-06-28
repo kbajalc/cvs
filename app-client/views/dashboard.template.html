@@ -4,7 +4,7 @@
             <div class="vd_content-section clearfix">
                 <div class="row">
                     <div class="col-md-3">
-                        <img ng-click="showme=true" ng-hide="showme" ng-src="img/file-{{currentImage}}.jpg" class="img-responsive" id="imgDashboard" onerror="this.onerror=null; this.src='/img/avatar.png';" alt="avatar" />
+                        <img ng-click="showme=true" ng-hide="showme" ng-src="{{dash.currentImg}}" class="img-responsive" id="imgDashboard" alt="avatar" />
                         <upload-image ng-show="showme" ng-submit="showme=false; dash.init();" ng-cancel="showme=true"></upload-image>
                     </div>
                     <div class="col-md-9" id="basic-info">
@@ -14,19 +14,19 @@
                                     <b>FIRST NAME:</b>
                                 </div>
                                 <div class="col-md-12">
-                                    {{dash.user.basics.firstName}}
+                                      {{dash.basicUser.firstname}}
                                 </div>
                                 <div class="col-md-12">
                                     <b>LAST NAME:</b>
                                 </div>
                                 <div class="col-md-12">
-                                    {{dash.user.basics.lastName}}
+                                    {{dash.basicUser.lastname}}
                                 </div>
                                 <div class="col-md-12">
                                     <b>EMAIL:</b>
                                 </div>
                                 <div class="col-md-12">
-                                    {{dash.user.contacts.email}}
+                                    {{dash.basicUser.username}}
                                 </div>
                             </div>
                             <div class="col-md-6 ">
@@ -86,7 +86,7 @@
                                 <h3>{{cvs.basics.firstName}}</h3>
                             </header>
                             <div class="w3-container">
-                                <img src="img/avatar.png " alt="Avatar " class="w3-left img-response" id="cvListImg" />
+                                <img src="img/{{cvs.imgUrl}}" alt="Avatar " class="w3-left img-response" id="cvListImg" />
                                 <h4>{{cvs.basics.jobTitle}}</h4>
                                 <br/>
                                 <h5>{{cvs.contacts.email}}</h5>

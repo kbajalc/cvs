@@ -1,5 +1,6 @@
+
 'use strict'
-cvApp.controller('AboutController', ['CvServices', '$rootScope', function (CvServices, $rootScope) {
+cvApp.controller('AboutController', ['CvServices', '$rootScope','userService', function (CvServices, $rootScope,userService) {
   var vm = this
   vm.showEditable = CvServices.showEditableMode()
   vm.user = CvServices.getBasicItems()
@@ -12,11 +13,21 @@ cvApp.controller('AboutController', ['CvServices', '$rootScope', function (CvSer
     {value: 100, text: 'Master'}
   ]
 
-  var init = function () {
-    if (sessionStorage.currentUserID) $rootScope.currentImage = sessionStorage.currentUserID
-  }
+   vm.init = function() {
+        var forUser = sessionStorage.currentUserID;
+        if (forUser) {
+            userService.getUser(forUser).then(function(res) {
+                vm.currentImg = 'img/' + res.data.imgUrl;
+                vm.basicUser = res.data;
+            });
 
-  init()
+        }
+
+    }
+
+
+
+    vm.init();
   vm.addContact = function () {
     var contacts = vm.items
 
@@ -41,6 +52,7 @@ cvApp.controller('AboutController', ['CvServices', '$rootScope', function (CvSer
         break
       default:
         contacts = vm.items
+
     }
     vm.items = contacts
     CvServices.updateResume()
@@ -55,12 +67,17 @@ cvApp.controller('AboutController', ['CvServices', '$rootScope', function (CvSer
   // vm.position.textPosition=''
   // vm.contact.textInput =''
   }
-  vm.editName = function (item) {
-    vm.user.firstName = (vm.user.firstName && vm.user.firstName) || ''
-    vm.user.lastName = (vm.user.lastName && vm.user.lastName) || ''
-    CvServices.updateResume()
-    document.forms['rowformName'].reset()
-  }
+   vm.editName = function(user) {
+        console.log(user);
+        // userService.getUser(sessionStorage.currentUserID).then(function(res){
+        //   userService.updateUser(sessionStorage.currentUserID, res);
+        // })
+
+        vm.user.firstName = (user.firstName) || '';
+        vm.user.lastName = (user.lastName) || '';
+        CvServices.addNewSection();
+        document.forms['rowformName'].reset();
+    }
 
   vm.editContacts = function (item) {
     vm.items = item
@@ -70,4 +87,5 @@ cvApp.controller('AboutController', ['CvServices', '$rootScope', function (CvSer
     vm.user.about = item
     CvServices.updateResume()
   }
-}])
+}]);
+

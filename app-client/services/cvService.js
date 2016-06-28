@@ -1,5 +1,4 @@
-// factory to get all resumes from db
-cvApp.factory('CvServices', ['$http', '$q', '$location', '$rootScope', function ($http, $q, $location, $rootScope) {
+cvApp.factory('CvServices', ['$http', '$q', '$location', '$rootScope', 'userService', function ($http, $q, $location, $rootScope, userService) {
   var urlBase = '/api/resumes'
   var urlpublish = '/api/publish'
   var urlunpublish = '/api/unpublish'
@@ -8,10 +7,8 @@ cvApp.factory('CvServices', ['$http', '$q', '$location', '$rootScope', function 
   var resumeCheck
   var currentUserCV
   var draftResume
- 
   // list for all resumes for currentUser
   var listOfloggedUsers = []
-
   var getResumes = function () {
     var deferred = $q.defer()
     $http.get(urlBase).success(function (data) {
@@ -27,6 +24,7 @@ cvApp.factory('CvServices', ['$http', '$q', '$location', '$rootScope', function 
       }
       // get the last updated resume
       currentUserCV = listOfloggedUsers[listOfloggedUsers.length - 1]
+
       var hash = {}
       var arrData = []
       for (var i = 0; i < data.length; i++) {
@@ -77,32 +75,18 @@ cvApp.factory('CvServices', ['$http', '$q', '$location', '$rootScope', function 
     resumeCheck = ''
     currentUserCV = {}
     listOfloggedUsers = []
-    // take current userID from session as a name for the image
-    if (sessionStorage.currentUserID) $rootScope.currentImage = sessionStorage.currentUserID
   }
   var addNewSection = function () {
     resume._id = null
     resume.status.value = 'latest'
     $http.post(urlBase, resume).then(function (response) {
+      console.log(response)
       $location.path('/dashboard')
       $location.path('/editor')
     }, function (error) {
       console.log('Unable to insert customer: ' + error.message)
     })
   }
-
-  var unloadPage = function () {
-    init()
-    getResumes().then(function (data) {
-      getResumeForSelectedUser(currentUserCV._id, true, false).then(function (data) {
-        console.log('res', data)
-        resume = data
-        showEditableMode = true
-      })
-    })
-  }
-  // if user has publieshed CvServices
-
   var publishResume = function (resume) {
     return $http.put(urlpublish + '/' + resume._id, resume)
   }
@@ -111,10 +95,20 @@ cvApp.factory('CvServices', ['$http', '$q', '$location', '$rootScope', function 
     return $http.put(urlunpublish + '/' + resume._id, resume)
   }
 
+  var unloadPage = function () {
+    init()
+    getResumes().then(function (data) {
+      getResumeForSelectedUser(currentUserCV._id, true, false).then(function (data) {
+        console.log('res' , data)
+        resume = data
+        showEditableMode = true
+      })
+    })
+  }
   window.onbeforeunload = unloadPage()
   return {
-    
-    // add new section
+    publishResume: publishResume,
+    unpublishResume: unpublishResume,
     addNewSection: addNewSection,
     // get all resumes
     getResumes: getResumes,
@@ -122,12 +116,6 @@ cvApp.factory('CvServices', ['$http', '$q', '$location', '$rootScope', function 
     init: init,
     // View your resume in editiable mode
     getResumeForSelectedUser: getResumeForSelectedUser,
-
-    // publish cv connect with database
-    publishResume: publishResume,
-
-    // unpublish cv connect database
-    unpublishResume: unpublishResume,
     getID: function () {
       return currentUserCV._id
     },
@@ -142,11 +130,15 @@ cvApp.factory('CvServices', ['$http', '$q', '$location', '$rootScope', function 
       window.location.reload()
     },
 
+    deleteResume: function (id) {
+      return $http.delete(urlBase + '/' + id)
+    },
+    // add new section
+    // addNewSection: addNewSection,
     // if user has a resume , hide the new resume button
     hasCVforHIdeButtons: function () {
       return resumeCheck
     },
-
     // editable mode when reading my cv, otherwise not
     showEditableMode: function () {
       return showEditableMode
@@ -174,6 +166,9 @@ cvApp.factory('CvServices', ['$http', '$q', '$location', '$rootScope', function 
     // function for technicall skill
     getAllTechnicalSkill: function (userEmail) {
       return resume.profSkills
+    },
+    returnImg: function () {
+      return resume.imgUrl
     },
     // function for language  section
     getAllLanguages: function () {
