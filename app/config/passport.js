@@ -37,7 +37,7 @@ module.exports = function(passport) {
                     }
                     // wrong password
                     if (!isValidPassword(user, password)) {
-                      return done(null, false, req.flash('failLogin', "The password is incorrect"));
+                        return done(null, false, req.flash('failLogin', "The password is incorrect"));
                     }
                     return done(null, user);
                 }
@@ -66,13 +66,15 @@ module.exports = function(passport) {
                         var newUser = new User();
                         newUser.username = username;
                         newUser.password = createHash(password);
+                        newUser.firstname = req.body.firstname;
+                        newUser.lastname = req.body.lastname;
                         // save user
                         newUser.save(function(err) {
                             if (err) {
-                                // console.log('Error in Saving user: ' + err);
+                                console.log('Error in Saving user: ' + err);
                                 throw err;
                             }
-                            // console.log(newUser.username + ' Registration succesful');
+                            console.log(newUser.username + ' Registration succesful');
                             return done(null, newUser);
                         });
                     }

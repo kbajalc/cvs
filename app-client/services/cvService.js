@@ -1,5 +1,5 @@
 //factory to get all resumes from db
-cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function($http, $q, $location, $rootScope) {
+cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", 'userService', function($http, $q, $location, $rootScope, userService) {
     var urlBase = '/api/resumes';
     var resume = [];
     var showEditableMode;
@@ -24,6 +24,7 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
                 }
                 // get the last updated resume
                 currentUserCV = listOfloggedUsers[listOfloggedUsers.length - 1];
+
                 var hash = {};
                 var arrData = [];
                 for (var i = 0; i < data.length; i++) {
@@ -75,13 +76,13 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
        resumeCheck = '';
        currentUserCV = {};
        listOfloggedUsers = [];
-       //take current userID from session as a name for the image
-       if (sessionStorage.currentUserID) $rootScope.currentImage = sessionStorage.currentUserID;
+
    };
     var addNewSection = function() {
         resume._id = null;
         resume.status.value = "latest";
         $http.post(urlBase, resume).then(function(response) {
+          console.log(response);
             $location.path('/dashboard');
             $location.path('/editor');
         }, function(error) {
@@ -156,6 +157,9 @@ cvApp.factory('CvServices', ['$http', '$q', "$location", "$rootScope", function(
         //function for technicall skill
         getAllTechnicalSkill: function(userEmail) {
             return resume.profSkills;
+        },
+        returnImg:function(){
+          return resume.imgUrl;
         },
         //function for language  section
         getAllLanguages: function() {

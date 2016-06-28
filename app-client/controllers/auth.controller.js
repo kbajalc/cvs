@@ -17,9 +17,11 @@ cvApp.controller('authController', function($scope, $http, $rootScope, $route, $
                 $rootScope.authenticated = true;
                 $rootScope.currentUser = data.user.username;
                 $rootScope.currentUserID = data.user._id;
+                $rootScope.currentImg = data.user.imgUrl;
                 $rootScope.sess = data.user;
                 sessionStorage.setItem('currentUser', $rootScope.sess.username);
                 sessionStorage.setItem('currentUserID', $rootScope.sess._id);
+                sessionStorage.setItem('currentImg', $rootScope.sess.imgUrl);
                 $location.path('/dashboard');
             } else {
                 console.log("-->" + data.message[0]);
@@ -41,9 +43,11 @@ cvApp.controller('authController', function($scope, $http, $rootScope, $route, $
                 $rootScope.authenticated = true;
                 $rootScope.currentUser = data.user.username;
                 $rootScope.currentUserID = data.user._id;
+                $rootScope.currentImg = data.user.imgUrl;
                 $rootScope.sess = data.user;
                 sessionStorage.setItem('currentUser', $rootScope.sess.username);
                 sessionStorage.setItem('currentUserID', $rootScope.sess._id);
+                sessionStorage.setItem('currentImg', $rootScope.sess.imgUrl);
                 $location.path('/dashboard');
             } else {
                 //login->auth->passport->routes->auth

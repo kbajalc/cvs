@@ -13,13 +13,13 @@
                     });
             },
 
-            getUser: function(user_id) {
-                return $http.get('/api/users/:' + user_id)
+            getUser: function(userID) {
+                return $http.get('/api/users/' + userID)
                     .then(function(response) {
-                        return response.message;
+                        return response;
                     }, function(errResponse) {
                         console.error('Error while fetching user!');
-                        return $q.reject(errResponse);
+                        //return $q.reject(errResponse);
                     });
             },
 
@@ -33,18 +33,18 @@
                     });
             },
 
-            updateUser: function(user, user_id) {
-                return $http.put('/api/users/:' + user_id, user)
+            updateUser: function(user, userID) {
+                return $http.put('/api/users/' + userID, user)
                     .then(function(response) {
                         return response.message;
                     }, function(errResponse) {
                         console.error('Error while updating user!');
-                        return $q.reject(errResponse);
+                        //return $q.reject(errResponse);
                     });
             },
 
-            deleteUser: function(user_id) {
-                return $http.delete('/api/users/:' + user_id)
+            deleteUser: function(userID) {
+                return $http.delete('/api/users/:' + userID)
                     .then(function(response) {
                         return response.message;
                     }, function(errResponse) {

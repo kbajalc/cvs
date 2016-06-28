@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Resume = mongoose.model('Resume');
 var multer = require('multer');
+var imageName;
 
 function isAuthenticated(req, res, next) {
 
@@ -25,10 +26,27 @@ var storage = multer.diskStorage({ //multers disk storage settings
         cb(null, './app-client/img/') //where images are stored
     },
     filename: function(req, file, cb) {
+        var userID = req.params.userID;
+        var timestamp = Date.now();
+        //timestamp+userID included in image name
+        imageName = timestamp + '-' + req.params.userID + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1];
 
-        // var timestamp = Date.now();
-        //userID included in image name
-        cb(null, file.fieldname + '-' + req.params.userID + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
+        User.findById(req.params.userID, function(err, user) {
+            if (err)
+                console.error(err);
+
+            user.imgUrl = imageName;
+
+            user.save(function(err) {
+                if (err)
+                    console.error(err);
+
+                console.error('Image path for user updated');
+            });
+        })
+        cb(null, imageName);
+
+
     }
 });
 
@@ -43,26 +61,8 @@ router.use('/users', isAuthenticated);
 router.use('/resumes', isAuthenticated);
 router.use('/upload', isAuthenticated);
 
-//Upload route
-router.route('/upload/:userID')
-    .post(function(req, res) {
-        upload(req, res, function(err) {
-            if (err) {
-                res.json({
-                    errorCode: 1,
-                    errDesc: err
-                });
-                return;
-            }
-            res.json({
-                errorCode: 0,
-                errDesc: null
-
-            });
-        })
-    });
-
 //User api
+//this route is not used, creating user is dictated by passport api
 router.route('/users')
     .post(function(req, res) {
         var user = new User();
@@ -92,10 +92,10 @@ router.route('/users')
     });
 });
 
-router.route('/users/:user_id')
+router.route('/users/:userID')
     .get(function(req, res) {
         User.findById(
-            req.params.user_id,
+            req.params.userID,
             function(err, user) {
                 if (err)
                     res.send(err);
@@ -104,11 +104,13 @@ router.route('/users/:user_id')
             });
     })
     .put(function(req, res) {
-        User.findById(req.params.user_id, function(err, user) {
+        User.findById(req.params.userID, function(err, user) {
             if (err)
                 res.send(err);
 
-            user.name = req.body.name;
+            user.firstname = req.body.firstname;
+            user.lastname = req.body.lastname;
+
 
             user.save(function(err) {
                 if (err)
@@ -121,7 +123,7 @@ router.route('/users/:user_id')
     })
     .delete(function(req, res) {
         User.remove({
-            _id: req.params.user_id
+            _id: req.params.userID
         }, function(err, user) {
             if (err)
                 res.send(err);
@@ -194,23 +196,23 @@ router.route('/resumes/:id')
             });
     })
     .put(function(req, res) {
-         Resume.findById(req.params.id, function(err, resume) {
-             console.log('req.body', req.body);
-             console.log('req.params', req.params);
-             if (err)
-                 res.send(err);
-             console.log('resume:', resume);
-             resume.status.value = 'draft';
-             // resume.body = req.body;
-             resume.save(function(err) {
-                 if (err)
-                     res.send(err);
-                 res.json({
-                     message: 'User updated'
-                 });
-             });
-         });
-     })
+        Resume.findById(req.params.id, function(err, resume) {
+            console.log('req.body', req.body);
+            console.log('req.params', req.params);
+            if (err)
+                res.send(err);
+            console.log('resume:', resume);
+            resume.status.value = 'draft';
+            // resume.body = req.body;
+            resume.save(function(err) {
+                if (err)
+                    res.send(err);
+                res.json({
+                    message: 'User updated'
+                });
+            });
+        });
+    })
     .delete(function(req, res) {
         Resume.findById(req.params.id, function(err, data) {
             if (err) {
@@ -225,5 +227,44 @@ router.route('/resumes/:id')
     /*****************************************************
      * END OF RESUMES api
      *****************************************************/
+
+//Upload api
+router.route('/upload/:userID')
+    .post(function(req, res) {
+        upload(req, res, function(err) {
+            if (err) {
+                res.json({
+                    errorCode: 1,
+                    errDesc: err
+                });
+                return;
+            }
+
+            Resume.findOneAndUpdate({
+                    'userID.id': req.params.userID
+                }, {
+                    $set: {
+                        imgUrl: imageName
+                    }
+                }, {
+                    new: true
+                },
+
+                function(err, doc) {
+                    if (err) {
+                        console.log("Something wrong when updating data!");
+                    }
+
+                    console.log(doc);
+                });
+
+            res.json({
+                errorCode: 0,
+                errDesc: null
+
+            });
+        })
+    });
+
 
 module.exports = router;

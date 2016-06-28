@@ -8,7 +8,6 @@ var ResumeSchema = new Schema({
         firstName: String,
         lastName: String,
         jobTitle: String,
-        picture: String,
         summary: String
     },
     contacts: {
@@ -58,6 +57,10 @@ var ResumeSchema = new Schema({
     },
     status: {
         value: String
+    },
+    imgUrl: {
+        type: String,
+        default: 'avatar.png'
     }
 });
 
