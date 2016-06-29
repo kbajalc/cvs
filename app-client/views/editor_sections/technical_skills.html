@@ -25,7 +25,7 @@
         <div class="col-md-6" ng-repeat="x in technicalSkill.items" ng-class-odd="'alignBars'" ng-hide="x.name === null || x.level === null">
             <div class="col-md-6">
                 <span ng-click="rowform.$show()" editable-text="x.name" e-name="name" e-form="rowform" e-required>
-              {{ x.name || 'empty'  | uppercase}}
+              {{ x.name || null  | uppercase}}
             </span>
 
             </div>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            <form editable-form name="rowform"  onaftersave="technicalSkill.editTechnicalSkill(x,$index)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == x">
+            <form editable-form name="rowform" onaftersave="technicalSkill.editTechnicalSkill(x,$index)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == x">
                 <hr>
                 <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
             Save

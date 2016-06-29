@@ -63,7 +63,7 @@
     </form>
     <hr />
     <!-- company/description row -->
-    <div class="row" style='padding-top:50px' ng-repeat="item in experience.items">
+    <div class="row" style='padding-top:50px' ng-repeat="item in experience.items" ng-show="$index !=0">
         <div class="col-lg-10 col-md-10 col-sm-10">
             <div class="container">
                 <div class='row'>
@@ -95,7 +95,7 @@
             <!-- form -->
             <div class='row'>
                 <div class='pull-right col-lg-4 col-md-4 col-sm-4'>
-                  <form editable-form name="rowform" onaftersave="experience.editExperience(item,$index)" ng-show="rowform.$visible" class="form-buttons form-inline">
+                    <form editable-form name="rowform" onaftersave="experience.editExperience(item,$index)" ng-show="rowform.$visible" class="form-buttons form-inline">
                         <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
                             save
                         </button>
@@ -106,12 +106,12 @@
                 </div>
             </div>
             <div class='row' ng-show='experience.showEditable'>
-              <div class='pull-right'>
-                  <div class="buttons col-lg-12 col-md-8 col-sm-12" ng-show="!rowform.$visible">
-                      <button class="btn btn-primary" ng-click="rowform.$show()">edit</button>
-                      <button class="btn btn-danger" ng-click="experience.removeExperience($index)">del</button>
-                  </div>
-              </div>
+                <div class='pull-right'>
+                    <div class="buttons col-lg-12 col-md-8 col-sm-12" ng-show="!rowform.$visible">
+                        <button class="btn btn-primary" ng-click="rowform.$show()">edit</button>
+                        <button class="btn btn-danger" ng-click="experience.removeExperience($index)">del</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

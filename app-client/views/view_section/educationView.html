@@ -5,16 +5,16 @@
     </div>
 
     <!--education -->
-    <div class="row" style='padding-top:50px' ng-repeat="item in education.items">
+    <div class="row" style='padding-top:50px' ng-repeat="item in education.items" ng-show="$index !=0">
         <div class="col-lg-10 col-md-10 col-sm-10">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-3" ng-hide="item.institution == ''">
-                        <h4 style="margin-left:0px;" e-form="rowform">{{item.institution || 'empty'}}</h4>
+                        <h4 style="margin-left:0px;" e-form="rowform">{{item.institution || null}}</h4>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-7" ng-hide="item.startDate == null && item.endDate == null">
-                        <h4 class='dispaly:inline'><span  e-form="rowform"  ng-hide="item.startDate == null">{{item.startDate || 'empty' |  date:'dd-MM-yyyy'}}</span>
-                     <span  e-form="rowform"  ng-hide="item.endDate == null">{{item.endDate || 'empty' |  date:'dd-MM-yyyy'}}</span></h4>
+                        <h4 class='dispaly:inline'><span  e-form="rowform"  ng-hide="item.startDate == null">{{item.startDate || null |  date:'dd-MM-yyyy'}}</span>
+                     <span  e-form="rowform"  ng-hide="item.endDate == null">{{item.endDate || null |  date:'dd-MM-yyyy'}}</span></h4>
                     </div>
                 </div>
             </div>
