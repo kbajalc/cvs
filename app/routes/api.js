@@ -62,6 +62,8 @@ router.use('/resumes', isAuthenticated);
 router.use('/upload', isAuthenticated);
 router.use('/publish', isAuthenticated)
 router.use('/unpublish', isAuthenticated)
+router.use('/allPublishResumes', isAuthenticated);
+router.use('/currentUserCvID', isAuthenticated);
 
 //User api
 //this route is not used, creating user is dictated by passport api
@@ -227,25 +229,21 @@ router.route('/resumes/:id')
         });
     })
 
-    router.route('/publish/:id')
-  .put(function (req, res) {
-    Resume.findById(req.params.id, function (err, resume) {
-      console.log('req.body', req.body)
-      console.log('req.params', req.params)
-      if (err)
-        res.send(err)
-      console.log('resume:', resume)
-      resume.status.value = 'publish'
-      // resume.body = req.body
-      resume.save(function (err) {
-        if (err)
-          res.send(err)
-        res.json({
-          message: 'Resume published'
+router.route('/publish/:id')
+    .put(function(req, res) {
+        Resume.findById(req.params.id, function(err, resume) {
+            if (err)
+                res.send(err)
+            resume.status.value = 'publish'
+            resume.save(function(err) {
+                if (err)
+                    res.send(err)
+                res.json({
+                    message: 'Resume published'
+                })
+            })
         })
-      })
     })
-  })
 
 /*******************************
  * Server restful api find
@@ -255,28 +253,93 @@ router.route('/resumes/:id')
 
  *******************************/
 
-router.route('/unpublish/:id')
-  .put(function (req, res) {
-    Resume.findById(req.params.id, function (err, resume) {
-      console.log('req.body', req.body)
-      console.log('req.params', req.params)
-      if (err)
-        res.send(err)
-      console.log('resume:', resume)
-      resume.status.value = 'unpublish'
-      // resume.body = req.body
-      resume.save(function (err) {
-        if (err)
-          res.send(err)
-        res.json({
-          message: 'Resume unpublished'
+router.route('/unpublish/:userID')
+    .put(function(req, res) {
+        var query = {
+            'userID.id': req.params.userID,
+            'status.value': 'publish'
+        }
+        Resume.find(query, function(err, resume) {
+            if (err)
+                res.send(err);
+            if (resume) {
+                resume[0].status.value = 'unpublish'
+                resume[0].save(function(err) {
+                    if (err)
+                        res.send(err)
+                    res.json({
+                        message: 'Resume unpublished'
+                    })
+                })
+            } else {
+                query = {
+                    'userID.id': req.params.userID,
+                    'status.value': 'latest'
+                }
+                Resume.find(query, function(err, resume) {
+                    if (err)
+                        res.send(err);
+                    if (!resume) {
+                        resume[0].status.value = 'latest'
+                    } else {
+                        resume[0].status.value = 'unpublished'
+                    }
+                })
+            }
+
         })
-      })
     })
-  })
     /*****************************************************
      * END OF RESUMES api
      *****************************************************/
+
+
+router.route('/allPublishResumes/:userID')
+    .get(function(req, res) {
+        var query = {
+            'userID.id': {
+                '$ne': req.params.userID
+            },
+            'status.value': 'publish'
+        }
+        Resume.find(query,
+            function(err, data) {
+                if (err) {
+                    res.send(err);
+                    console.log("errorr" + err);
+                }
+                res.send(data);
+            }
+        )
+    });
+router.route('/currentUserCvID/:ID')
+    .get(function(req, res) {
+        var query = {
+            'userID.id': req.params.ID,
+            'status.value': 'latest'
+        }
+        Resume.find(query,
+            function(err, data) {
+                if (data.length == 0) {
+                    query = {
+                        'userID.id': req.params.ID,
+                        'status.value': 'publish'
+                    }
+                    Resume.find(query,
+                        function(err, data) {
+                            if (err) {
+                                console.log(err);
+                            }
+                            res.send(data);
+                        }
+                    )
+                } else {
+                    res.send(data);
+                }
+            }
+        )
+    });
+
 
 //Upload api
 router.route('/upload/:userID')

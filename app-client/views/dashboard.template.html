@@ -32,7 +32,7 @@
                             <div class="col-md-6 ">
                                 <!-- <div class="col-md-12 col-md-offset-5 basic-info-btn"  ng-if="dash.hasCv">-->
                                 <div class="col-md-12 col-md-offset-5 basic-info-btn" ng-if="dash.hasCv">
-                                    <a href="" class="btn btn-success  addEditPDFbtn" ng-click='dash.displayCvForSpecificUser(dash.user, true)' style="width: 150px;">Edit my CV</a>
+                                    <a href="" class="btn btn-success  addEditPDFbtn" ng-click="dash.displayCvForSpecificUser('', true)" style="width: 150px;">Edit my CV</a>
                                 </div>
                                 <div class="col-md-12 col-md-offset-5 basic-info-btn" ng-if="!dash.hasCv">
                                     <a href="" class="btn btn-info addEditPDFbtn" ng-click='dash.insertResume()' style="width: 150px;">Create new CV</a>
@@ -86,12 +86,12 @@
                                 <h3>{{cvs.basics.firstName}}</h3>
                             </header>
                             <div class="w3-container">
-                                <img src="img/{{cvs.imgUrl}}" alt="Avatar " class="w3-left img-response" id="cvListImg" />
+                                <img ng-src="{{cvs.imgUrl}}" alt="Avatar " class="w3-left img-response" id="cvListImg" />
                                 <h4>{{cvs.basics.jobTitle}}</h4>
                                 <br/>
                                 <h5>{{cvs.contacts.email}}</h5>
                             </div>
-                            <button class="w3-btn-block w3-teal " ng-click='dash.displayCvForSpecificUser(cvs, false)'>View CV</button>
+                            <button class="w3-btn-block w3-teal " ng-click='dash.displayCvForSpecificUser(cvs._id, false)'>View CV</button>
                         </div>
                     </div>
                 </div>

@@ -5,7 +5,7 @@ cvApp.controller('AboutController', ['CvServices', '$rootScope','userService', f
   vm.showEditable = CvServices.showEditableMode()
   vm.user = CvServices.getBasicItems()
   vm.items = CvServices.getAllContacts()
-
+  vm.reviewImg =  CvServices.returnImg();
   vm.statuses = [
     {value: 25, text: 'Beginner'},
     {value: 50, text: 'Intermediate'},
@@ -20,14 +20,9 @@ cvApp.controller('AboutController', ['CvServices', '$rootScope','userService', f
                 vm.currentImg = 'img/' + res.data.imgUrl;
                 vm.basicUser = res.data;
             });
-
         }
-
     }
-
-
-
-    vm.init();
+  vm.init();
   vm.addContact = function () {
     var contacts = vm.items
 
@@ -88,4 +83,3 @@ cvApp.controller('AboutController', ['CvServices', '$rootScope','userService', f
     CvServices.updateResume()
   }
 }]);
-
