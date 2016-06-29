@@ -1,5 +1,5 @@
 'use strict'
-cvApp.controller('DashController', ['CvServices', '$http', '$window', '$location', '$rootScope', 'userService', function(CvServices, $http, $window, $location, $rootScope, userService) {
+cvApp.controller('DashController', ['CvServices', '$http', '$window', '$location', '$rootScope', 'userService', '$timeout', function(CvServices, $http, $window, $location, $rootScope, userService, $timeout) {
     var vm = this;
     vm.currentImg = 'img/avatar.png';
     vm.init = function() {
@@ -16,12 +16,16 @@ cvApp.controller('DashController', ['CvServices', '$http', '$window', '$location
         });
         if (forUser) {
             userService.getUser(forUser).then(function(res) {
-                vm.currentImg = 'img/' + res.data.imgUrl;
-                console.log(vm.currentImg);
+                //console.log(res.data.imgUrl);
+                $timeout(function() {
+                    vm.currentImg = 'img/' + res.data.imgUrl;
+                }, 250);
+
+
                 vm.basicUser = res.data;
             });
         }
-    }
+    };
 
     // get cv for selected user
     vm.displayCvForSpecificUser = function(id, value) {
