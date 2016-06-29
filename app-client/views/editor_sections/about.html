@@ -110,23 +110,23 @@
             <input type="button" class="btn btn-default" value="Cancel" ng-click="showDiv=false">
         </form>
         <div class="bar-sections wordBreak row">
-            <div class="col-md-10" ng-hide="about.items.email == null" ng-click="rowform.$show()" editable-text="about.items.email" e-name="email" e-form="rowform" e-required>
+            <div class="col-md-10" ng-hide="about.items.email == null" ng-click="rowform.$show()" e-placeholder="E-mail" editable-text="about.items.email" e-name="email" e-form="rowform" e-required>
                 <i class="fa fa-envelope-o fa contactIcons" aria-hidden="true"></i> {{ about.items.email}}
             </div>
-            <div class="col-md-10" ng-hide="about.items.phone == null" ng-click="rowform.$show()" editable-text="about.items.phone" e-name="phone" e-form="rowform" e-required>
+            <div class="col-md-10" ng-hide="about.items.phone == null" ng-click="rowform.$show()" e-placeholder="Phone" editable-text="about.items.phone" e-name="phone" e-form="rowform" e-required>
                 <i class="fa fa-phone fa contactIcons" aria-hidden="true"></i> {{ about.items.phone}}
             </div>
-            <div class="col-md-10" ng-hide="about.items.city == null" ng-click="rowform.$show()" editable-text="about.items.city" e-name="city" e-form="rowform" e-required>
+            <div class="col-md-10" ng-hide="about.items.city == null" ng-click="rowform.$show()" e-placeholder="City" editable-text="about.items.city" e-name="city" e-form="rowform" e-required>
                 <i class="fa fa-map-marker fa contactIcons" aria-hidden="true"></i> {{ about.items.city}}
             </div>
-            <div class="col-md-10" ng-hide="about.items.country == null" ng-click="rowform.$show()" editable-text="about.items.country" e-name="country" e-form="rowform" e-required>
+            <div class="col-md-10" ng-hide="about.items.country == null" ng-click="rowform.$show()" e-placeholder="Country" editable-text="about.items.country" e-name="country" e-form="rowform" e-required>
                 <i class="fa fa-globe fa contactIcons" aria-hidden="true"></i> {{ about.items.country}}
             </div>
-            <div class="col-md-10" ng-hide="about.items.website == null" ng-click="rowform.$show()" editable-text="about.items.website" e-name="website" e-form="rowform" e-required>
+            <div class="col-md-10" ng-hide="about.items.website == null" ng-click="rowform.$show()" e-placeholder="Website" editable-text="about.items.website" e-name="website" e-form="rowform" e-required>
                 <i class="fa fa-at fa-contactIcons" aria-hidden="true"></i> <a href="#">{{ about.items.website}}</a>
             </div>
             <div class="col-md-10" ng-repeat="s in about.items.social">
-                <div ng-hide="s.network == null" ng-click="rowform.$show()" editable-text="s.network" e-name="facebook" e-form="rowform" e-required style='color:white'>
+                <div ng-hide="s.network == null" ng-click="rowform.$show()" editable-text="s.network" e-placeholder="Social network" e-name="facebook" e-form="rowform" e-required style='color:white'>
                     <i class="fa fa-comment-o fa contactIcons" aria-hidden="true"></i> {{s.network}}
                 </div>
             </div>
