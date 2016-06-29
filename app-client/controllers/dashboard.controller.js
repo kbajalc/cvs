@@ -7,12 +7,12 @@ cvApp.controller('DashController', ['CvServices', '$http', '$window', '$location
         vm.resumes = []
         CvServices.init();
         CvServices.getPublishResume().then(function(data) {
-           vm.resumes = data;
+            vm.resumes = data;
         })
-        CvServices.getLoggedUserCV().then(function(data){
-          vm.user=data.user;
-          vm.id = data.user._id;
-          vm.hasCv = data.check
+        CvServices.getLoggedUserCV().then(function(data) {
+            vm.user = data.user;
+            vm.id = data.user._id;
+            vm.hasCv = data.check
         });
         if (forUser) {
             userService.getUser(forUser).then(function(res) {
@@ -25,7 +25,7 @@ cvApp.controller('DashController', ['CvServices', '$http', '$window', '$location
 
     // get cv for selected user
     vm.displayCvForSpecificUser = function(id, value) {
-        CvServices.getResumeForSelectedUser(id ||vm.id, value, true)
+        CvServices.getResumeForSelectedUser(id || vm.id, value, true)
     }
 
     // INSERT NEW  resume
@@ -100,19 +100,24 @@ cvApp.controller('DashController', ['CvServices', '$http', '$window', '$location
 
     // publish resume with id
     vm.publishResume = function(resume) {
-      CvServices.publishResume(resume);
-    }
-    // unpublish resume with id
+            toastr.success('Your resume is published successfully', {
+                timeOut: 1000
+            })
+            CvServices.publishResume(resume);
+        }
+        // unpublish resume with id
     vm.unpublishResume = function(cv) {
-      console.log(cv);
+        toastr.error('Your resume is unpublished successfully', {
+            timeOut: 1000
+        });
         CvServices.unpublishResume(cv.userID.id);
     }
 
     // if user has published version of resume, hidden the Unpublish button
     vm.checkPublishedCv = function() {
         // CvServices.hasPublished();
-        if(vm.user.status.value=='publish'){
-          console.log('okkkkkkkkkkkkkkk');
+        if (vm.user.status.value == 'publish') {
+            console.log('okkkkkkkkkkkkkkk');
         }
     }
 
