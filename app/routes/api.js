@@ -229,70 +229,84 @@ router.route('/resumes/:id')
         });
     })
 
-router.route('/publish/:id')
-    .put(function(req, res) {
-        Resume.findById(req.params.id, function(err, resume) {
-            if (err)
-                res.send(err)
-            resume.status.value = 'publish'
-            resume.save(function(err) {
+    router.route('/publish/:id')
+        .put(function(req, res) {
+            var query = {
+                'userID.id': req.body.userID.id,
+                'status.value': 'publish'
+            }
+            Resume.find(query, function(err, resume) {
                 if (err)
-                    res.send(err)
-                res.json({
-                    message: 'Resume published'
+                    res.send(err);
+
+
+                    if (resume.length > 0) {
+                        resume[0].status.value = 'draft'
+                        resume[0].save(function(err) {
+                            if (err)
+                                res.send(err)
+                            res.json({
+                                message: 'Resume draft'
+                            })
+                        })
+                }
+                Resume.findById(req.params.id, function(err, resume1) {
+                    if (err)
+                        res.send(err)
+                    resume1.status.value = 'publish'
+                    resume1.save(function(err) {
+                        if (err)
+                            res.send(err)
+                        res.json({
+                            message: 'Resume published'
+                        })
+                    })
                 })
             })
         })
-    })
 
-/*******************************
- * Server restful api find
- * Resumes with id
- * route: api/unpublish:id
- * PUT  resume with spec ID
+    /*******************************
+     * Server restful api find
+     * Resumes with id
+     * route: api/unpublish:id
+     * PUT  resume with spec ID
 
- *******************************/
+     *******************************/
 
-router.route('/unpublish/:userID')
-    .put(function(req, res) {
-        var query = {
-            'userID.id': req.params.userID,
-            'status.value': 'publish'
-        }
-        Resume.find(query, function(err, resume) {
-            if (err)
-                res.send(err);
-            if (resume) {
-                resume[0].status.value = 'unpublish'
-                resume[0].save(function(err) {
-                    if (err)
-                        res.send(err)
-                    res.json({
-                        message: 'Resume unpublished'
-                    })
-                })
-            } else {
-                query = {
-                    'userID.id': req.params.userID,
-                    'status.value': 'latest'
-                }
-                Resume.find(query, function(err, resume) {
-                    if (err)
-                        res.send(err);
-                    if (!resume) {
-                        resume[0].status.value = 'latest'
-                    } else {
-                        resume[0].status.value = 'unpublished'
-                    }
-                })
+    router.route('/unpublish/:userID')
+        .put(function(req, res) {
+            var query = {
+                'userID.id': req.params.userID,
+                'status.value': 'publish'
             }
+            Resume.find(query, function(err, resume) {
+                if (err)
+                    res.send(err);
+                if (resume) {
+                    query = {
+                        'userID.id': req.params.userID,
+                        'status.value': 'latest'
+                    }
+                    Resume.find(query, function(err, resume1) {
+                        if (err)
+                            res.send(err);
 
-        })
-    })
-    /*****************************************************
-     * END OF RESUMES api
-     *****************************************************/
-
+                        if (resume1.length > 0) {
+                            resume[0].status.value = 'unpublished'
+                        } else {
+                            resume[0].status.value = 'latest'
+                        }
+                        resume[0].save(function(err) {
+                            if (err)
+                                res.send(err)
+                            res.json({
+                                message: 'Resume unpublished'
+                            })
+                        })
+                    })
+                }
+            })
+        });
 
 router.route('/allPublishResumes/:userID')
     .get(function(req, res) {

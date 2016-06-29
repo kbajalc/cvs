@@ -27,8 +27,6 @@ cvApp.controller('AboutController', ['CvServices', '$rootScope', 'userService', 
                   $timeout(function() {
                       vm.currentImg = 'img/' + res.data.imgUrl;
                   }, 250);
-
-
                   vm.basicUser = res.data;
               });
     };

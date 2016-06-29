@@ -20,8 +20,6 @@ cvApp.controller('DashController', ['CvServices', '$http', '$window', '$location
                 $timeout(function() {
                     vm.currentImg = 'img/' + res.data.imgUrl;
                 }, 250);
-
-
                 vm.basicUser = res.data;
             });
         }
@@ -42,7 +40,7 @@ cvApp.controller('DashController', ['CvServices', '$http', '$window', '$location
                 summary: null
             },
             contacts: {
-                email: null,
+                email: vm.basicUser.username || null,
                 phone: null,
                 city: null,
                 country: null,
