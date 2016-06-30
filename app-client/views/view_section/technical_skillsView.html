@@ -3,7 +3,7 @@
         <h4>TECHNICAL SKILLS</h4>
     </div>
     <div class="row bar-sections">
-        <div class="col-md-6" ng-repeat="x in technicalSkill.items" ng-show="$index !=0">
+        <div class="col-md-6" ng-repeat="x in technicalSkill.items" ng-show="x != null">
             <div class="col-md-6">
                 <span ng-click="rowform.$show()" e-name="name" e-form="rowform" e-required>
               {{ x.name || null | uppercase}}

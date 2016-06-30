@@ -24,10 +24,10 @@
     </div>
     
     <div class="row bar-sections wordBreak">
-        <div class="col-md-6" ng-repeat="x in technicalSkill.items" ng-class-odd="'alignBars'"><!-- ng-hide="x.name === null || x.level === null"-->
+        <div class="col-md-6" ng-repeat="x in technicalSkill.items" ng-class-odd="'alignBars'">
             <div class="col-md-6">
                 <span ng-click="rowform.$show()" editable-text="x.name" e-name="name" e-form="rowform" e-required>
-              {{ x.name || null  | uppercase}}
+              {{ x.name || 'empty'  | uppercase}}
             </span>
 
             </div>

@@ -24,13 +24,13 @@
                 <input type='text' class="form-control" placeholder="Eneter area" ng-model='education.user.area' />
 
                 <label>Enter summary</label>
-                <textarea class="form-control" rows="5" ng-model='experience.user.summary' placeholder="Eneter summary"></textarea>
+                <textarea class="form-control" rows="5" ng-model='education.user.summary' placeholder="Eneter summary"></textarea>
 
                 <label>Enter study type</label>
                 <input type='text' class="form-control" placeholder="Enter your study type" ng-model='education.user.studyType' />
                 <br />
-                <input id="addPopover" type="submit" class="form-control btn btn-primary pull-left" value="Add" ng-click="experience.addExperience(experience.user); showDiv=false">
-                <input id="cancelPopover" type="button" ng-disabled="rowform.$waiting" class="form-control btn btn-default pull-right" ng-click="showDiv=false" value='Cancel' />
+                <input id="addPopover" type="submit" class="form-control btn btn-primary pull-left" value="Add" ng-click="education.addEducation(education.user)">
+                <input id="cancelPopover" type="button" ng-disabled="rowform.$waiting" class="form-control btn btn-default pull-right"value='Cancel' />
             </div>
         </form>
     </div>
