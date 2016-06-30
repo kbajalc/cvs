@@ -3,27 +3,27 @@
     <div class="col-md-10">
         <h4>LANGUAGES</h4>
     </div>
-    <div class="col-md-2">
-        <button type="button" class="btn btn-info add" ng-click="showDiv=true" ng-show='lanCtrl.showEditable'> + </button>
+    <div class="col-md-2 text-center">
+        <a href="#popupRightLanguage" role="button" class="btn btn-info add" data-toggle="modal-popover" data-placement="left"> + </a>
     </div>
 
-    <form name="lanForm" class="col-md-6" ng-submit="lanCtrl.addLanguage()" style="margin:30px" ng-show="showDiv">
-        <input type="text" class="form-control" ng-model="lanCtrl.textName" placeholder="Language" required><br>
-
-        <div class="form-group">
-
+    <div id="popupRightLanguage" class="popover">
+        <div class="popover-title">Add language</div>
+        <form name="lanForm" class="col-md-12" ng-submit="lanCtrl.addLanguage()">
+            <label>Language</label>
+            <input type="text" class="form-control" ng-model="lanCtrl.textName" placeholder="Language" required>
+            <br>
+            <label>Knowledge level</label>
             <select name="lanSelect" class="form-control" ng-options="s.value as s.text for s in lanCtrl.statuses" ng-model="lanCtrl.numLevel" required>
                 <option value="">-Select-</option>
             </select>
-
             <br>
-        </div>
-
-        <input type="submit" class="btn btn-primary" value="Add" ng-click="showDiv=false"> 
-        <input type="button" class="btn btn-default" value="Cancel" ng-click="showDiv=false">
-    </form>
+            <input id="addPopover" type="submit" class="form-control btn btn-primary pull-left" value="Add">
+            <input id="cancelPopover" type="button" class="form-control btn btn-default pull-right" value="Cancel">
+        </form>
+    </div>
     <div class="row bar-sections wordBreak">
-        <div class="col-md-6" ng-repeat="x in lanCtrl.items" ng-class-odd="'alignBars'" ng-hide="x.name === null || x.level === null">
+        <div class="col-md-6" ng-repeat="x in lanCtrl.items" ng-class-odd="'alignBars'"><!-- ng-hide="x.name === null || x.level === null"-->
             <div class="col-md-6">
                 <span ng-click="rowform.$show()" editable-text="x.name" e-name="name" e-form="rowform" e-required>
               {{ x.name || 'empty'  | uppercase}}

@@ -3,26 +3,28 @@
     <div class="col-md-10">
         <h4>TECHNICAL SKILLS</h4>
     </div>
-    <div class="col-md-2">
-        <button type="button" class="btn btn-info add" ng-click="showDiv=true" ng-show='technicalSkill.showEditable'> + </button>
+    <div class="col-md-2 text-center">
+         <a href="#popupRightTechnical" role="button" class="btn btn-info add" data-toggle="modal-popover" data-placement="left"> + </a>
     </div>
-    <form name="tSkillForm" class="col-md-6" ng-submit="technicalSkill.addSkill()" style="margin:30px" ng-show="showDiv">
-        <input type="text" class="form-control" ng-model="technicalSkill.textName" placeholder="Language" required><br>
 
-        <div class="form-group">
-
+    <div id="popupRightTechnical" class="popover">
+        <div class="popover-title">Add technical skills</div>
+        <form name="tSkillForm" class="col-md-12" ng-submit="technicalSkill.addSkill()">
+            <label>Technical skill</label>
+            <input type="text" class="form-control" ng-model="technicalSkill.textName" placeholder="Technical skills" required>
+            <br>
+            <label>Knowledge level</label>
             <select class="form-control" ng-options="s.value as s.text for s in technicalSkill.statuses" ng-model="technicalSkill.numLevel" required>
                 <option value="">-Select-</option>
             </select>
-
             <br>
-        </div>
-        <br>
-        <input type="submit" class="btn btn-primary" value="Add" ng-click="showDiv=false">
-        <input type="button" class="btn btn-default" value="Cancel" ng-click="showDiv=false">
-    </form>
+            <input id="addPopover" type="submit" class="form-control btn btn-primary pull-left" value="Add">
+            <input id="cancelPopover" type="button" class="form-control btn btn-default pull-right" value="Cancel">
+        </form>
+    </div>
+    
     <div class="row bar-sections wordBreak">
-        <div class="col-md-6" ng-repeat="x in technicalSkill.items" ng-class-odd="'alignBars'" ng-hide="x.name === null || x.level === null">
+        <div class="col-md-6" ng-repeat="x in technicalSkill.items" ng-class-odd="'alignBars'"><!-- ng-hide="x.name === null || x.level === null"-->
             <div class="col-md-6">
                 <span ng-click="rowform.$show()" editable-text="x.name" e-name="name" e-form="rowform" e-required>
               {{ x.name || null  | uppercase}}

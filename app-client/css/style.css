@@ -17,6 +17,7 @@ body {
 }
 #main-body {
     padding: 60px;
+    margin-top: 70px;
 }
 .navbar-brand {
     color: #008C9E !important;
@@ -38,6 +39,39 @@ body {
 .navbar-nav li.active a {
     background: #008C9E !important;
 }
+#popupRightAdd, #popupRightWorkExperience, #popupRightContact, #popupRightPersonal {
+    color: black;
+}
+#workExprience {
+    margin-top: 20px;
+}
+.rightside {
+    background-color: white;
+    padding: 2.5% 0% 2.5% 2.5%;
+    height: 100%
+}
+ 
+/*************POPOVER*******************/
+ 
+.popover {
+    width: 1000px !important;
+}
+.popover-title {
+    background-color: #005580;
+    color: white;
+    text-align: center;
+}
+#cancelPopover, #addPopover {
+    width: 49% !important;
+    margin-bottom: 15px;
+}
+#calendarFrom, #calendarTo {
+    width: 49% !important;
+    display: inline-block;
+}
+#popForm label {
+    padding-top: 5px;
+}
 
 /*************editor.template ***************/
 
@@ -52,6 +86,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     padding: 0;
     height: 100%;
+    margin-bottom: 220px;
 }
 #editorTemplate .about {
     padding-left: 5%;
@@ -83,11 +118,16 @@ body {
 
 /*left aside*/
 
+#sectionMargin {
+    margin-right: 5%;
+    border-color: #005580;
+}
 #editorTemplate .leftside {
     color: whitesmoke;
     background-color: #005580;
     height: 100%;
-    padding-right: 5%;
+    /*padding-right: 5%;*/
+    padding: 1.5%;
 }
 #editorTemplate .progress {
     border: 1px solid rgba(255, 255, 200, 0.3);
@@ -108,7 +148,7 @@ body {
     margin-bottom: 30px;
 }
 #editorTemplate .bar-sections {
-    margin: 10%;
+    margin: 5%;
 }
 #editorTemplate .form-buttons.form-inline {
     float: right;

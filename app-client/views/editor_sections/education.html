@@ -3,63 +3,37 @@
     <div class="col-lg-10 col-md-10 col-sm-10">
         <h4>EDUCATION</h4>
     </div>
-    <div class="col-lg-2 col-md-2 col-sm-2">
-        <button type="button" ng-click='showDiv=true' class="btn btn-info add" ng-show='education.showEditable'> + </button>
+    <div class="col-md-2 text-center">
+        <a href="#popupRightEducation" role="button" class="btn btn-info add" data-toggle="modal-popover" data-placement="left"> + </a>
     </div>
 
-    <!-- add new education -->
-    <form name='newEducation' style="margin:30px" ng-show="showDiv" validate>
-        <hr />
-        <div class="row">
-            <div class="col-lg-3 col-md-3">
-                <p>Enter your institution name:</p>
+    <div id="popupRightEducation" class="popover">
+        <div class="popover-title">Add Language</div>
+        <form id="popForm" method="get">
+            <div class="col-md-12">
+                <label>Enter your institution name:</label>
+                <input type='text' id='institutionName' class="form-control" ng-model='education.user.institution' placeholder="Eneter institution name" />
+
+                <label>Enter date from - to</label>
+                <div>
+                    <input type='date' class="form-control" id="calendarFrom" ng-model='education.user.dateFrom' />
+                    <input type='date' class="form-control" id="calendarTo" ng-model='education.user.dateTo' />
+                  </div>
+
+                <label>Enter your area</label>
+                <input type='text' class="form-control" placeholder="Eneter area" ng-model='education.user.area' />
+
+                <label>Enter summary</label>
+                <textarea class="form-control" rows="5" ng-model='experience.user.summary' placeholder="Eneter summary"></textarea>
+
+                <label>Enter study type</label>
+                <input type='text' class="form-control" placeholder="Enter your study type" ng-model='education.user.studyType' />
+                <br />
+                <input id="addPopover" type="submit" class="form-control btn btn-primary pull-left" value="Add" ng-click="experience.addExperience(experience.user); showDiv=false">
+                <input id="cancelPopover" type="button" ng-disabled="rowform.$waiting" class="form-control btn btn-default pull-right" ng-click="showDiv=false" value='Cancel' />
             </div>
-            <div class='col-lg-5 col-md-5'>
-                <input type='text' id='institutionName' ng-model='education.user.institution' placeholder="Eneter institution name" />
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col-lg-3 col-md-3'>
-                <p>Enter date from - to</p>
-            </div>
-            <div class="col-lg-3 col-md-3">
-                <input type='date' ng-model='education.user.dateFrom' />
-            </div>
-            <div class="col-lg-3 col-md-3">
-                <input type='date' ng-model='education.user.dateTo' />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-3 col-md-3">
-                <p>Enter your area</p>
-            </div>
-            <div class='col-lg-5 col-md-5'>
-                <input type='text' placeholder="Eneter area" ng-model='education.user.area' />
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col-lg-3 col-md-3'>
-                <p>Enter summary</p>
-            </div>
-            <div class='col-lg-5 col-md-5'>
-                <input type='text' placeholder="Eneter summary" ng-model='education.user.summary' />
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col-lg-3 col-md-3'>
-                <p>Enter study type</p>
-            </div>
-            <div class='col-lg-5 col-md-5'>
-                <input type='text' placeholder="Enter your study type" ng-model='education.user.studyType' />
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col-lg-3 col-md-3'>
-                <input type="submit" class="btn-primary btn-sm" value="Add" ng-click="education.addEducation(education.user); showDiv=false">
-                <input type="button" ng-disabled="rowform.$waiting" ng-click="showDiv=false" class="btn btn-default btn-sm" value='Cancel' />
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
     <!--education -->
     <div class="row" style='padding-top:50px' ng-repeat="item in education.items" ng-show="$index !=0">
         <div class="col-lg-10 col-md-10 col-sm-10">

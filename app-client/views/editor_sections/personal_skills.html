@@ -4,19 +4,25 @@
         <h4> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> PERSONAL SKILLS</h4>
     </div>
     <div class="col-md-2">
-        <button type="button" class="btn btn-info add btn-sm" ng-click="showDiv=true" ng-show='personalSkills.showEditable'> + </button>
+        <a href="#popupRightPersonal" role="button" class="btn btn-info add" data-toggle="modal-popover" data-placement="right"> + </a>
     </div>
-    <form class="col-md-12" ng-submit="personalSkills.addPerSkill()" style="margin:30px 10px 30px 10px" ng-show="showDiv">
-        <input type="text" class="form-control" ng-model="personalSkills.textName" placeholder="Language"><br>
-        <!--<input type="number" class="form-control" ng-model="personalSkills.numLevel" placeholder="Knowledge percentage">-->
 
-        <!--<div class="form-group">-->
+    <div id="popupRightPersonal" class="popover">
+        <div class="popover-title">Add personal skill</div>
 
-        <select class="form-control" ng-options="s.value as s.text for s in personalSkills.statuses" ng-model="personalSkills.numLevel"></select>
-        <br>
-        <input type="submit" class="btn btn-primary" value="Add" ng-click="showDiv=false">
-        <input type="button" class="btn btn-default" value="Cancel" ng-click="showDiv=false">
-    </form>
+        <form class="col-md-12" ng-submit="personalSkills.addPerSkill()">
+            <label>Personal skill</label>
+            <input type="text" class="form-control" ng-model="personalSkills.textName" placeholder="Personal skill">
+            <br>
+            <label>Knowledge level</label>
+            <select class="form-control" ng-options="s.value as s.text for s in personalSkills.statuses" ng-model="personalSkills.numLevel">
+                <option value="">-Select-</option>
+            </select>
+            <br>
+            <input id="addPopover" type="submit" class="form-control btn btn-primary pull-left" value="Add">
+            <input id="cancelPopover" type="button" class="form-control btn btn-default pull-right" value="Cancel">
+        </form>
+    </div>
     <div class="bar-sections" ng-repeat="x in personalSkills.items" ng-show="$index !=0" style='margin-top:5px; margin-bottom: 5px'>
         <div class="row wordBreak" ng-hide="x.name === null || x.level === null">
             <div class="col-md-6">
@@ -48,3 +54,4 @@
         </div>
     </div>
 </section>
+<!--<script src="../../js/popover.js" />-->

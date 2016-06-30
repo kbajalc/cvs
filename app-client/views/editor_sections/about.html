@@ -29,26 +29,42 @@
         </form>
 
         <!--Job Position/Title-->
-        <div class="row wordBreak">
-            <div class="col-md-10 col-lg-10" style="margin-top: 8px;">
-                <h4><div ng-hide="showDivAbout" style="color:white;border-bottom: none;"  ng-click="rowformPosition.$show()"  editable-text="about.user.jobTitle" ng-model="about.user.jobTitle" e-form="rowformPosition" class='text-center'> {{about.user.jobTitle || null}}</div></h4>
-            </div>
-            <div class="col-md-2" ng-show='about.showEditable'>
-                <button type="button" class="btn btn-info add btn-sm" ng-click="showDivAbout=true"> + </button>
-            </div>
+        <div class="col-md-10 col-lg-10 wordBreak" style="margin-top: 8px;">
+            <h4><div ng-hide="showDivAbout" style="color:white;border-bottom: none;"  ng-click="rowformPosition.$show()"  editable-text="about.user.jobTitle" ng-model="about.user.jobTitle" e-form="rowformPosition" class='text-center'> {{about.user.jobTitle || 'empty'}}</div></h4>
+        </div>
+        <div id="contactForm" class="col-md-2">
+            <a href="#popupRightAdd" role="button" class="btn btn-info add" data-toggle="modal-popover" data-placement="right"> + </a>
+        </div>
+
+        <div id="popupRightAdd" class="popover">
+            <div class="popover-title">Add Contact</div>
+            <form id="popForm" method="get" ng-submit="about.addBasic()">
+                <div class="col-md-12">
+                    <label>Job Title</label>
+                    <input type="text" class="form-control" ng-model="about.position.textPosition" placeholder="POSITION">
+                    <br>
+
+                    <label>Short bio</label>
+                    <textarea class="form-control" rows="5" ng-model="about.contact.textInput" placeholder="ABOUT"></textarea>
+                    <br>
+
+                    <input id="addPopover" type="submit" class="form-control btn btn-primary pull-left" value="Add">
+                    <input id="cancelPopover" type="button" class="form-control btn btn-default pull-right" value="Cancel">
+                </div>
+            </form>
         </div>
 
         <!--Edit Form Buttons Job Position/Title-->
         <form editable-form name="rowformPosition" ng-show="rowformPosition.$visible" onaftersave="about.editBasics(about.user.jobTitle)" class="form-buttons form-inline col-md-12" shown="inserted == about.user">
-            <hr>
+            <hr/>
             <button type="submit" ng-disabled="rowformPosition.$waiting" ng-click='' class="btn btn-primary">
-                                Save
-                            </button>
+                Save
+            </button>
             <button type="button" ng-disabled="rowformPosition.$waiting" ng-click="rowformPosition.$cancel()" class="btn btn-default">
-                                Cancel
-                            </button>
+                Cancel
+            </button>
 
-            <hr>
+            <hr/>
 
         </form>
         <!--End Button form-->
@@ -91,24 +107,34 @@
         <div class="col-md-10" style="margin-top: 8px;">
             <h4> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> CONTACT</h4>
         </div>
-        <div class="col-md-2" ng-show='about.showEditable'>
-            <button type="button" class="btn btn-info add btn-sm" ng-click="showDiv=true"> + </button>
+        <div id="contactForm" class="col-md-2">
+            <a href="#popupRightContact" role="button" class="btn btn-info add" data-toggle="modal-popover" data-placement="right"> + </a>
         </div>
-        <form class="col-md-12" ng-submit="about.addContact()" style="margin:30px 10px 30px 10px" ng-show="showDiv">
-            <select class="form-control" style="color:black" name="selected" id="selected" ng-model="about.contact.selected">
-                               <option value="email">Email</option>
-                               <option value="phone">Phone</option>
-                               <option value="city">City</option>
-                               <option value="country">Country</option>
-                               <option value="website">Website</option>
-                               <option value="social">Social Network</option>
-                           </select>
 
-            <input type="text" class="form-control" ng-model="about.contact.textInput" placeholder="{{selected}}"><br>
+        <div id="popupRightContact" class="popover">
+            <div class="popover-title">Add Contact</div>
+            <form id="popForm" method="get" ng-submit="about.addContact()">
+                <div class="col-md-12">
+                    <label>Contact type</label>
+                    <select class="form-control" style="color:black" name="selected" id="selected" ng-model="about.contact.selected">
+                        <option value="">-Select-</option>
+                        <option value="email">Email</option>
+                        <option value="phone">Phone</option>
+                        <option value="city">City</option>
+                        <option value="country">Country</option>
+                        <option value="website">Website</option>
+                        <option value="social">Social Network</option>
+                    </select>
+                    <label>Type text</label>
+                    <input type="text" class="form-control" ng-model="about.contact.textInput" placeholder="{{selected}}">
+                    <br>
 
-            <input type="submit" class="btn btn-primary" value="Add" ng-click="showDiv=false">
-            <input type="button" class="btn btn-default" value="Cancel" ng-click="showDiv=false">
-        </form>
+                    <input id="addPopover" type="submit" class="form-control btn btn-primary pull-left" value="Add">
+                    <input id="cancelPopover" type="button" class="form-control btn btn-default pull-right" value="Cancel">
+                </div>
+            </form>
+        </div>
+        
         <div class="bar-sections wordBreak row">
             <div class="col-md-10" ng-hide="about.items.email == null" ng-click="rowform.$show()" e-placeholder="E-mail" editable-text="about.items.email" e-name="email" e-form="rowform" e-required>
                 <i class="fa fa-envelope-o fa contactIcons" aria-hidden="true"></i> {{ about.items.email}}
